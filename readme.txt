@@ -9,6 +9,7 @@ Stable tag: 1.0
 Slideshow Gallery Pro: this a photo viewing solution that integrates with the WordPress image upload and gallery system. Thumbs & Lightbox!
 
 == Description ==
+<a href="http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/">Goto Slideshow Gallery Pro information site</a> (incl. Demo)
 
 Slideshow Gallery Pro is a photo and image viewing plugin that integrates seemlessly with the WordPress image upload and gallery system.  Using the most current web technologies like AJAX and JQuery, this viewing and linking solution is the best and easiest to use slideshow available on Wordpress.
 
