@@ -12,7 +12,7 @@ class GallerySlide extends GalleryDbHelper {
 
 	var $controller = "slides";
 
-	var $plugin_name = 'slideshow-gallery-2';
+	var $plugin_name = 'slideshow-gallery-pro';
 
 	
 

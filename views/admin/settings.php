@@ -18,20 +18,19 @@ wp_nonce_field('meta-box-order', 'meta-box-order-nonce', false);
 				<?php do_meta_boxes($this -> menus['gallery-settings'], 'side', $post); ?>
                 <?php do_action('submitpage_box'); ?>
 				<div id="submitdiv" class="postbox">
-                	<h3>Slideshow Gallery Pro Full Edition!</h3>
+                	<h3>Slideshow Gallery Pro!</h3>
                     <div class="inside">
                         <div id="minor-publishing">
                             <div id="#misc-publishing-actions">
-                                <h4>What's different on the Full Edition?</h4>
-                                <p>Vertical images will show completely.</p>
+                                <h4>What's different on the Pro version?</h4>
+                                <p>Vertical images will show completely entire height</p>
                                 <p>Customize your slideshow height and width per use</p>
                                 <p>Easily link your images to pages</p>
-                                <p>And more!</p>
                             </div>
                         </div>
                         <div id="major-publishing-actions">
                             <div id="publishing-action">
-                                <a href="http://cameronpreston.com/projects/plugins/slideshow-gallery-2/1-5-pro-edition/" class="button-primary" target="_blank">Learn More & Get it</a>
+                                <a href="http://cameronpreston.com/projects/plugins/slideshow-gallery-pro" class="button-primary" target="_blank">Learn More & Get it</a>
                             </div>
                             <br class="clear" />
                         </div>

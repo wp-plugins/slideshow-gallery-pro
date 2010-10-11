@@ -4,14 +4,15 @@ Donate link: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/
 Tags: slideshow pro, slide show, wordpress plugins, slideshow gallery, slides, slideshow, image gallery, gallery, content gallery, javascript, javascript slideshow, slideshow gallery, jquery, ajax
 Requires at least: 2.8
 Tested up to: 3.0.1
-Stable tag: 1.0
+Stable tag: 1.0.1
 
 Slideshow Gallery Pro: this a photo viewing solution that integrates with the WordPress image upload and gallery system. Thumbs & Lightbox!
 
 == Description ==
-<a href="http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/">Goto Slideshow Gallery Pro information site</a> (incl. Demo)
 
 Slideshow Gallery Pro is a photo and image viewing plugin that integrates seemlessly with the WordPress image upload and gallery system.  Using the most current web technologies like AJAX and JQuery, this viewing and linking solution is the best and easiest to use slideshow available on Wordpress.
+
+Check out more details here: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/
 
 Flexible, configurable and easy to use. Embed-able and hardcode-able and improved. To embed into a post/page, simply insert <code>[slideshow]</code> into its content with optional <code>post_id</code>, <code>exclude</code>, <code>exclude</code>, and <code>auto</code>  parameters. To hardcode into any PHP file of your WordPress theme, simply use <code><?php if (class_exists('Gallery')) { $Gallery = new Gallery(); $Gallery -> slideshow($output = true, $post_id = null); } ?></code> and specify the required <code>$post_id</code> parameter accordingly.
 
@@ -56,6 +57,8 @@ Not as easy as it used to be! Go into the Media Library. Choose an image you wan
 == Upgrade Notice ==
 
 == Changelog ==
+= 1.0.1 =
+* Bug fix for slideshow-gallery-2 prior naming issues
 
 = 1.0 Renamed to Pro =
 * [slideshow w="500" h="200"] Make your slideshow size customized per instance
@@ -63,7 +66,9 @@ Not as easy as it used to be! Go into the Media Library. Choose an image you wan
 * IE Issue Fixed
 * Last thumbnail dropping issue fixed (added 3px buffer in gallery.js)
 
-= Slideshow Gallery 2 - 1.2 Beta = 
+==Slideshow Gallery 2==
+
+= 1.2 Beta = 
 * Link images to pages from the post gallery. Caption field is for the page link.
 * CSS is fixed to have better backgrounding for switching to white themes
 * Auto Slideshow is now a feature you can turn on or off depending on the slide. [ slideshow auto="on" ]
@@ -92,7 +97,4 @@ Not as easy as it used to be! Go into the Media Library. Choose an image you wan
 
 == Upgrade Notice ==
 
-Upgrading from "Slideshow Gallery" or "Slideshow Gallery 2"?
-Then you’re set! Any [slideshow] reference in your code will work smoothly when you upgrade to this Pro Edition. All you have to do is Disable the previous edition and Enable this one.
-
-The only tricky part is if you’re using [slideshow custom=1] aka "Manage Slides" to show your gallery. Then you have a folder with all of your images in the /wp-content/uploads/slideshow-gallery/ folder that will need to to be copied to /wp-content/uploads/slideshow-gallery-pro/. So before you do the switch, FTP into your domain create the new folder and copy the files and you’ll have a smooth upgrade! Otherwise just start fresh!
+Upgrade fixes Chrome and Safari issues! Twas a jquery loading issue.

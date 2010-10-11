@@ -11,7 +11,7 @@ class GalleryAjax extends GalleryPlugin {
 	var $safecommands = array('slides_order');
 
 	function GalleryAjax($cmd) {
-		$this -> register_plugin('slideshow-gallery-2', __FILE__);
+		$this -> register_plugin('slideshow-gallery-pro', __FILE__);
 		if (!empty($cmd)) {		
 			if (in_array($cmd, $this -> safecommands) || current_user_can('edit_plugins')) {			
 				if (method_exists($this, $cmd)) {
