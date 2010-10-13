@@ -1,10 +1,10 @@
 === Slideshow Gallery Pro ===
 Contributors: Cameron Preston
-Donate link: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/
+Donate link: http://cameronpreston.com/projects/plugins
 Tags: slideshow pro, slide show, wordpress plugins, slideshow gallery, slides, slideshow, image gallery, gallery, content gallery, javascript, javascript slideshow, slideshow gallery, jquery, ajax
 Requires at least: 2.8
 Tested up to: 3.0.1
-Stable tag: 1.0.1
+Stable tag: 1.1
 
 Slideshow Gallery Pro: this a photo viewing solution that integrates with the WordPress image upload and gallery system. Thumbs & Lightbox!
 
@@ -28,6 +28,7 @@ Installing the WordPress Slideshow Gallery Pro plugin manually is very easy. Sim
 1. Configure the settings according to your needs through the 'Slideshow' > 'Configuration' menu
 1. Add and manage your slides in the 'Slideshow' section (Or just use the built in wordpress gallery)
 1. Put `[slideshow post_id="X" exclude="" caption="on/off"]` to embed a slideshow with the images of a post into your posts/pages or use `[slideshow custom=1]` to embed a slideshow with your custom added slides or `<?php if (class_exists('Gallery')) { $Gallery = new Gallery(); $Gallery -> slideshow($output = true, $post_id = null); }; ?>` into your WordPress theme
+1. For the most up to date list of options available please goto: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/
 
 == Frequently Asked Questions ==
 
@@ -43,9 +44,9 @@ Set your default captions to off; for any slideshow you put on your page use `[s
 
 You're most likely not running PHP5. Talk to your host to upgrade or switch your hosting provider. PHP5 is eleventy years old.
 
-= How do I find the numbers to exclude? =
+= How do I find the numbers to exclude (or include)? =
 
-Not as easy as it used to be! Go into the Media Library. Choose an image you want to exclude and click on it and notice your address bar: "/wp-admin/media.php?action=edit&attachment_id=353". Therefore, [slideshow exclude="353"]
+Not as easy as it used to be! Go into the Media Library. Choose an image you want to exclude and click on it and notice your address bar: "/wp-admin/media.php?action=edit&attachment_id=353". Therefore, `[slideshow exclude=353]`
 
 == Screenshots ==
 
@@ -57,8 +58,15 @@ Not as easy as it used to be! Go into the Media Library. Choose an image you wan
 == Upgrade Notice ==
 
 == Changelog ==
+
+= 1.1 =
+* Fixed a scrolling bug for when there are few thumbs
+* Add 'include' to embed (an addition to 'exclude')
+* Cleaned code for excluding and embedding
+* Added 'nolink' embed. Set to true and you won't have any link in the middle!
+
 = 1.0.1 =
-* Bug fix for slideshow-gallery-2 prior naming issues
+* Renaming from '2' to 'Pro' bug issue fixed
 
 = 1.0 Renamed to Pro =
 * [slideshow w="500" h="200"] Make your slideshow size customized per instance
@@ -66,8 +74,7 @@ Not as easy as it used to be! Go into the Media Library. Choose an image you wan
 * IE Issue Fixed
 * Last thumbnail dropping issue fixed (added 3px buffer in gallery.js)
 
-==Slideshow Gallery 2==
-
+=Slideshow Gallery 2=
 = 1.2 Beta = 
 * Link images to pages from the post gallery. Caption field is for the page link.
 * CSS is fixed to have better backgrounding for switching to white themes

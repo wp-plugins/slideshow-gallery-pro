@@ -104,11 +104,13 @@
 		<div id="fullsize">
 
 			<div id="imgprev" class="imgnav" title="Previous Image"></div>
-			<?	if ( SG2_PRO ) :
-					require SG2_PLUGIN_DIR . '/pro/caption-lightbox.php';
-            	else : ?>
+            <? if ($this -> get_option('link') == "Y") : ?>
+			<?	 if ( SG2_PRO ) :
+				 	require SG2_PLUGIN_DIR . '/pro/caption-lightbox.php';
+            	 else : ?>
 					<a rel="lightbox" class="lightbox" title="<?php $slide -> title ?>" id="imglink" href="" onClick="append_href(this)">&nbsp;</a>
-            <?	endif; ?>
+            <?	 endif; ?>
+            <? endif; ?>
             
 			<div id="imgnext" class="imgnav" title="Next Image"></div>
 			<div id="image"></div>
@@ -171,7 +173,8 @@
 		slideshow.link = "linkhover";
 		slideshow.thumbs = "<?php echo ($this -> get_option('thumbnails') == "Y") ? 'thumbslider' : ''; ?>";
 		slideshow.thumbOpacity = <?php echo $this -> get_option('thumbopacity'); ?>;
-		slideshow.scrollSpeed = <?php echo $this -> get_option('thumbscrollspeed'); ?>;
+//		slideshow.scrollSpeed = <?php echo $this -> get_option('thumbscrollspeed'); ?>;
+		slideshow.scrollSpeed = <?php  if(sizeof($slides)>5) {echo $this -> get_option('thumbscrollspeed');} else {echo 0;} ?>;
 		slideshow.spacing = <?php echo $this -> get_option('thumbspacing'); ?>;
 		slideshow.active = "<?php echo $this -> get_option('thumbactive'); ?>";
 		slideshow.init("slideshow","image","imgprev","imgnext","imglink");

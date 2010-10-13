@@ -6,12 +6,12 @@ Plugin URI: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/
 Author: Cameron Preston
 Author URI: http://cameronpreston.com
 Description: Slideshow Gallery Pro is a slideshow that integrates with the WordPress image attachment feature, as well as a custom slide manager. Thumbnails and captions galore! Use this <code>[slideshow]</code> into its content with optional <code>post_id</code>, <code>exclude</code>, <code>auto</code>, and <code>caption</code> parameters.
-Version: 1.0
+Version: 1.1
 */
 
 define('DS', DIRECTORY_SEPARATOR);
 
-define( 'SG2_VERSION', '1.0' );
+define( 'SG2_VERSION', '1.1' );
 
 if ( ! defined( 'SG2_PLUGIN_BASENAME' ) )
 	define( 'SG2_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
@@ -104,41 +104,21 @@ class Gallery extends GalleryPlugin {
 		return $plugins;
 	}
 	
-	function slideshow($output = true, $post_id = null, $exclude = null) {		
+	function slideshow($output = true, $post_id = null, $exclude = null, $include = null) {		
 //		$this -> add_action( 'wp_print_styles', 'sg2_enqueue_styles' );
 
 		global $wpdb;
 		$post_id_orig = $post -> ID;
-		if (!empty($exclude)) {
-			$exclude = array_map('trim', explode(',', $exclude));
-
-			$a = 0;
-			foreach ($attachments as $id => $attachment) {
-				$a++;
-				if (in_array($a, $exclude)) {
-					unset($attachments[$id]);
-				}
-			}
-		$content = $this -> render('gallery', array('slides' => $attachments, 'frompost' => true), false, 'default');	
-		}
 		
+		if (empty($post_id)) {
+			$content = exclude_ids($attachments);
+		}
 		elseif (!empty($post_id) && $post = get_post($post_id)) {
 			if ($attachments = get_children("post_parent=" . $post -> ID . "&post_type=attachment&post_mime_type=image&orderby=menu_order ASC, ID ASC")) {
-				if (!empty($exclude)) {
-					$exclude = array_map('trim', explode(',', $exclude));
-
-					$a = 0;
-					foreach ($attachments as $id => $attachment) {
-						$a++;
-						if (in_array($a, $exclude)) {
-							unset($attachments[$id]);
-						}
-					}
-				}
-
-				$content = $this -> render('gallery', array('slides' => $attachments, 'frompost' => true), false, 'default');
+				$content = exclude_ids($attachments);
 			}
-		} else {
+		}
+		else {
 			$slides = $this -> Slide -> find_all(null, null, array('order', "ASC"));
 			$content = $this -> render('gallery', array('slides' => $slides, 'frompost' => false), false, 'default');
 		}
@@ -150,7 +130,7 @@ class Gallery extends GalleryPlugin {
 		//global variables
 		global $wpdb;
 		
-		$defaults = array('post_id' => null, 'exclude' => null, 'custom' => null, 'caption' => null, 'auto' => null, 'w' => null, 'h' => null);
+		$defaults = array('post_id' => null, 'exclude' => null, 'include' => null, 'custom' => null, 'caption' => null, 'auto' => null, 'w' => null, 'h' => null, 'nolink' => null);
 		extract(shortcode_atts($defaults, $atts));
 		
 		if ($this -> get_option('information')=='Y') { $this -> update_option('information_temp', 'Y'); }
@@ -182,6 +162,8 @@ class Gallery extends GalleryPlugin {
 		/******** END PRO ONLY **************/
 
 		if (!empty($nocaption)) { $this -> update_option('information', 'N'); }
+		if (!empty($nolink)) { $this -> update_option('link', 'N'); }
+			else { $this -> update_option('link', 'Y'); }
 
 		if (!empty($custom)) {
 			$slides = $this -> Slide -> find_all(null, null, array('order', "ASC"));
@@ -193,24 +175,36 @@ class Gallery extends GalleryPlugin {
 		
 			if (!empty($pid) && $post = get_post($pid)) {
 				if ($attachments = get_children("post_parent=" . $post -> ID . "&post_type=attachment&post_mime_type=image&orderby=menu_order ASC, ID ASC")) {
-					if (!empty($exclude)) {
-						$exclude = array_map('trim', explode(',', $exclude));
-						
-						foreach ($attachments as $id => $attachment) {
-//							print "{$id} is {$exclude[$i]} || ";
-							if (in_array($id, $exclude)) {
-								unset($attachments[$id]);
-							}
-						}
-					}
-				
-					$content = $this -> render('gallery', array('slides' => $attachments, 'frompost' => true), false, 'default');
+					$content = $this->exclude_ids($attachments, $exclude, $include);
 				}
 			}
 			$post -> ID = $post_id_orig;
 		}
 		return $content;
 	}
+
+	public function exclude_ids($attachments, $exclude, $include) {
+		if (!empty($exclude)) {
+			$exclude = array_map('trim', explode(',', $exclude));
+/*			echo("<script type='text/javascript'>alert('exclude! ".$exclude[0]."');</script>");*/
+
+			foreach ($attachments as $id => $attachment) {
+				if (in_array($id, $exclude)) {
+					unset($attachments[$id]);
+				}
+			}
+		}
+		elseif (!empty($include)) {
+			$include = array_map('trim', explode(',', $include));
+/*			echo("<script type='text/javascript'>alert('include!".$include[0]."');</script>");*/
+			foreach ($attachments as $id => $attachment) {
+				if (in_array($id, $include)) {}
+				else { unset($attachments[$id]); }
+			}
+		}
+		$content = $this -> render('gallery', array('slides' => $attachments, 'frompost' => true), false, 'default');
+		return $content;
+	}	
 
 	function admin_slides() {	
 		switch ($_GET['method']) {

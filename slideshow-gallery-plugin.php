@@ -134,6 +134,7 @@ class GalleryPlugin {
 		$this -> add_option('autoslide', "Y");
 		$this -> add_option('autoslide_temp', "Y");
 		$this -> add_option('autospeed', 10);
+		$this -> add_option('link', "Y");
 	}
 	
 	function render_msg($message = '') {
@@ -295,12 +296,12 @@ class GalleryPlugin {
 					$galleryStyleUrl .= "&amp;height_temp=" . urlencode($sval);
 				}
 			}
-			wp_register_style('slideshow-gallery-pro', $galleryStyleUrl);
-			wp_enqueue_style( 'slideshow-gallery-pro', $galleryStyleUrl,	array(), SG2_VERSION, 'all' );
+			wp_register_style('slideshow-gallery-2', $galleryStyleUrl);
+			wp_enqueue_style( 'slideshow-gallery-2', $galleryStyleUrl,	array(), SG2_VERSION, 'all' );
 		}
 
 /*		function sg2_style_head($url) {
-			print "<link rel='stylesheet' type='text/css' href='" . get_bloginfo('wpurl') . "/wp-content/plugins/slideshow-gallery-pro/?my-custom-content=css'/>";
+			print "<link rel='stylesheet' type='text/css' href='" . get_bloginfo('wpurl') . "/wp-content/plugins/slideshow-gallery-2/?my-custom-content=css'/>";
 		}
 		function sg2_style_cheat( $wp ) {
 			print"<link id='slideshow-gallery' rel='stylesheet' type='text/css' href='" . $wp . "'/>";
@@ -343,9 +344,6 @@ class GalleryPlugin {
 		}
 		return true;
 	}
-
-
-
 
 	function plugin_base() {
 		return rtrim(dirname(__FILE__), '/');
