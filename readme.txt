@@ -4,7 +4,7 @@ Donate link: http://cameronpreston.com/projects/plugins
 Tags: slideshow pro, slide show, wordpress plugins, slideshow gallery, slides, slideshow, image gallery, gallery, content gallery, javascript, javascript slideshow, slideshow gallery, jquery, ajax
 Requires at least: 2.8
 Tested up to: 3.0.1
-Stable tag: 1.1.01
+Stable tag: 1.1.02
 
 Slideshow Gallery Pro: this a photo viewing solution that integrates with the WordPress image upload and gallery system. Thumbs & Lightbox!
 
