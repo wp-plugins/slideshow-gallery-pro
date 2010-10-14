@@ -28,19 +28,18 @@ if ( ! defined( 'SG2_PLUGIN_URL' ) )
 if ( ! defined( 'SG2_UPLOAD_URL' ) )
 	define( 'SG2_UPLOAD_URL', get_bloginfo('wpurl')."/wp-content/uploads/". SG2_PLUGIN_NAME );
 
-if ( ! defined( 'SG2_LOAD_CSS' ) )
-	define( 'SG2_LOAD_CSS', true );
 
-define( 'SG2_PRO', false);
+if (! file_exists( SG2_PLUGIN_DIR . '/pro/')) {
+	define( 'SG2_PRO', false);
+}
+else {
+	define( 'SG2_PRO', true);
+}
+
 
 define( 'SG2_CSS_SHOW', 'off' );
 
-//require_once(dirname(__FILE__) . DS . 'slideshow-gallery-plugin.php');
 require_once SG2_PLUGIN_DIR . '/slideshow-gallery-plugin.php';
-
-
-//require_once SG2_PLUGIN_DIR . '/settings.php';
-	
 
 class Gallery extends GalleryPlugin {
 
