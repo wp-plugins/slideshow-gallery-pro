@@ -6,7 +6,7 @@ Plugin URI: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/
 Author: Cameron Preston
 Author URI: http://cameronpreston.com
 Description: Slideshow Gallery Pro is a slideshow that integrates with the WordPress image attachment feature, as well as a custom slide manager. Thumbnails and captions galore! Use this <code>[slideshow]</code> into its content with optional <code>post_id</code>, <code>exclude</code>, <code>auto</code>, and <code>caption</code> parameters.
-Version: 1.1.03
+Version: 1.1.04
 */
 
 define('DS', DIRECTORY_SEPARATOR);

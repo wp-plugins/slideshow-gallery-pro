@@ -4,42 +4,21 @@
 
 class GalleryHtmlHelper extends GalleryPlugin {
 
-
-
 	function link($name = '', $href = '/', $args = array()) {
-
 		$defaults = array(
-
 			'title'			=>	(empty($args['title'])) ? $title : $args['title'],
-
 			'target'		=>	"_blank",
-
 			'class' 		=>	"wpco",
-
 			'rel'			=>	"lightbox",
-
 			'onclick'		=>	"",
-
 		);
-
-		
 
 		$r = wp_parse_args($args, $defaults);
 
 		extract($r, EXTR_SKIP);
-
-		
-
 		ob_start();
-
-		
-
 		?><a class="<?php echo $class; ?>" rel="<?php echo $rel; ?>" <?php echo (!empty($onclick)) ? 'onclick="' . $onclick . '"' : ''; ?> href="<?php echo $href; ?>" target="<?php echo $target; ?>" title="<?php echo $title; ?>"><?php echo $name; ?></a><?php
-
-		
-
 		$link = ob_get_clean();
-
 		return $link;
 
 	}
@@ -63,122 +42,58 @@ class GalleryHtmlHelper extends GalleryPlugin {
 	
 
 	function thumbname($filename = null, $append = "thumb") {
-
 		if (!empty($filename)) {
-
 			$name = $this -> strip_ext($filename, "name");
-
 			$ext = $this -> strip_ext($filename, "ext");
-
-			
-
 			return $name . '-' . $append . '.' . $ext;
-
 		}
-
-		
-
 		return false;
-
 	}
-
-	
 
 	function image_url($filename = null) {
-
 		if (!empty($filename)) {
-
-			return get_option('siteurl') . '/wp-content/uploads/slideshow-gallery-2/' . $filename;
-
+			return SG2_UPLOAD_URL . '/' . $filename;
 		}
-
-		
-
 		return false;
-
 	}
-
-	
 
 	function field_name($name = '') {
-
 		if (!empty($name)) {
-
 			if ($mn = $this -> strip_mn($name)) {
-
 				return $mn[1] . '[' . $mn[2] . ']';
-
 			}
-
 		}
-
-	
 
 		return $name;
-
 	}
-
-	
 
 	function field_error($name = '', $el = "p") {
-
 		if (!empty($name)) {
-
 			if ($mn = $this -> strip_mn($name)) {
-
 				$errors = array();
 
-				
-
 				switch ($mn[1]) {
-
 					case 'Slide'		:
-
 						$errors = GallerySlide::validate($_POST);
-
 						break;
-
 				}			
 
-						
 
 				if (!empty($errors[$mn[2]])) {
-
 					$error = '<' . $el . ' class="' . $this -> pre . 'error">' . $errors[$mn[2]] . '</' . $el . '>';
-
-					
-
 					return $error;
-
 				}
-
 			}
-
 		}
-
-		
 
 		return false;
-
 	}
 
-	
-
 	function field_value($name = '') {
-
 		if ($mn = $this -> strip_mn($name)) {
-
-					
-
 			$value = $this -> {$mn[1]} -> data -> {$mn[2]};
-
-			
-
 			return $value;
-
 		}
-
-		
 
 		return false;
 
@@ -280,68 +195,37 @@ class GalleryHtmlHelper extends GalleryPlugin {
 
 	}
 
-	
 
 	function strip_mn($name = '') {	
-
 		if (!empty($name)) {
-
 			if (preg_match("/^(.*?)\.(.*?)$/si", $name, $matches)) {
-
 				return $matches;
-
 			}
-
 		}
-
-	
-
 		return false;
-
 	}
 
-	
-
 	function gen_date($format = "Y-m-d H:i:s", $time = false) {
-
 		$time = (empty($time)) ? time() : $time;
-
 		$date = date($format, $time);
-
-		
-
 		return $date;
 
 	}
 
-	
-
 	function array_to_object($array = array()) {
 
 		//type casting...
-
 		return (object) $array;
-
 	}
-
-	
 
 	function sanitize($string = '', $sep = '-') {
 
 		if (!empty($string)) {
-
 			$string = ereg_replace("[^0-9a-z" . $sep . "]", "", strtolower(str_replace(" ", $sep, $string)));
-
 			$string = preg_replace("/" . $sep . "[" . $sep . "]*/i", $sep, $string);
-
-			
-
 			return $string;
 
 		}
-
-	
-
 		return false;
 
 	}

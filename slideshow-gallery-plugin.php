@@ -2,7 +2,7 @@
 
 class GalleryPlugin {
 
-	var $version = '1.5';
+	var $version = '1.1';
 	var $plugin_name;
 	var $plugin_base;
 	var $pre = 'Gallery';
@@ -296,8 +296,8 @@ class GalleryPlugin {
 					$galleryStyleUrl .= "&amp;height_temp=" . urlencode($sval);
 				}
 			}
-			wp_register_style('slideshow-gallery-2', $galleryStyleUrl);
-			wp_enqueue_style( 'slideshow-gallery-2', $galleryStyleUrl,	array(), SG2_VERSION, 'all' );
+			wp_register_style( 'slideshow-gallery-pro', $galleryStyleUrl);
+			wp_enqueue_style( 'slideshow-gallery-pro', $galleryStyleUrl,	array(), SG2_VERSION, 'all' );
 		}
 
 /*		function sg2_style_head($url) {
