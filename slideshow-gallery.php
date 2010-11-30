@@ -6,7 +6,7 @@ Plugin URI: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/
 Author: Cameron Preston
 Author URI: http://cameronpreston.com
 Description: Slideshow Gallery Pro is a slideshow that integrates with the WordPress image attachment feature, as well as a custom slide manager. Thumbnails and captions galore! Use this <code>[slideshow]</code> into its content with optional <code>post_id</code>, <code>exclude</code>, <code>auto</code>, and <code>caption</code> parameters.
-Version: 1.1.04
+Version: 1.1.05 Beta
 */
 
 define('DS', DIRECTORY_SEPARATOR);
@@ -28,7 +28,6 @@ if ( ! defined( 'SG2_PLUGIN_URL' ) )
 if ( ! defined( 'SG2_UPLOAD_URL' ) )
 	define( 'SG2_UPLOAD_URL', get_bloginfo('wpurl')."/wp-content/uploads/". SG2_PLUGIN_NAME );
 
-
 if (! file_exists( SG2_PLUGIN_DIR . '/pro/')) {
 	define( 'SG2_PRO', false);
 }
@@ -37,9 +36,12 @@ else {
 }
 
 
-define( 'SG2_CSS_SHOW', 'off' );
-
+//require_once(dirname(__FILE__) . DS . 'slideshow-gallery-plugin.php');
 require_once SG2_PLUGIN_DIR . '/slideshow-gallery-plugin.php';
+
+
+//require_once SG2_PLUGIN_DIR . '/settings.php';
+	
 
 class Gallery extends GalleryPlugin {
 
@@ -63,11 +65,11 @@ class Gallery extends GalleryPlugin {
 	}
 	
 	function admin_menu() {
-		add_menu_page(__('Slideshow', $this -> plugin_name), __('Slideshow', $this -> plugin_name), 10, "gallery", array($this, 'admin_slides'), SG2_PLUGIN_URL . '/images/icon.png');
-		$this -> menus['gallery'] = add_submenu_page("gallery", __('Manage Slides', $this -> plugin_name), __('Manage Slides', $this -> plugin_name), 10, "gallery", array($this, 'admin_slides'));
-		$this -> menus['gallery-settings'] = add_submenu_page("gallery", __('Configuration', $this -> plugin_name), __('Configuration', $this -> plugin_name), 10, "gallery-settings", array($this, 'admin_settings'));
+		add_menu_page(__('Slideshow', $this -> plugin_name), __('Slideshow', $this -> plugin_name), 'manage_options', "gallery", array($this, 'admin_settings'), SG2_PLUGIN_URL . '/images/icon.png');
+		$this -> menus['gallery'] = add_submenu_page("gallery", __('Configuration', $this -> plugin_name), __('Configuration', $this -> plugin_name), 'manage_options', "gallery", array($this, 'admin_settings'));
+		$this -> menus['gallery-slides'] = add_submenu_page("gallery", __('Manage Slides', $this -> plugin_name), __('Manage Slides', $this -> plugin_name), 'manage_options', "gallery-slides", array($this, 'admin_slides'));		
 		
-		add_action('admin_head-' . $this -> menus['gallery-settings'], array($this, 'admin_head_gallery_settings'));
+		add_action('admin_head-' . $this -> menus['gallery'], array($this, 'admin_head_gallery_settings'));
 	}
 	
 	function admin_head() {
@@ -75,12 +77,12 @@ class Gallery extends GalleryPlugin {
 	}
 	
 	function admin_head_gallery_settings() {		
-		add_meta_box('submitdiv', __('Save Settings', $this -> plugin_name), array($this -> Metabox, "settings_submit"), $this -> menus['gallery-settings'], 'side', 'core');
-		add_meta_box('generaldiv', __('General Settings', $this -> plugin_name), array($this -> Metabox, "settings_general"), $this -> menus['gallery-settings'], 'normal', 'core');
-		add_meta_box('stylesdiv', __('Appearance &amp; Styles', $this -> plugin_name), array($this -> Metabox, "settings_styles"), $this -> menus['gallery-settings'], 'normal', 'core');
+		add_meta_box('submitdiv', __('Save Settings', $this -> plugin_name), array($this -> Metabox, "settings_submit"), $this -> menus['gallery'], 'side', 'core');
+		add_meta_box('generaldiv', __('General Settings', $this -> plugin_name), array($this -> Metabox, "settings_general"), $this -> menus['gallery'], 'normal', 'core');
+		add_meta_box('stylesdiv', __('Appearance &amp; Styles', $this -> plugin_name), array($this -> Metabox, "settings_styles"), $this -> menus['gallery'], 'normal', 'core');
 		
-		do_action('do_meta_boxes', $this -> menus['gallery-settings'], 'normal');
-		do_action('do_meta_boxes', $this -> menus['gallery-settings'], 'side');
+		do_action('do_meta_boxes', $this -> menus['gallery'], 'normal');
+		do_action('do_meta_boxes', $this -> menus['gallery'], 'side');
 		
 	}
 	
@@ -104,21 +106,19 @@ class Gallery extends GalleryPlugin {
 	}
 	
 	function slideshow($output = true, $post_id = null, $exclude = null, $include = null) {		
-//		$this -> add_action( 'wp_print_styles', 'sg2_enqueue_styles' );
+//		$this -> add_action( 'wp_print_styles', 'gs_enqueue_styles' );
 
 		global $wpdb;
 		$post_id_orig = $post -> ID;
-		
-		if (empty($post_id)) {
-			$content = $this -> exclude_ids($attachments, $exclude, $include);
-		}
-		elseif (!empty($post_id) && $post = get_post($post_id)) {
+
+		if (!empty($post_id) && $post = get_post($post_id)) {
 			if ($attachments = get_children("post_parent=" . $post -> ID . "&post_type=attachment&post_mime_type=image&orderby=menu_order ASC, ID ASC")) {
 				$content = $this -> exclude_ids($attachments, $exclude, $include);
 			}
 		}
 		else {
 			$slides = $this -> Slide -> find_all(null, null, array('order', "ASC"));
+/*			print "<script>alert($slides)</script>";*/
 			$content = $this -> render('gallery', array('slides' => $slides, 'frompost' => false), false, 'default');
 		}
 		$post -> ID = $post_id_orig;
@@ -129,7 +129,7 @@ class Gallery extends GalleryPlugin {
 		//global variables
 		global $wpdb;
 		
-		$defaults = array('post_id' => null, 'exclude' => null, 'include' => null, 'custom' => null, 'caption' => null, 'auto' => null, 'w' => null, 'h' => null, 'nolink' => null);
+		$defaults = array('post_id' => null, 'exclude' => null, 'include' => null, 'custom' => null, 'caption' => null, 'auto' => null, 'w' => null, 'h' => null, 'nolink' => null, 'slug' => null);
 		extract(shortcode_atts($defaults, $atts));
 		
 		if ($this -> get_option('information')=='Y') { $this -> update_option('information_temp', 'Y'); }
@@ -170,7 +170,11 @@ class Gallery extends GalleryPlugin {
 		} else {
 			global $post;
 			$post_id_orig = $post -> ID;
-			$pid = (empty($post_id)) ? $post -> ID : $post_id;
+			if (empty($slug)) {
+				$pid = (empty($post_id)) ? $post -> ID : $post_id;
+			} else {
+				$pid = get_page_by_path($slug) -> ID;
+			}
 		
 			if (!empty($pid) && $post = get_post($pid)) {
 				if ($attachments = get_children("post_parent=" . $post -> ID . "&post_type=attachment&post_mime_type=image&orderby=menu_order ASC, ID ASC")) {

@@ -1,7 +1,5 @@
 <?php
 
-
-
 class GalleryHtmlHelper extends GalleryPlugin {
 
 	function link($name = '', $href = '/', $args = array()) {
@@ -231,7 +229,5 @@ class GalleryHtmlHelper extends GalleryPlugin {
 	}
 
 }
-
-
 
 ?>

@@ -10,6 +10,7 @@
 				<span class="howto"><?php _e('should images be resized proportionally to fit the width of the slideshow area', $this -> plugin_name); ?></span>
 			</td>
 		</tr>
+        <?php if ( SG2_PRO ) {?>        
 		<tr>
 			<th><label for="styles.resizeimages2"><?php _e('Resize Images (height)', $this -> plugin_name); ?></label></th>
 			<td>
@@ -18,6 +19,7 @@
 				<span class="howto"><?php _e('should images be resized proportionally to fit the height of the slideshow area', $this -> plugin_name); ?></span>
 			</td>
 		</tr>
+        <?php } ?>
 		<tr>
 			<th><label for="styles.width"><?php _e('Gallery Width', $this -> plugin_name); ?></label></th>
 			<td>
@@ -25,6 +27,7 @@
 				<span class="howto"><?php _e('width of the slideshow gallery', $this -> plugin_name); ?></span>
 			</td>
 		</tr>
+
 		<tr>
 			<th><label for="styles.height"><?php _e('Gallery Height', $this -> plugin_name); ?></label></th>
 			<td>
@@ -32,6 +35,7 @@
 				<span class="howto"><?php _e('height of the slideshow gallery', $this -> plugin_name); ?></span>
 			</td>
 		</tr>
+
 		<tr>
 			<th><label for="styles.border"><?php _e('Slideshow Border', $this -> plugin_name); ?></label></th>
 			<td>

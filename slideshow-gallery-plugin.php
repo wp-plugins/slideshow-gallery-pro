@@ -323,7 +323,7 @@ class GalleryPlugin {
 			if (!empty($_GET['page'])) {
 				wp_enqueue_script('autosave');
 
-				if ($_GET['page'] == 'gallery-settings') {
+				if ($_GET['page'] == 'gallery') {
 
 					wp_enqueue_script('common');
 					wp_enqueue_script('wp-lists');
@@ -331,7 +331,7 @@ class GalleryPlugin {
 					wp_enqueue_script('settings-editor', '/' . PLUGINDIR . '/' . $this -> plugin_name . '/js/settings-editor.js', array('jquery'), '1.0');
 				}
 
-				if ($_GET['page'] == "gallery" && $_GET['method'] == "order") {
+				if ($_GET['page'] == "gallery-slides" && $_GET['method'] == "order") {
 					wp_enqueue_script('jquery-ui-sortable');
 				}
 			}
@@ -339,7 +339,6 @@ class GalleryPlugin {
 			wp_enqueue_script($this -> plugin_name . 'admin', '/' . PLUGINDIR . '/' . $this -> plugin_name . '/js/admin.js', null, '1.0');
 
 		} else {
-			wp_enqueue_script($this -> plugin_name, '/' . PLUGINDIR . '/' . $this -> plugin_name . '/js/gallery.js', null, '1.0');
 			wp_enqueue_script($this -> plugin_name, '/' . PLUGINDIR . '/' . $this -> plugin_name . '/js/gallery.js', null, '1.0');
 		}
 		return true;
@@ -452,11 +451,8 @@ class GalleryPlugin {
 						if ($field != "key") {
 
 							$this -> add_field($this -> table, $field, $attributes);
-
 						}
-
 					}
-
 				}
 
 				

@@ -8,34 +8,37 @@
 				<li>
 
 					<h3><?php echo $slide -> post_title;  ?></h3>
-                    <?php $full_image_href = wp_get_attachment_image_src($slide -> ID, 'full', false); ?>
-                    <?php if ( SG2_PRO ) {
+                    
+<?php 				$full_image_href = wp_get_attachment_image_src($slide -> ID, 'full', false); ?>
+<?php				if ( SG2_PRO ) {
 						require SG2_PLUGIN_DIR . '/pro/image_tall_frompost.php';
-					} else { echo "<h4>&nbsp;</h4>";
-							 echo "<h5>lightbox</h5>"; }?>
+					} else { 
+						echo "<h4>&nbsp;</h4>";
+						echo "<h5>lightbox</h5>"; 
+					}?>
 					<span><?php echo $full_image_href[0]; ?></span>
                     
 					<p><?php echo $slide -> post_content; ?></p>
 					<?php $thumbnail_link = wp_get_attachment_image_src($slide -> ID, 'thumbnail', false); ?>
 					<?php if ($this -> get_option('thumbnails') == "Y") : ?>
-						<?	if (!empty($slide -> guid)) : ?>
-                        <?		if (SG2_PRO) : 
+						<?php	if (!empty($slide -> guid)) : ?>
+                        <?php		if (SG2_PRO) : 
 									require SG2_PLUGIN_DIR . '/pro/caption_link-frompost.php';
                         		else : ?>
 				  <a rel="lightbox" href="<?php echo $slide -> guid; ?>" title="<?php echo $slide -> post_title; ?>"><img style="height:75px;" src="<?php echo $thumbnail_link[0]; ?>" alt="<?php echo $this -> Html -> sanitize($slide -> post_title); ?>" />la</a>                                
-                        <?		endif; ?>
-						<?	else : ?>
-                        <?		list($width, $height, $type, $attr) = getimagesize($full_image_href[0]);?>
+                        <?php		endif; ?>
+						<?php	else : ?>
+                        <?php		list($width, $height, $type, $attr) = getimagesize($full_image_href[0]);?>
 								<img style="height:75px;" src="<?php echo $thumbnail_link[0]; ?>" alt="<?php echo $this -> Html -> sanitize($slide -> post_title); ?>" />
-						<?	endif; ?>
+						<?php	endif; ?>
 
-					<?php else : ?>
+					<?php else : // NO THUMBNAILS?>
                     
-                    	<? if (SG2_PRO):
+<?php					if (SG2_PRO):
 							require SG2_PLUGIN_DIR . '/pro/caption_link-frompost-nothumb.php'; 
 						else: ?>
-					  <a href="<?php echo $slide -> guid; ?>" title="<?php echo $slide -> post_title; ?>"> </a>
-                    	<?php endif; ?>
+					  		<a href="<?php echo $slide -> guid; ?>" title="<?php echo $slide -> post_title; ?>"> </a>
+<?php 					endif; ?>
 
 					<?php endif; ?>
 				</li>
@@ -46,7 +49,7 @@
 
 			<?php foreach ($slides as $slide) : ?>		
 				<li>
-					<h3><?php echo $slide -> post_title; ?></h3>
+					<h3><?php echo $slide -> title; ?></h3>
                     <?php if ( SG2_PRO ) {
 						require SG2_PLUGIN_DIR . '/pro/image_tall_custom.php';
 					} else { echo "<h4>&nbsp;</h4>"; }?>
@@ -67,8 +70,8 @@
 
 						<?php endif; ?>
 					<?php else : ?>
-						<?php if (!empty($slide -> caption)) : ?>
-							<a href="<?php echo $slide -> caption; ?>" title="<?php echo $slide -> title; ?>"></a>
+						<?php if ($slide -> uselink == "N" || empty($slide -> link)) : ?>
+							<a href="<?php echo $slide -> image_url; ?>" title="<?php echo $slide -> title; ?>"></a>
                         <?php else : ?>
 							<a href="<?php echo $slide -> link; ?>" title="<?php echo $slide -> title; ?>"></a>
 						<?php endif; ?>
@@ -142,24 +145,21 @@
 
 	</div>
 
-	
-
 	<script type="text/javascript">
 
 	jQuery.noConflict();
-
 	tid('slideshow').style.display = "none";
-
 	tid('slideshow-wrapper').style.display = 'block';
-
-	
 
 	var slideshow = new TINY.slideshow("slideshow");
 
 	jQuery(window).bind('load',function() {	
 	
-		<?php if ($this -> get_option('autoslide_temp')) : ?>slideshow.auto = true;<?php else : ?>slideshow.auto = false;<?php endif; ?>
-	
+		<?php if ($this -> get_option('autoslide_temp')=="Y") : ?>
+		slideshow.auto = true;
+		<?php else : ?>
+		slideshow.auto = false;
+		<?php endif; ?>	
 		slideshow.speed = <?php echo $this -> get_option('autospeed'); ?>;
 		slideshow.imgSpeed = <?php echo $this -> get_option('fadespeed'); ?>;
 		slideshow.navOpacity = <?php echo $this -> get_option('navopacity'); ?>;
