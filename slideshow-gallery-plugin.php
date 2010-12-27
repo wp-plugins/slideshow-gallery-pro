@@ -1,6 +1,6 @@
 <?php
 class GalleryPlugin {
-	var $version = '1.1';
+	var $version = '1.2';
 	var $plugin_name;
 	var $plugin_base;
 	var $pre = 'Gallery';

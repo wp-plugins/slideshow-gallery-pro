@@ -112,7 +112,7 @@
 				<br style="clear:both; visibility:hidden; height:1px;" />
 			</div>
 		<?php endif; ?>
-		</div>
+		
 		
 
 	</div>
