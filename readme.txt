@@ -4,7 +4,7 @@ Donate link: http://cameronpreston.com/projects/plugins
 Tags: slideshow pro, slide show, wordpress plugins, slideshow gallery, slides, slideshow, image gallery, gallery, content gallery, javascript, javascript slideshow, slideshow gallery, jquery, ajax
 Requires at least: 2.8
 Tested up to: 3.0.1
-Stable tag: 1.1.06
+Stable tag: 1.2
 
 Slideshow Gallery Pro: this a photo viewing solution that integrates with the WordPress image upload and gallery system. Thumbs & Lightbox!
 
@@ -48,6 +48,14 @@ You're most likely not running PHP5. Talk to your host to upgrade or switch your
 
 Not as easy as it used to be! Go into the Media Library. Choose an image you want to exclude and click on it and notice your address bar: "/wp-admin/media.php?action=edit&attachment_id=353". Therefore, `[slideshow exclude=353]`
 
+= My thumbnails aren't scrolling, what's up? =
+
+Make sure you have at least 6 thumbnails for that to work properly. Otherwise thumbnails are probably not be necessary.
+
+= How do I change the color to the left and right of my images in the slideshow? =
+
+In /views/default/gallery.php find this line: slideshow.letterbox = "#000"; Change #000 to #FFF for white, or any other hex color code.
+
 == Screenshots ==
 
 1. Slideshow gallery pro with thumbnails at the bottom.
@@ -58,6 +66,17 @@ Not as easy as it used to be! Go into the Media Library. Choose an image you wan
 == Upgrade Notice ==
 
 == Changelog ==
+
+= 1.2 = 
+* Fixed Order Custom Slides
+* Fixed Margin-top Issue
+* Updated Manage Slides Page (Upload & Look)
+* Updated to spinner
+* Updated transition - smooth instead of snapshot
+* Updated to thickbox instead of lightbox
+* Fixed bad calls of < ?php
+* Fixed auto=off bug
+
 = 1.1.06 = 
 * Fixed the custom h3 issue
 * Fixed the custom image linking issue

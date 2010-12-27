@@ -1,3 +1,3 @@
 <script type="text/javascript">
-var GalleryAjax = "<?php echo SG2_PLUGIN_URL ?>/<?php echo $this -> plugin_name; ?>-ajax.php";
+var SGProAjax = "<?php echo SG2_PLUGIN_URL ?>/<?php echo SG2_PLUGIN_NAME ?>-ajax.php";
 </script>

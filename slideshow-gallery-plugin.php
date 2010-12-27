@@ -251,23 +251,35 @@ class GalleryPlugin {
 	}
 	function enqueue_scripts() {	
 		wp_enqueue_script('jquery');
+		
 		if (is_admin()) {
-			if (!empty($_GET['page'])) {
+			if (!empty($_GET['page']) && in_array($_GET['page'], (array) $this -> sections)) {
 				wp_enqueue_script('autosave');
+			
 				if ($_GET['page'] == 'gallery') {
 					wp_enqueue_script('common');
 					wp_enqueue_script('wp-lists');
 					wp_enqueue_script('postbox');
+					
 					wp_enqueue_script('settings-editor', '/' . PLUGINDIR . '/' . $this -> plugin_name . '/js/settings-editor.js', array('jquery'), '1.0');
 				}
+				
 				if ($_GET['page'] == "gallery-slides" && $_GET['method'] == "order") {
 					wp_enqueue_script('jquery-ui-sortable');
 				}
+				
+				add_thickbox();
 			}
+			
 			wp_enqueue_script($this -> plugin_name . 'admin', '/' . PLUGINDIR . '/' . $this -> plugin_name . '/js/admin.js', null, '1.0');
 		} else {
 			wp_enqueue_script($this -> plugin_name, '/' . PLUGINDIR . '/' . $this -> plugin_name . '/js/gallery.js', null, '1.0');
+			
+			if ($this -> get_option('imagesthickbox') == "Y") {
+				add_thickbox();
+			}
 		}
+		
 		return true;
 	}
 	function plugin_base() {

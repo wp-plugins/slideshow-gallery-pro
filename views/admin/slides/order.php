@@ -4,15 +4,13 @@
 	<div style="float:none;" class="subsubsub">
 		<a href="<?php echo $this -> url; ?>"><?php _e('&larr; Manage All Slides', $this -> plugin_name); ?></a>
 	</div>
-    <form action="<?php echo $this -> url; ?>&amp;method=order" method="post">
-    <input type="hidden" name="Slide[order]" value="<?php echo $this -> Slide -> data -> order; ?>" />
+	
 	<?php if (!empty($slides)) : ?>
 		<ul id="slidelist">
 			<?php foreach ($slides as $slide) : ?>
 				<li class="lineitem" id="item_<?php echo $slide -> id; ?>">
 					<span style="float:left; margin:5px 10px 0 5px;"><img src="<?php echo $this -> Html -> image_url($this -> Html -> thumbname($slide -> image, "small")); ?>" alt="<?php echo $this -> Html -> sanitize($slide -> title); ?>" /></span>
 					<h4><?php echo $slide -> title; ?></h4>
-                    <h4><?php echo $slide -> order; ?></h4>
 					<hr class="clear" style="clear:both; visibility:hidden; height:1px; display:block;" />
 				</li>
 			<?php endforeach; ?>
@@ -27,7 +25,7 @@
 					jQuery("#slidemessage").slideUp();
 				},
 				stop: function(request) {					
-					jQuery("#slidemessage").load(GalleryAjax + "?cmd=slides_order", jQuery("ul#slidelist").sortable('serialize')).slideDown("slow");
+					jQuery("#slidemessage").load(SGProAjax + "?cmd=slides_order", jQuery("ul#slidelist").sortable('serialize')).slideDown("slow");
 				},
 				axis: "y"
 			});
@@ -52,9 +50,4 @@
 	<?php else : ?>
 		<p style="color:red;"><?php _e('No slides found', $this -> plugin_name); ?></p>
 	<?php endif; ?>
-    		<div id="publishing-action">
-            <input class="button-primary" type="submit" name="order" value="<?php _e('Save Order', $this -> plugin_name); ?>" />
-            </form>
-
-			</div>
 </div>

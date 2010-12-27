@@ -10,15 +10,19 @@ class GalleryMetaboxHelper extends GalleryPlugin {
 	}
 
 	function settings_submit() {
-		$this -> render('metaboxes/settings-submit', false, true, 'admin');
+		$this -> render('metaboxes' . DS . 'settings-submit', false, true, 'admin');
 	}
 	
 	function settings_general() {
-		$this -> render('metaboxes/settings-general', false, true, 'admin');
+		$this -> render('metaboxes' . DS . 'settings-general', false, true, 'admin');
+	}
+	
+	function settings_linksimages() {
+		$this -> render('metaboxes' . DS . 'settings-linksimages', false, true, 'admin');	
 	}
 	
 	function settings_styles() {
-		$this -> render('metaboxes/settings-styles', false, true, 'admin');
+		$this -> render('metaboxes' . DS . 'settings-styles', false, true, 'admin');
 	}
 }
 
