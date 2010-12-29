@@ -6,6 +6,10 @@ class GalleryPlugin {
 	var $pre = 'Gallery';
 	var $debugging = false;
 	var $menus = array();
+	var $sections = array(
+		'gallery'			=>	'gallery-slides',
+		'settings'			=>	'gallery',
+	);	
 	var $helpers = array('Db', 'Html', 'Form', 'Metabox');
 	var $models = array('Slide');
 	
@@ -108,6 +112,7 @@ class GalleryPlugin {
 		$this -> add_option('autoslide', "Y");
 		$this -> add_option('autoslide_temp', "Y");
 		$this -> add_option('autospeed', 10);
+		$this -> add_option('imagesthickbox', "N");
 		$this -> add_option('link', "Y");
 	}
 	
@@ -267,6 +272,7 @@ class GalleryPlugin {
 				if ($_GET['page'] == "gallery-slides" && $_GET['method'] == "order") {
 					wp_enqueue_script('jquery-ui-sortable');
 				}
+				wp_enqueue_script('jquery-ui-sortable');
 				
 				add_thickbox();
 			}

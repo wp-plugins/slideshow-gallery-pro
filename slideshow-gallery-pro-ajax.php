@@ -2,16 +2,18 @@
 
 if (!defined('DS')) { define('DS', DIRECTORY_SEPARATOR); }
 
-require_once($_SERVER['DOCUMENT_ROOT'] . DS . 'wp-config.php');
+$root = __FILE__;
+for ($i = 0; $i < 4; $i++) $root = dirname($root);
+require_once($root . DS . 'wp-config.php');
 require_once(ABSPATH . 'wp-admin' . DS . 'admin-functions.php');
 
-class GalleryAjax extends GalleryPlugin {
-
+class SGProAjax extends GalleryPlugin {
 
 	var $safecommands = array('slides_order');
 
-	function GalleryAjax($cmd) {
-		$this -> register_plugin( SG2_PLUGIN_NAME, __FILE__);
+	function SGProAjax($cmd) {
+		$this -> register_plugin('slideshow-gallery-pro', __FILE__);
+	
 		if (!empty($cmd)) {		
 			if (in_array($cmd, $this -> safecommands) || current_user_can('edit_plugins')) {			
 				if (method_exists($this, $cmd)) {
@@ -20,31 +22,18 @@ class GalleryAjax extends GalleryPlugin {
 			}
 		}
 	}
-
-
-
+	
 	function slides_order() {
-
 		if (!empty($_REQUEST['item'])) {
-
 			foreach ($_REQUEST['item'] as $order => $slide_id) {
-
 				$this -> Slide -> save_field('order', $order, array('id' => $slide_id));
-
 			}
-
+			
 			?><br/><div style="color:red;"><?php _e('Slides have been ordered', $this -> plugin_name); ?></div><?php
-
 		}
-
-
-
 	}
-
-
-
 }
 
-$GalleryAjax = new GalleryAjax($_GET['cmd']);
+$SGProAjax = new SGProAjax($_GET['cmd']);
 
 ?>

@@ -3,8 +3,8 @@ Contributors: Cameron Preston
 Donate link: http://cameronpreston.com/projects/plugins
 Tags: slideshow pro, slide show, wordpress plugins, slideshow gallery, slides, slideshow, image gallery, gallery, content gallery, javascript, javascript slideshow, slideshow gallery, jquery, ajax
 Requires at least: 2.8
-Tested up to: 3.0.1
-Stable tag: 1.2.01
+Tested up to: 3.0.3
+Stable tag: 1.2.02
 
 Slideshow Gallery Pro: this a photo viewing solution that integrates with the WordPress image upload and gallery system. Thumbs & Lightbox!
 
@@ -66,6 +66,8 @@ In /views/default/gallery.php find this line: slideshow.letterbox = "#000"; Chan
 == Upgrade Notice ==
 
 == Changelog ==
+= 1.2.02 =
+* Re-tweaked some of the bugs
 
 = 1.2 = 
 * Fixed Order Custom Slides

@@ -5,9 +5,8 @@ Plugin URI: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/
 Author: Cameron Preston
 Author URI: http://cameronpreston.com
 Description: Slideshow Gallery Pro is a slideshow that integrates with the WordPress image attachment feature, as well as a custom slide manager. Thumbnails and captions galore! Use this <code>[slideshow]</code> into its content with optional <code>post_id</code>, <code>exclude</code>, <code>auto</code>, <code>nolink</code>, and <code>caption</code> parameters. More being updated all the time!
-Version: 1.2.01
+Version: 1.2.02
 */
-
 define('DS', DIRECTORY_SEPARATOR);
 define( 'SG2_VERSION', '1.2' );
 if ( ! defined( 'SG2_PLUGIN_BASENAME' ) )
@@ -20,12 +19,10 @@ if ( ! defined( 'SG2_PLUGIN_URL' ) )
 	define( 'SG2_PLUGIN_URL', WP_PLUGIN_URL . '/' . SG2_PLUGIN_NAME );
 if ( ! defined( 'SG2_UPLOAD_URL' ) )
 	define( 'SG2_UPLOAD_URL', get_bloginfo('wpurl')."/wp-content/uploads/". SG2_PLUGIN_NAME );
-
 if ( ! file_exists( SG2_PLUGIN_DIR . '/pro/' ) )
 	define( 'SG2_PRO', false );
 else
 	define( 'SG2_PRO', true );
-
 	
 require_once SG2_PLUGIN_DIR . '/slideshow-gallery-plugin.php';
 	
@@ -123,19 +120,21 @@ class Gallery extends GalleryPlugin {
 		if (!empty($caption)) { 
 			if (($this -> get_option('information')=='Y') && ($caption == 'off')) {
 				$this -> update_option('information_temp', 'N');	
-			}
-			elseif (($this -> get_option('information')=='N') && ($caption == 'on')) {
+			} elseif (($this -> get_option('information')=='N') && ($caption == 'on')) {
 				$this -> update_option('information_temp', 'Y');
 			}
 		}
 		if (!empty($auto)) { 
 			if (($this -> get_option('autoslide')=='Y') && ($auto == 'off')) {
 				$this -> update_option('autoslide_temp', 'N');	
-			}
-			elseif (($this -> get_option('autoslide')=='N') && ($auto == 'on')) {
+			} elseif (($this -> get_option('autoslide')=='N') && ($auto == 'on')) {
 				$this -> update_option('autoslide_temp', 'Y');
 			}
-		} else { $this -> update_option('autoslide_temp', 'N'); }
+		} elseif ($this -> get_option('autoslide') == 'Y') { 
+			$this -> update_option('autoslide_temp', 'Y'); 
+		} else {
+			$this -> update_option('autoslide_temp', 'N'); 
+		}
 		/******** PRO ONLY **************/
 		if ( SG2_PRO ) {
 			require SG2_PLUGIN_DIR . '/pro/custom_sizing.php';
