@@ -1,12 +1,12 @@
 === Slideshow Gallery Pro ===
-
 Contributors: Cameron Preston
 Donate link: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro
 Tags: slideshow pro, slide show, wordpress plugins, slideshow gallery, slides, slideshow, image gallery, gallery, content gallery, javascript, javascript slideshow, slideshow gallery, jquery, ajax
 Requires at least: 2.8
-Tested up to: 3.0.4
-Stable tag: 1.3.01
+Tested up to: 3.0.5
+Stable tag: 1.3.02
 Slideshow Gallery Pro: this a photo viewing solution that integrates with the WordPress image upload and gallery system. Thumbs & Lightbox!
+
 
 == Description ==
 
@@ -18,199 +18,138 @@ Flexible, configurable and easy to use. Embed-able and hardcode-able and improve
 
 Check out the website and download the manual to get fully acquainted with the features!
 
+
 == Installation ==
 
+
 Installing the WordPress Slideshow Gallery Pro plugin manually is very easy. Simply follow the steps below.
-	1. Extract the package to obtain the `slideshow-gallery-pro` folder
-	1. Upload the `slideshow-gallery-pro` folder to the `/wp-content/plugins/` directory
-	1. Activate the plugin through the 'Plugins' menu in WordPress
-	1. Configure the settings according to your needs through the 'Slideshow' > 'Configuration' menu
-	1. Add and manage your slides in the 'Slideshow' section (Or just use the built in wordpress gallery)
-	1. Put `[slideshow post_id="X" exclude="" caption="on/off"]` to embed a slideshow with the images of a post into your posts/pages or use `[slideshow custom=1]` to embed a slideshow with your custom added slides or `<?php if (class_exists('Gallery')) { $Gallery = new Gallery(); $Gallery -> slideshow($output = true, $post_id = null); }; ?>` into your WordPress theme
-	1. For the most up to date list of options available please goto: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/
 
-
+1. Extract the package to obtain the `slideshow-gallery-pro` folder
+1. Upload the `slideshow-gallery-pro` folder to the `/wp-content/plugins/` directory
+1. Activate the plugin through the 'Plugins' menu in WordPress
+1. Configure the settings according to your needs through the 'Slideshow' > 'Configuration' menu
+1. Add and manage your slides in the 'Slideshow' section (Or just use the built in wordpress gallery)
+1. Put `[slideshow post_id="X" exclude="" caption="on/off"]` to embed a slideshow with the images of a post into your posts/pages or use `[slideshow custom=1]` to embed a slideshow with your custom added slides or `<?php if (class_exists('Gallery')) { $Gallery = new Gallery(); $Gallery -> slideshow($output = true, $post_id = null); }; ?>` into your WordPress theme
+1. For the most up to date list of options available please goto: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/
 Full Edition customers (my plugin supporters). Installing full functionality is easy! 
-	1.You will either download from the members page the full edition or have it emailed to you.
-	1. Just make sure the /pro/ folder is in your /wp-content/plugins/slideshow-gallery-pro/ directory and you're set!
-	1. Not all future versions of the plugin work with old full edition (especially when new full edition features come out) so if you did not donate to Member level you would best do with not upgrading.
+1.You will either download from the members page the full edition or have it emailed to you.
+1. Just make sure the /pro/ folder is in your /wp-content/plugins/slideshow-gallery-pro/ directory and you're set!
+
 
 == Frequently Asked Questions ==
+
+= So confusing! Where should I start? =
+Head to the authors plugin page and download the manual. That goes over everything pretty well.
 
 = Can I display/embed multiple instances of the slideshow gallery? =
 Yes, you can, but only one slideshow per page.
 
 = What if I only want captions on some of my pages
-Set your default captions to off; for any slideshow you put on your page use `[slideshow caption="on"]` Same can be used with thumbs=on/off
+Set your default captions to off; for any slideshow you put on your page use `[slideshow caption="on"]`
 
 = What if my configuration isn't showing up? =
-
 You're most likely not running PHP5. Talk to your host to upgrade or switch your hosting provider. PHP5 is eleventy years old.
 
 = How do I find the numbers to exclude (or include)? =
-
 Not as easy as it used to be! Go into the Media Library. Choose an image you want to exclude and click on it and notice your address bar: "/wp-admin/media.php?action=edit&attachment_id=353". Therefore, `[slideshow exclude=353]`
 
 = My thumbnails aren't scrolling, what's up? =
-
 Make sure you have at least 6 thumbnails for that to work properly. Otherwise thumbnails are probably not necessary.
 
 = How do I change the color to the left and right of my images in the slideshow? =
-
 In /views/default/gallery.php find this line: slideshow.letterbox = "#000"; Change #000 to #FFF for white, or any other hex color code.
-
 
 
 == Screenshots ==
 
+
 1. Slideshow gallery pro with thumbnails at the bottom.
-
 2. Slideshow gallery pro with thumbnails turned OFF.
-
 3. Slideshow gallery pro with thumbnails at the top.
-
 4. Different styles/colors.
-
 
 
 == Changelog ==
 
+
 = 1.3 =
-
 * Added SSL Capability for domains using HTTPS
-
 * Added multiple custom slides with multiple ordering for Full
-
 * Added extra image options for Full
-
 * Added "slug" in embed for adding pages based off slug rather than post_id
-
 * Added "thumbs=on/off" in embed for chossing whether or not to display thumbnails per instance
-
 * Fixed thickbox close and loading images
-
 * Fixed the nolink issue for both customs and wp-gallery
-
 * Updated class to _construct
 
 
-
 = 1.2.03 =
-
 * Re-tweaked some of the bugs
 
 
-
 = 1.2 = 
-
 * Fixed Order Custom Slides
-
 * Fixed Margin-top Issue
-
 * Updated Manage Slides Page (Upload & Look)
-
 * Updated to spinner
-
 * Updated transition - smooth instead of snapshot
-
 * Updated to thickbox instead of lightbox
-
 * Fixed bad calls of < ?php
-
 * Fixed auto=off bug
 
 
-
 = 1.1.06 = 
-
 * Fixed the custom h3 issue
-
 * Fixed the custom image linking issue
-
 * right aligned image issue
-
 * Configuration first!
-
 * Deprecated author levels
-
 * Hardcoding for custom Manage Slides
-
 * Fixed Autoslide issue
 
+
 = 1.1 =
-
 * Fixed a scrolling bug for when there are few thumbs
-
 * Add 'include' to embed (an addition to 'exclude')
-
 * Cleaned code for excluding and embedding
-
 * Added 'nolink' embed. Set to true and you won't have any link in the middle!
 
-= 1.0.1 =
 
+= 1.0.1 =
 * Renaming from '2' to 'Pro' bug issue fixed
 
+
 = 1.0 Renamed to Pro =
-
 * [slideshow w="500" h="200"] Make your slideshow size customized per instance
-
 * Vertical/Portfolio images show in their entirety
-
 * IE Issue Fixed
-
 * Last thumbnail dropping issue fixed (added 3px buffer in gallery.js)
-
 =Slideshow Gallery 2=
-
 = 1.2 Beta = 
-
 * Link images to pages from the post gallery. Caption field is for the page link.
-
 * CSS is fixed to have better backgrounding for switching to white themes
-
 * Auto Slideshow is now a feature you can turn on or off depending on the slide. [ slideshow auto="on" ]
-
 * NextGen Gallery Config Menu overlapping issue is fixed.
-
 = 1.1.4 =
-
 * Fixed the thumbnails to display at startup for Chrome and Safari
-
 * Fixed bug in the js file for lightbox
-
 = 1.1.3 =
-
 * Created it so captions was an option that you can turn on or off from [ slideshow ]
-
 = 1.1.2 =
-
 * Upgrade Manage Slides to work with the plugin nomenclature.
-
 = 1.1.1 =
-
 * Made it so if you pull a slideshow from a different post it still allows comments.
-
 * Updated FAQs
-
 = 1.1 = 
-
 * Made it so the slideshow worked :)
-
 = 1.0 =
-
 * Initial release of the WordPress Slideshow Gallery 2 plugin
-
 * Based on the popular and amazing slideshow: http://wordpress.org/extend/plugins/slideshow-gallery/
-
 
 
 == Upgrade Notice ==
 
+
 = 1.3 =
-
 Upgrade for new embed features and some major bug fixes!
-
-
-
 Full Edition users need not download! Old editions of full (2010) will not be compatible with this. Re-download from Members page.
