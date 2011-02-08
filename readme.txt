@@ -4,26 +4,22 @@ Donate link: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro
 Tags: slideshow pro, slide show, wordpress plugins, slideshow gallery, slides, slideshow, image gallery, gallery, content gallery, javascript, javascript slideshow, slideshow gallery, jquery, ajax
 Requires at least: 2.8
 Tested up to: 3.0.5
-Stable tag: 1.3.02
+Stable tag: 1.3.03
 Slideshow Gallery Pro: this a photo viewing solution that integrates with the WordPress image upload and gallery system. Thumbs & Lightbox!
 
 
 == Description ==
 
+
 Slideshow Gallery Pro is a photo and image viewing plugin that integrates seemlessly with the WordPress image upload and gallery system.  Using the most current web technologies like AJAX and JQuery, this viewing and linking solution is the best and easiest to use slideshow available on Wordpress.
-
 Check out more details here: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/
-
 Flexible, configurable and easy to use. Embed-able and hardcode-able and improved. To embed into a post/page, simply insert <code>[slideshow]</code> into its content with optional <code>post_id</code>, <code>exclude</code>, <code>exclude</code>, and <code>auto</code>  parameters. To hardcode into any PHP file of your WordPress theme, simply use <code><?php if (class_exists('Gallery')) { $Gallery = new Gallery(); $Gallery -> slideshow($output = true, $post_id = null); } ?></code> and specify the required <code>$post_id</code> parameter accordingly.
-
 Check out the website and download the manual to get fully acquainted with the features!
 
 
 == Installation ==
 
-
 Installing the WordPress Slideshow Gallery Pro plugin manually is very easy. Simply follow the steps below.
-
 1. Extract the package to obtain the `slideshow-gallery-pro` folder
 1. Upload the `slideshow-gallery-pro` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
@@ -38,23 +34,24 @@ Full Edition customers (my plugin supporters). Installing full functionality is 
 
 == Frequently Asked Questions ==
 
-= So confusing! Where should I start? =
-Head to the authors plugin page and download the manual. That goes over everything pretty well.
-
 = Can I display/embed multiple instances of the slideshow gallery? =
 Yes, you can, but only one slideshow per page.
 
 = What if I only want captions on some of my pages
 Set your default captions to off; for any slideshow you put on your page use `[slideshow caption="on"]`
 
+
 = What if my configuration isn't showing up? =
 You're most likely not running PHP5. Talk to your host to upgrade or switch your hosting provider. PHP5 is eleventy years old.
+
 
 = How do I find the numbers to exclude (or include)? =
 Not as easy as it used to be! Go into the Media Library. Choose an image you want to exclude and click on it and notice your address bar: "/wp-admin/media.php?action=edit&attachment_id=353". Therefore, `[slideshow exclude=353]`
 
+
 = My thumbnails aren't scrolling, what's up? =
 Make sure you have at least 6 thumbnails for that to work properly. Otherwise thumbnails are probably not necessary.
+
 
 = How do I change the color to the left and right of my images in the slideshow? =
 In /views/default/gallery.php find this line: slideshow.letterbox = "#000"; Change #000 to #FFF for white, or any other hex color code.
@@ -70,6 +67,9 @@ In /views/default/gallery.php find this line: slideshow.letterbox = "#000"; Chan
 
 
 == Changelog ==
+
+=1.3.03 =
+* Fixed bug dealing with basic edition custom slideshows
 
 
 = 1.3 =
@@ -150,6 +150,6 @@ In /views/default/gallery.php find this line: slideshow.letterbox = "#000"; Chan
 == Upgrade Notice ==
 
 
-= 1.3 =
+= 1.3.03 =
 Upgrade for new embed features and some major bug fixes!
 Full Edition users need not download! Old editions of full (2010) will not be compatible with this. Re-download from Members page.
