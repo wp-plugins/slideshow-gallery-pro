@@ -3,19 +3,16 @@ Contributors: Cameron Preston
 Donate link: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro
 Tags: slideshow pro, slide show, wordpress plugins, slideshow gallery, slides, slideshow, image gallery, gallery, content gallery, javascript, javascript slideshow, slideshow gallery, jquery, ajax
 Requires at least: 2.8
-Tested up to: 3.0.5
-Stable tag: 1.3.03
+Tested up to: 3.1
+Stable tag: 1.3.1
 Slideshow Gallery Pro: this a photo viewing solution that integrates with the WordPress image upload and gallery system. Thumbs & Lightbox!
 
-
 == Description ==
-
 
 Slideshow Gallery Pro is a photo and image viewing plugin that integrates seemlessly with the WordPress image upload and gallery system.  Using the most current web technologies like AJAX and JQuery, this viewing and linking solution is the best and easiest to use slideshow available on Wordpress.
 Check out more details here: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/
 Flexible, configurable and easy to use. Embed-able and hardcode-able and improved. To embed into a post/page, simply insert <code>[slideshow]</code> into its content with optional <code>post_id</code>, <code>exclude</code>, <code>exclude</code>, and <code>auto</code>  parameters. To hardcode into any PHP file of your WordPress theme, simply use <code><?php if (class_exists('Gallery')) { $Gallery = new Gallery(); $Gallery -> slideshow($output = true, $post_id = null); } ?></code> and specify the required <code>$post_id</code> parameter accordingly.
 Check out the website and download the manual to get fully acquainted with the features!
-
 
 == Installation ==
 
@@ -31,7 +28,6 @@ Full Edition customers (my plugin supporters). Installing full functionality is 
 1.You will either download from the members page the full edition or have it emailed to you.
 1. Just make sure the /pro/ folder is in your /wp-content/plugins/slideshow-gallery-pro/ directory and you're set!
 
-
 == Frequently Asked Questions ==
 
 = Can I display/embed multiple instances of the slideshow gallery? =
@@ -40,37 +36,36 @@ Yes, you can, but only one slideshow per page.
 = What if I only want captions on some of my pages
 Set your default captions to off; for any slideshow you put on your page use `[slideshow caption="on"]`
 
-
 = What if my configuration isn't showing up? =
 You're most likely not running PHP5. Talk to your host to upgrade or switch your hosting provider. PHP5 is eleventy years old.
-
 
 = How do I find the numbers to exclude (or include)? =
 Not as easy as it used to be! Go into the Media Library. Choose an image you want to exclude and click on it and notice your address bar: "/wp-admin/media.php?action=edit&attachment_id=353". Therefore, `[slideshow exclude=353]`
 
-
 = My thumbnails aren't scrolling, what's up? =
 Make sure you have at least 6 thumbnails for that to work properly. Otherwise thumbnails are probably not necessary.
 
-
 = How do I change the color to the left and right of my images in the slideshow? =
-In /views/default/gallery.php find this line: slideshow.letterbox = "#000"; Change #000 to #FFF for white, or any other hex color code.
+In /views/default/gallery.php find this line: `slideshow.letterbox = "#000";` Change #000 to #FFF for white, or any other hex color code.
 
+= Can this fit in my sidebar? Widget-style? = 
+Yes! But use 'Advanced Text Widget' and then put in the `[slideshow]`
 
 == Screenshots ==
-
 
 1. Slideshow gallery pro with thumbnails at the bottom.
 2. Slideshow gallery pro with thumbnails turned OFF.
 3. Slideshow gallery pro with thumbnails at the top.
 4. Different styles/colors.
 
-
 == Changelog ==
+= 1.3.1 =
+* Changed 'slideshow' function to 'sgpro_slideshow' to not have as many conflicts
+* Added PrettyPhoto and Shadowbox functionality
+* Fixed page linking for Manage Slides
 
-=1.3.03 =
+= 1.3.03 =
 * Fixed bug dealing with basic edition custom slideshows
-
 
 = 1.3 =
 * Added SSL Capability for domains using HTTPS
@@ -82,10 +77,8 @@ In /views/default/gallery.php find this line: slideshow.letterbox = "#000"; Chan
 * Fixed the nolink issue for both customs and wp-gallery
 * Updated class to _construct
 
-
 = 1.2.03 =
 * Re-tweaked some of the bugs
-
 
 = 1.2 = 
 * Fixed Order Custom Slides
@@ -97,7 +90,6 @@ In /views/default/gallery.php find this line: slideshow.letterbox = "#000"; Chan
 * Fixed bad calls of < ?php
 * Fixed auto=off bug
 
-
 = 1.1.06 = 
 * Fixed the custom h3 issue
 * Fixed the custom image linking issue
@@ -106,7 +98,6 @@ In /views/default/gallery.php find this line: slideshow.letterbox = "#000"; Chan
 * Deprecated author levels
 * Hardcoding for custom Manage Slides
 * Fixed Autoslide issue
-
 
 = 1.1 =
 * Fixed a scrolling bug for when there are few thumbs
@@ -148,8 +139,9 @@ In /views/default/gallery.php find this line: slideshow.letterbox = "#000"; Chan
 
 
 == Upgrade Notice ==
+= 1.3.1 =
+Finally upgrade your image opening! No changes to "full"
 
-
-= 1.3.03 =
+= 1.3 =
 Upgrade for new embed features and some major bug fixes!
 Full Edition users need not download! Old editions of full (2010) will not be compatible with this. Re-download from Members page.

@@ -5,12 +5,11 @@ Plugin URI: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/
 Author: Cameron Preston
 Author URI: http://cameronpreston.com
 Description: Slideshow Gallery Pro is a slideshow that integrates with the WordPress image attachment feature, as well as a custom slide manager. Thumbnails and captions galore! Use this <code>[slideshow]</code> into its content with optional <code>post_id</code>, <code>exclude</code>, <code>auto</code>, <code>nolink</code>, and <code>caption</code> parameters. More being updated all the time!
-Version: 1.3.03
+Version: 1.3.1
 */
 
-
 define('DS', DIRECTORY_SEPARATOR);
-define( 'SG2_VERSION', '1.2' );
+define( 'SG2_VERSION', '1.3' );
 if ( ! defined( 'SG2_PLUGIN_BASENAME' ) )
 	define( 'SG2_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 if ( ! defined( 'SG2_PLUGIN_NAME' ) )
@@ -191,13 +190,13 @@ class Gallery extends GalleryPlugin {
 		return $content;
 	}
 	
-	public function exclude_ids($attachments, $exclude, $include) {
-		if (!empty($exclude)) {
+	function exclude_ids( $attachments, $exclude, $include ) {
+		if ( ! empty( $exclude )) {
 			$exclude = array_map('trim', explode(',', $exclude));
 /*			echo("<script type='text/javascript'>alert('exclude! ".$exclude[0]."');</script>");*/
-			foreach ($attachments as $id => $attachment) {
-				if (in_array($id, $exclude)) {
-					unset($attachments[$id]);
+			foreach ( $attachments as $id => $attachment ) {
+				if (in_array( $id, $exclude )) {
+					unset( $attachments[$id] );
 				}
 			}
 		}
