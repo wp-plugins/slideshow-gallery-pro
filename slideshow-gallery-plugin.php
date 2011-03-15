@@ -101,6 +101,8 @@ class GalleryPlugin {
 		$this -> add_option('navopacity', 25);
 		$this -> add_option('navhover', 70);
 		$this -> add_option('linker', "Y");
+		$this -> add_option('nolinkpage', "N");
+		$this -> add_option('pagelink', "S");
 		$this -> add_option('information', "Y");
 		$this -> add_option('information_temp', "Y");
 		$this -> add_option('infospeed', 10);
@@ -220,7 +222,6 @@ class GalleryPlugin {
 		if($_SERVER['HTTPS']) {
 			$galleryStyleUrl = str_replace("http:","https:",$galleryStyleUrl);
 		}		
-
         $galleryStyleFile = SG2_PLUGIN_DIR . '/css/gallery-css.php';
 //		$src = WP_PLUGIN_DIR.'/' . $this -> plugin_name . '/css/gallery-css.php?2=1&site='.WP_PLUGIN_DIR;
 //		define $infogal = $this;

@@ -4,13 +4,16 @@ Donate link: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro
 Tags: slideshow pro, slide show, wordpress plugins, slideshow gallery, slides, slideshow, image gallery, gallery, content gallery, javascript, javascript slideshow, slideshow gallery, jquery, ajax
 Requires at least: 2.8
 Tested up to: 3.1
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 Slideshow Gallery Pro: this a photo viewing solution that integrates with the WordPress image upload and gallery system. Thumbs & Lightbox!
+
 
 == Description ==
 
 Slideshow Gallery Pro is a photo and image viewing plugin that integrates seemlessly with the WordPress image upload and gallery system.  Using the most current web technologies like AJAX and JQuery, this viewing and linking solution is the best and easiest to use slideshow available on Wordpress.
+
 Check out more details here: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/
+
 Flexible, configurable and easy to use. Embed-able and hardcode-able and improved. To embed into a post/page, simply insert <code>[slideshow]</code> into its content with optional <code>post_id</code>, <code>exclude</code>, <code>exclude</code>, and <code>auto</code>  parameters. To hardcode into any PHP file of your WordPress theme, simply use <code><?php if (class_exists('Gallery')) { $Gallery = new Gallery(); $Gallery -> slideshow($output = true, $post_id = null); } ?></code> and specify the required <code>$post_id</code> parameter accordingly.
 Check out the website and download the manual to get fully acquainted with the features!
 
@@ -46,10 +49,7 @@ Not as easy as it used to be! Go into the Media Library. Choose an image you wan
 Make sure you have at least 6 thumbnails for that to work properly. Otherwise thumbnails are probably not necessary.
 
 = How do I change the color to the left and right of my images in the slideshow? =
-In /views/default/gallery.php find this line: `slideshow.letterbox = "#000";` Change #000 to #FFF for white, or any other hex color code.
-
-= Can this fit in my sidebar? Widget-style? = 
-Yes! But use 'Advanced Text Widget' and then put in the `[slideshow]`
+In /views/default/gallery.php find this line: slideshow.letterbox = "#000"; Change #000 to #FFF for white, or any other hex color code.
 
 == Screenshots ==
 
@@ -59,6 +59,15 @@ Yes! But use 'Advanced Text Widget' and then put in the `[slideshow]`
 4. Different styles/colors.
 
 == Changelog ==
+
+= 1.3.2 = 
+* Hardcode Update: Set multiple custom values (1-10) (full edition only)
+* Hardcode Update: Set width and height in slideshow() function (full edition only)
+* Center Slideshow images vertically - good for long and skinny images
+* Add ability to change page link target
+* Add "No Link" functionality to all slideshow instances
+* Now using slideshow background as letterbox
+
 = 1.3.1 =
 * Changed 'slideshow' function to 'sgpro_slideshow' to not have as many conflicts
 * Added PrettyPhoto and Shadowbox functionality
@@ -90,6 +99,7 @@ Yes! But use 'Advanced Text Widget' and then put in the `[slideshow]`
 * Fixed bad calls of < ?php
 * Fixed auto=off bug
 
+
 = 1.1.06 = 
 * Fixed the custom h3 issue
 * Fixed the custom image linking issue
@@ -98,6 +108,7 @@ Yes! But use 'Advanced Text Widget' and then put in the `[slideshow]`
 * Deprecated author levels
 * Hardcoding for custom Manage Slides
 * Fixed Autoslide issue
+
 
 = 1.1 =
 * Fixed a scrolling bug for when there are few thumbs
@@ -139,8 +150,7 @@ Yes! But use 'Advanced Text Widget' and then put in the `[slideshow]`
 
 
 == Upgrade Notice ==
-= 1.3.1 =
-Finally upgrade your image opening! No changes to "full"
+
 
 = 1.3 =
 Upgrade for new embed features and some major bug fixes!

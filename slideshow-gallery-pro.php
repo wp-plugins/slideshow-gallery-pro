@@ -5,11 +5,10 @@ Plugin URI: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/
 Author: Cameron Preston
 Author URI: http://cameronpreston.com
 Description: Slideshow Gallery Pro is a slideshow that integrates with the WordPress image attachment feature, as well as a custom slide manager. Thumbnails and captions galore! Use this <code>[slideshow]</code> into its content with optional <code>post_id</code>, <code>exclude</code>, <code>auto</code>, <code>nolink</code>, and <code>caption</code> parameters. More being updated all the time!
-Version: 1.3.1
+Version: 1.3.2
 */
-
 define('DS', DIRECTORY_SEPARATOR);
-define( 'SG2_VERSION', '1.3' );
+define( 'SG2_VERSION', '1.3.2' );
 if ( ! defined( 'SG2_PLUGIN_BASENAME' ) )
 	define( 'SG2_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 if ( ! defined( 'SG2_PLUGIN_NAME' ) )
@@ -89,18 +88,25 @@ class Gallery extends GalleryPlugin {
 		return $plugins;
 	}
 	
-	function slideshow($output = true, $post_id = null, $exclude = null, $include = null, $custom = null) {		
-//		$this -> add_action( 'wp_print_styles', 'gs_enqueue_styles' );
+	function slideshow($output = true, $post_id = null, $exclude = null, $include = null, $custom = null, $width = null, $height = null) {
+//	function slideshow() {		
+	
+		$args = func_get_args();
 		global $wpdb;
 		$post_id_orig = $post -> ID;
+		if ( ((! empty($width)) || (! empty($height))) && SG2_PRO ) {
+			require SG2_PLUGIN_DIR . '/pro/custom_sizing.php';
+		}
+		
+//		$this -> add_action( 'wp_print_styles', 'gs_enqueue_styles' );
 		if ( ! empty($post_id) && $post = get_post($post_id)) {
 			if ($attachments = get_children("post_parent=" . $post -> ID . "&post_type=attachment&post_mime_type=image&orderby=menu_order ASC, ID ASC")) {
 				$content = $this -> exclude_ids($attachments, $exclude, $include);
 			}
 		}
 		elseif ( ! empty( $custom ) ) {
-			$slides = $this -> Slide -> find_all(array('section'=>$custom), null, array( 'order', "ASC" ) );
-			$content = $this -> render('gallery', array( 'slides' => $slides, 'frompost' => false ), false, 'default' );
+			$slides = $this -> Slide -> find_all(array('section'=>(int) stripslashes($custom)), null, array('order', "ASC"));
+			$content = $this -> render('gallery', array('slides' => $slides, 'frompost' => false), false, 'default');
 		}
 		else {
 			$slides = $this -> Slide -> find_all(null, null, array('order', "ASC"));
@@ -156,8 +162,8 @@ class Gallery extends GalleryPlugin {
 		//$this -> add_action(array($this, 'pro_custom_wh'));
 		/******** END PRO ONLY **************/
 		if (!empty($nocaption)) { $this -> update_option('information', 'N'); }
-		if (!empty($nolink)) { $this -> update_option('link', 'N'); }
-			else { $this -> update_option('link', 'Y'); }
+		if (!empty($nolink)) { $this -> update_option('linker', 'N'); }
+			else { $this -> update_option('linker', 'Y'); }
 		if (!empty($custom)) {
 			$slides = $this -> Slide -> find_all(array('section'=>(int) stripslashes($custom)), null, array('order', "ASC"));
 			$content = $this -> render('gallery', array('slides' => $slides, 'frompost' => false), false, 'default');
@@ -179,7 +185,6 @@ class Gallery extends GalleryPlugin {
 					}
 				}
 			}
-		
 			if (!empty($pid) && $post = get_post($pid)) {
 				if ($attachments = get_children("post_parent=" . $post -> ID . "&post_type=attachment&post_mime_type=image&orderby=menu_order ASC, ID ASC")) {
 					$content = $this->exclude_ids($attachments, $exclude, $include);
