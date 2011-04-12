@@ -15,7 +15,7 @@
 				<div class="alignright" style="width:200px"><img src="<?php echo(SG2_PLUGIN_URL.'/images/nav-options.jpg')?>"></div>
 				<span class="howto clear"><?php _e('FULL EDITION ONLY: Choose your nav buttons for left and right transitioning', $this -> plugin_name); ?></span>
 			</td>
-		</tr>	
+		</tr>
 		<tr>
 			<th><label for="styles.resizeimages"><?php _e('Resize Images (width)', $this -> plugin_name); ?></label></th>
 			<td>
@@ -51,6 +51,13 @@
 			</td>
 		</tr>
 		<tr>
+			<th><label for="styles.thumbheight"><?php _e('Thumbnail Height', $this -> plugin_name); ?></label></th>
+			<td>
+				<input style="width:45px;" id="styles.thumbheight" type="text" name="styles[thumbheight]" value="<?php echo $styles['thumbheight']; ?>" /> <?php _e('px', $this -> plugin_name); ?>
+				<span class="howto"><?php _e('height of your thumbnails', $this -> plugin_name); ?></span>
+			</td>
+		</tr>
+		<tr>
 			<th><label for="styles.border"><?php _e('Slideshow Border', $this -> plugin_name); ?></label></th>
 			<td>
 				<input type="text" name="styles[border]" value="<?php echo $styles['border']; ?>" id="styles.border" style="width:145px;" />
@@ -72,6 +79,14 @@
 			<th><label for="styles.infocolor"><?php _e('Information Text Color', $this -> plugin_name); ?></label></th>
 			<td>
 				<input type="text" name="styles[infocolor]" value="<?php echo $styles['infocolor']; ?>" id="styles.infocolor" style="width:65px;" />
+			</td>
+		</tr>
+		<tr>
+			<th><label for="styles.infocolor"><?php _e('Minimize Information Bar Height?', $this -> plugin_name); ?></label></th>
+			<td>
+				<label><input <?php echo (empty($styles['infomin']) || $styles['infomin'] == "Y") ? 'checked="checked"' : ''; ?> type="radio" name="styles[infomin]" value="Y" id="styles.infomin_Y" /> <?php _e('Yes, minimize', $this -> plugin_name); ?></label>
+				<label><input <?php echo ($styles['infomin'] == "N") ? 'checked="checked"' : ''; ?> type="radio" name="styles[infomin]" value="N" id="styles.infomin_N" /> <?php _e('No, keep styling', $this -> plugin_name); ?></label>
+				<span class="howto"><?php _e('Keep your theme styling for &quot;H5&quot; and &quot;p&quot;? Or minimize them.', $this -> plugin_name); ?></span>
 			</td>
 		</tr>
 	</tbody>

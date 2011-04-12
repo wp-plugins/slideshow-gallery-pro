@@ -7,8 +7,8 @@ class GalleryPlugin {
 	var $debugging = false;
 	var $menus = array();
 	var $sections = array(
-		'gallery'			=>	'gallery-slides',
-		'settings'		=>	'gallery',
+		'gallery'	=>	'gallery-slides',
+		'settings'	=>	'gallery',
 	);	
 	var $helpers = array('Db', 'Html', 'Form', 'Metabox');
 	var $models = array('Slide');
@@ -85,14 +85,17 @@ class GalleryPlugin {
 	
 	function initialize_options() {
 		$styles = array(
-			'width'				=>	"450",
-			'height'			=>	"300",
-			'border'			=>	"1px solid #CCCCCC",
-			'background'		=>	"#000000",
-			'infobackground'	=>	"#000000",
-			'infocolor'			=>	"#FFFFFF",
-			'resizeimages'		=>	"Y",
-			'resizeimages2'		=>	"N"
+			'width'					=>	"450",
+			'height'				=>	"300",
+			'thumbheight'			=>	"75",
+			'align'					=>	"none",
+			'border'				=>	"1px solid #CCCCCC",
+			'background'			=>	"#000000",
+			'infobackground'		=>	"#000000",
+			'infocolor'				=>	"#FFFFFF",
+			'infomin'				=>	"Y",
+			'resizeimages'			=>	"Y",
+			'resizeimages2'			=>	"N"
 		);
 		
 		$this -> add_option('styles', $styles);
@@ -100,12 +103,13 @@ class GalleryPlugin {
 		$this -> add_option('fadespeed', 10);
 		$this -> add_option('navopacity', 25);
 		$this -> add_option('navhover', 70);
-		$this -> add_option('linker', "Y");
-		$this -> add_option('nolinkpage', "N");
+		$this -> add_option('nolinker', "N");
+		$this -> add_option('nolinkpage', 0);
 		$this -> add_option('pagelink', "S");
 		$this -> add_option('information', "Y");
 		$this -> add_option('information_temp', "Y");
 		$this -> add_option('infospeed', 10);
+		$this -> add_option('showhover', "S");
 		$this -> add_option('thumbnails', "N");
 		$this -> add_option('thumbnails_temp', "N");
 		$this -> add_option('thumbposition', "bottom");

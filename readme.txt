@@ -3,10 +3,9 @@ Contributors: Cameron Preston
 Donate link: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro
 Tags: slideshow pro, slide show, wordpress plugins, slideshow gallery, slides, slideshow, image gallery, gallery, content gallery, javascript, javascript slideshow, slideshow gallery, jquery, ajax
 Requires at least: 2.8
-Tested up to: 3.1
-Stable tag: 1.3.2
-Slideshow Gallery Pro: this a photo viewing solution that integrates with the WordPress image upload and gallery system. Thumbs & Lightbox!
-
+Tested up to: 3.1.1
+Stable tag: 1.3.3
+Slideshow Gallery Pro: this a photo viewing solution that integrates with the WordPress image upload and gallery system. Thumbnails, Shadbox, PrettyPhoto, Management Tool!
 
 == Description ==
 
@@ -29,9 +28,12 @@ Installing the WordPress Slideshow Gallery Pro plugin manually is very easy. Sim
 1. For the most up to date list of options available please goto: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/
 Full Edition customers (my plugin supporters). Installing full functionality is easy! 
 1.You will either download from the members page the full edition or have it emailed to you.
-1. Just make sure the /pro/ folder is in your /wp-content/plugins/slideshow-gallery-pro/ directory and you're set!
+1. Just make sure the `/pro/` folder is in your /wp-content/plugins/slideshow-gallery-pro/ directory and you're set!
 
 == Frequently Asked Questions ==
+
+= How can I display the slideshow in a sidebar as a widget? =
+Download Advanced Text Widget and put the embed code in there.
 
 = Can I display/embed multiple instances of the slideshow gallery? =
 Yes, you can, but only one slideshow per page.
@@ -48,8 +50,11 @@ Not as easy as it used to be! Go into the Media Library. Choose an image you wan
 = My thumbnails aren't scrolling, what's up? =
 Make sure you have at least 6 thumbnails for that to work properly. Otherwise thumbnails are probably not necessary.
 
-= How do I change the color to the left and right of my images in the slideshow? =
-In /views/default/gallery.php find this line: slideshow.letterbox = "#000"; Change #000 to #FFF for white, or any other hex color code.
+= Cufon is messing with my slideshow!! =
+Edit your cufon settings to not change Header5 (H5)
+
+= I get some weird `function.getimagesize` error on image clicks =
+Your images have spaces in them! Replace those with dashes or underscores and you're good to go!
 
 == Screenshots ==
 
@@ -59,6 +64,12 @@ In /views/default/gallery.php find this line: slideshow.letterbox = "#000"; Chan
 4. Different styles/colors.
 
 == Changelog ==
+= 1.3.3 =
+* Thumbnail resizing
+* Information Bar Options (Always Show & Show on Hover)
+* Minimize Information Bar Height (cancel out theme styling)
+* Custom Slide Description no longer required
+* Fixed the nolink issue
 
 = 1.3.2 = 
 * Hardcode Update: Set multiple custom values (1-10) (full edition only)
@@ -148,9 +159,7 @@ In /views/default/gallery.php find this line: slideshow.letterbox = "#000"; Chan
 * Initial release of the WordPress Slideshow Gallery 2 plugin
 * Based on the popular and amazing slideshow: http://wordpress.org/extend/plugins/slideshow-gallery/
 
-
 == Upgrade Notice ==
-
 
 = 1.3 =
 Upgrade for new embed features and some major bug fixes!

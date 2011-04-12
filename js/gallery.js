@@ -64,6 +64,15 @@ TINY.sgpro_slideshow.prototype={
 			b.onclick=new Function(this.n+'.mv(-1,1)');
 			f.onclick=new Function(this.n+'.mv(1,1)')
 		}
+		if (this.info && this.infoShow == "H") {
+		jQuery("#information").hide();
+			jQuery('#'+this.wrap).hover(function(){
+				jQuery("#information").fadeIn("slow");
+			},
+			function() {
+				jQuery("#information").fadeOut();
+			});
+		}
 		this.auto?this.is(0,0):this.is(0,1)
 	},
 	mv:function(d,c){
@@ -81,7 +90,7 @@ TINY.sgpro_slideshow.prototype={
 	},
 	is:function(s,c){
 		if(this.info){
-			TINY.height.set(this.r,1,this.infoSpeed/2,-1)
+			TINY.height.set(this.r,1,this.infoSpeed/2,-1,this.infoShow)
 		}
 		var i=new Image();
 		i.style.opacity=0;
@@ -124,7 +133,8 @@ TINY.sgpro_slideshow.prototype={
 			var urlString = /\.jpg$|\.jpeg$|\.png$|\.gif$|\.bmp$/;
 			var urlType = baseURL.toLowerCase().match(urlString);
 			/***** NOLINK ****/
-			if (( this.linker == "false" || this.imagesbox == "nolink" ) && ( urlType == '.jpg' || urlType == '.JPG' || urlType == '.jpeg' || urlType == '.png' || urlType == '.PNG' || urlType == '.gif' || urlType == '.bmp' )) {
+			//alert("file ending: "+baseURL);
+			if (( this.nolink || this.imagesbox == "nolink" ) && ( urlType == '.jpg' || urlType == '.JPG' || urlType == '.jpeg' || urlType == '.png' || urlType == '.PNG' || urlType == '.gif' || urlType == '.bmp' )) {
 				this.q.onclick=this.q.onmouseover=null;
 				this.q.style.cursor='default';
 				this.q.style.backgroundImage='none';
@@ -172,7 +182,7 @@ TINY.sgpro_slideshow.prototype={
 			var h=parseInt(this.r.offsetHeight);
 			// alert (h); // always 85
 			this.r.style.height=0;
-			TINY.height.set(this.r,h,this.infoSpeed,0)
+			TINY.height.set(this.r,h,this.infoSpeed,0,this.infoShow)
 		}
 	}
 };
@@ -190,9 +200,15 @@ TINY.scroll=function(){
 }();
 TINY.height=function(){
 	return{
-		set:function(e,h,s,d){
+		set:function(e,h,s,d,is){
 			e=typeof e=='object'?e:tid(e); var oh=e.offsetHeight, ho=e.style.height||TINY.style.val(e,'height');
-			ho=oh-parseInt(ho); var hd=oh-ho>h?-1:1; clearInterval(e.si); e.si=setInterval(function(){TINY.height.tw(e,h,ho,hd,s)},20)
+			ho=oh-parseInt(ho); var hd=oh-ho>h?-1:1; clearInterval(e.si); 
+			if (is == "S") {
+				e.si=setInterval(function(){TINY.height.tw(e,h,ho,hd,s)},20)
+			} else {
+				var oh=e.offsetHeight-ho-1;
+				e.style.height=oh+(Math.abs(h))+'px';
+			}
 		},
 		tw:function(e,h,ho,hd,s){
 		var oh=e.offsetHeight-ho;

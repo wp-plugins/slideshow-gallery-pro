@@ -1,3 +1,6 @@
+<?php
+	$style = $this -> get_option('styles');
+?>
 <?php if (!empty($slides)) : ?>
 	<ul id="sgpro_slideshow" style="display:none;">
 		<?php if ($frompost) : // WORDPRESS IMAGE GALLERY ONLY   ?>
@@ -20,11 +23,11 @@
                         <?php		if (SG2_PRO) : 
 									require SG2_PLUGIN_DIR . '/pro/caption_link-frompost.php';
                         		else : ?>
-				  <a rel="lightbox" href="<?php echo $slide -> guid; ?>" title="<?php echo $slide -> post_title; ?>"><img style="height:75px;" src="<?php echo $thumbnail_link[0]; ?>" alt="<?php echo $this -> Html -> sanitize($slide -> post_title); ?>" />la</a>                                
+				  <a rel="lightbox" href="<?php echo $slide -> guid; ?>" title="<?php echo $slide -> post_title; ?>"><img style="height:<?php echo $style['thumbheight'] ?>px;" src="<?php echo $thumbnail_link[0]; ?>" alt="<?php echo $this -> Html -> sanitize($slide -> post_title); ?>" />la</a>                                
                         <?php		endif; ?>
 						<?php	else : ?>
                         <?php		list($width, $height, $type, $attr) = getimagesize($full_image_href[0]);?>
-								<img style="height:75px;" src="<?php echo $thumbnail_link[0]; ?>" alt="<?php echo $this -> Html -> sanitize($slide -> post_title); ?>" />
+								<img style="height:<?php echo $style['thumbheight'] ?>px;" src="<?php echo $thumbnail_link[0]; ?>" alt="<?php echo $this -> Html -> sanitize($slide -> post_title); ?>" />
 						<?php	endif; ?>
 					<?php else : // NO thumbnails_temp?>
                     
@@ -47,13 +50,13 @@
 					<p><?php echo $slide -> description; ?></p>
 					<?php if ($this -> get_option('thumbnails_temp') == "Y") : ?>
 						<?php if ($slide -> uselink == "Y" && !empty($slide -> link)) : ?>
-							<a href="<?php echo $slide -> link; ?>" title="<?php echo $slide -> title; ?>"><img style="height:75px;" src="<?php echo $this -> Html -> image_url($this -> Html -> thumbname($slide -> image)); ?>" alt="<?php echo $this -> Html -> sanitize($slide -> title); ?>" /></a>
+							<a href="<?php echo $slide -> link; ?>" title="<?php echo $slide -> title; ?>"><img style="height:<?php echo $style['thumbheight'] ?>px;" src="<?php echo $this -> Html -> image_url($this -> Html -> thumbname($slide -> image)); ?>" alt="<?php echo $this -> Html -> sanitize($slide -> title); ?>" /></a>
 						<?php else : ?>
-							<a href="<?php echo $this -> Html -> image_url($slide -> image); ?>" title="<?php echo $slide -> title; ?>"><img style="height:75px;" src="<?php echo $this -> Html -> image_url($this -> Html -> thumbname($slide -> image)); ?>" alt="<?php echo $this -> Html -> sanitize($slide -> title); ?>" /></a>
+							<a href="<?php echo $this -> Html -> image_url($slide -> image); ?>" title="<?php echo $slide -> title; ?>"><img style="height:<?php echo $style['thumbheight'] ?>px;" src="<?php echo $this -> Html -> image_url($this -> Html -> thumbname($slide -> image)); ?>" alt="<?php echo $this -> Html -> sanitize($slide -> title); ?>" /></a>
 						<?php endif; ?>
 					<?php else : // NO THUMBNAILS ?>
 						<?php if ($slide -> uselink == "N" || empty($slide -> link)) : ?>
-							<a href="<?php echo $slide -> image_url; ?>" title="<?php echo $slide -> title; ?>"></a>
+							<a href="<?php echo $this -> Html -> image_url($slide -> image); ?>" title="<?php echo $slide -> title; ?>"></a>
                         <?php else : ?>
 							<a href="<?php echo $slide -> link; ?>" title="<?php echo $slide -> title; ?>"></a>
 						<?php endif; ?>
@@ -111,34 +114,22 @@
 	else 
 		$imgbox = "window";
 		
-	$style = $this -> get_option('styles');
 	?>
 	<script type="text/javascript">
 	jQuery.noConflict();
 	tid('sgpro_slideshow').style.display = "none";
 	tid('slideshow-wrapper').style.display = 'block';
 	tid('slideshow-wrapper').style.visibility = 'hidden';	
-	/**
-	 * issue #2: Bugfix for WebKit. Safari and similar browsers aren't capable to handle jQuery.ready() right. The problem
-	 * here was, that sometimes the event was fired (if js is not available in browsers cache) too early, so that not all
-	 * pictures were displayed in the thumbnail bar. I added a timeout to give the browser time to load the pictures.
-	 * During that time I found it nice to display a spinner icon to give the visitor a hint that "somethings going on there".
-	 * For this to display correctly I've added some lines to the css file too.
-	 */
-	// append the spinner
+
 	jQuery("#fullsize").append('<div id="spinner"><img src="<?php echo SG2_PLUGIN_URL ?>/images/spinner.gif"></div>');
 	tid('spinner').style.visibility = 'visible';
 	var sgpro_slideshow = new TINY.sgpro_slideshow("sgpro_slideshow");
 	jQuery(document).ready(function() {
 		// set a timeout before launching the sgpro_slideshow
 		window.setTimeout(function() {
-		<?php if ($this -> get_option('autoslide_temp')=="Y") : ?>
-		sgpro_slideshow.auto = true;
-		<?php else : ?>
-		sgpro_slideshow.auto = false;
-		<?php endif; ?>	
-		sgpro_slideshow.linker = "<?php echo ($this -> get_option('linker') == "N") ? 'false' : 'true'; ?>";	
-		sgpro_slideshow.nolinkpage = "<?php echo ($this -> get_option('nolinkpage') == "N") ? 'false' : 'true'; ?>";	
+		sgpro_slideshow.auto = <?php echo ($this -> get_option('autoslide_temp') == "Y") ? 1 : 0; ?>;	
+		sgpro_slideshow.nolink = <?php echo ($this -> get_option('nolinker') == "N") ? 0 : 1; ?>;
+		sgpro_slideshow.nolinkpage = <?php echo ($this -> get_option('nolinkpage') == "N") ? 0 : 1; ?>;	
 		sgpro_slideshow.pagelink="<?php echo ($this -> get_option('pagelink') == "S") ? 'self' : 'blank'; ?>";
 		sgpro_slideshow.speed = <?php echo $this -> get_option('autospeed'); ?>;
 		sgpro_slideshow.imgSpeed = <?php echo $this -> get_option('fadespeed'); ?>;
@@ -146,8 +137,10 @@
 		sgpro_slideshow.navHover = <?php echo $this -> get_option('navhover'); ?>;
 		sgpro_slideshow.letterbox = "<?php echo $style['background'] ?>";
 		sgpro_slideshow.info = "<?php echo ($this -> get_option('information_temp') == "Y") ? 'information' : ''; ?>";
+		sgpro_slideshow.infoShow = "<?php echo $this -> get_option('showhover'); ?>";
 		sgpro_slideshow.infoSpeed = <?php echo $this -> get_option('infospeed'); ?>;
 		sgpro_slideshow.left = "slideleft";
+		sgpro_slideshow.wrap = "slideshow-wrapper";
 		sgpro_slideshow.right = "slideright";
 		sgpro_slideshow.link = "linkhover";
 		sgpro_slideshow.thumbs = "<?php echo ($this -> get_option('thumbnails_temp') == "Y") ? 'thumbslider' : ''; ?>";

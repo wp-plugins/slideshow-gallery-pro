@@ -64,6 +64,16 @@
 					<span class="howto"><?php _e('speed at which the information will slide in', $this -> plugin_name); ?></span>
 				</td>
 			</tr>
+			<tr>
+				<th><label for="showhover"><?php _e('Information Display Settings', $this -> plugin_name); ?></label></th>
+				<td>
+					<?php $showh = $this -> get_option('showhover');?>
+					<label><input <?php echo (empty($showh) || $this -> get_option('showhover') == "S") ? 'checked="checked"' : ''; ?> type="radio" name="showhover" value="S" id="showhoverS" /> <?php _e('Scroll Up', $this -> plugin_name); ?></label>
+					<label><input <?php echo ($this -> get_option('showhover') == "P") ? 'checked="checked"' : ''; ?> type="radio" name="showhover" value="P" id="showhoverP" /> <?php _e('Permanently Show', $this -> plugin_name); ?></label>
+					<label><input <?php echo ($this -> get_option('showhover') == "H") ? 'checked="checked"' : ''; ?> type="radio" name="showhover" value="H" id="showhoverH" /> <?php _e('Mouse Hover Only', $this -> plugin_name); ?></label>
+					<span class="howto"><?php _e('How do you want to display the information (caption) bar?', $this -> plugin_name); ?></span>
+				</td>
+			</tr>
 		</tbody>
 	</table>
 </div>

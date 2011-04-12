@@ -9,7 +9,7 @@ class GallerySlide extends GalleryDbHelper {
 	var $fields = array(
 		'id'					=>	"INT(11) NOT NULL AUTO_INCREMENT",
 		'title'					=>	"VARCHAR(150) NOT NULL DEFAULT ''",
-		'description'		=>	"TEXT NOT NULL",
+		'description'		=>	"TEXT",
 		'image'				=>	"VARCHAR(50) NOT NULL DEFAULT ''",
 		'type'					=>	"ENUM('file','url') NOT NULL DEFAULT 'file'",
 		'section'			=>	"INT(5) NOT NULL DEFAULT '1'",
@@ -55,7 +55,7 @@ class GallerySlide extends GalleryDbHelper {
 			extract($data, EXTR_SKIP);
 			
 			if (empty($title)) { $this -> errors['title'] = __('Please fill in a title', $this -> plugin_name); }
-			if (empty($description)) { $this -> errors['description'] = __('Please fill in a description', $this -> plugin_name); }
+			//if (empty($description)) { $this -> errors['description'] = __('Please fill in a description', $this -> plugin_name); }
 			if (empty($type)) { $this -> errors['type'] = __('Please select an image type', $this -> plugin_name); }
 			//if (empty($section)) { $section = '1'; }
 			

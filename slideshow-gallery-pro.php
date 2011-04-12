@@ -5,10 +5,10 @@ Plugin URI: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/
 Author: Cameron Preston
 Author URI: http://cameronpreston.com
 Description: Slideshow Gallery Pro is a slideshow that integrates with the WordPress image attachment feature, as well as a custom slide manager. Thumbnails and captions galore! Use this <code>[slideshow]</code> into its content with optional <code>post_id</code>, <code>exclude</code>, <code>auto</code>, <code>nolink</code>, and <code>caption</code> parameters. More being updated all the time!
-Version: 1.3.2
+Version: 1.3.3
 */
 define('DS', DIRECTORY_SEPARATOR);
-define( 'SG2_VERSION', '1.3.2' );
+define( 'SG2_VERSION', '1.3.3' );
 if ( ! defined( 'SG2_PLUGIN_BASENAME' ) )
 	define( 'SG2_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 if ( ! defined( 'SG2_PLUGIN_NAME' ) )
@@ -110,7 +110,7 @@ class Gallery extends GalleryPlugin {
 		}
 		else {
 			$slides = $this -> Slide -> find_all(null, null, array('order', "ASC"));
-/*			print "<script>alert($slides)</script>";*/
+/*			print "<script>($slides)</script>";*/
 			$content = $this -> render('gallery', array('slides' => $slides, 'frompost' => false), false, 'default');
 		}
 		$post -> ID = $post_id_orig;
@@ -129,6 +129,9 @@ class Gallery extends GalleryPlugin {
 		elseif ($this -> get_option('thumbnails')=='N') { $this -> update_option('thumbnails_temp', 'N'); }
 		if ($this -> get_option('autoslide')=='Y') { $this -> update_option('autoslide_temp', 'Y'); }
 		elseif ($this -> get_option('autoslide')=='N') { $this -> update_option('autoslide_temp', 'N'); }
+		if ($this -> get_option('align')=='left') { $this -> update_option('align', 'left'); }
+		elseif ($this -> get_option('align')=='right') { $this -> update_option('align', 'right'); }
+		else { $this -> update_option('align', 'none'); }
 		
 		if (!empty($caption)) { 
 			if (($this -> get_option('information')=='Y') && ($caption == 'off')) {
@@ -162,8 +165,8 @@ class Gallery extends GalleryPlugin {
 		//$this -> add_action(array($this, 'pro_custom_wh'));
 		/******** END PRO ONLY **************/
 		if (!empty($nocaption)) { $this -> update_option('information', 'N'); }
-		if (!empty($nolink)) { $this -> update_option('linker', 'N'); }
-			else { $this -> update_option('linker', 'Y'); }
+		if (!empty($nolink)) { $this -> update_option('nolinker', 'Y'); }
+			else { $this -> update_option('nolinker', 'N'); }
 		if (!empty($custom)) {
 			$slides = $this -> Slide -> find_all(array('section'=>(int) stripslashes($custom)), null, array('order', "ASC"));
 			$content = $this -> render('gallery', array('slides' => $slides, 'frompost' => false), false, 'default');
