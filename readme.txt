@@ -4,7 +4,7 @@ Donate link: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro
 Tags: slideshow pro, slide show, wordpress plugins, slideshow gallery, slides, slideshow, image gallery, gallery, content gallery, javascript, javascript slideshow, slideshow gallery, jquery, ajax
 Requires at least: 2.8
 Tested up to: 3.1.1
-Stable tag: 1.3.3
+Stable tag: 1.3.3.1
 Slideshow Gallery Pro: this a photo viewing solution that integrates with the WordPress image upload and gallery system. Thumbnails, Shadbox, PrettyPhoto, Management Tool!
 
 == Description ==
@@ -110,7 +110,6 @@ Your images have spaces in them! Replace those with dashes or underscores and yo
 * Fixed bad calls of < ?php
 * Fixed auto=off bug
 
-
 = 1.1.06 = 
 * Fixed the custom h3 issue
 * Fixed the custom image linking issue
@@ -120,17 +119,14 @@ Your images have spaces in them! Replace those with dashes or underscores and yo
 * Hardcoding for custom Manage Slides
 * Fixed Autoslide issue
 
-
 = 1.1 =
 * Fixed a scrolling bug for when there are few thumbs
 * Add 'include' to embed (an addition to 'exclude')
 * Cleaned code for excluding and embedding
 * Added 'nolink' embed. Set to true and you won't have any link in the middle!
 
-
 = 1.0.1 =
 * Renaming from '2' to 'Pro' bug issue fixed
-
 
 = 1.0 Renamed to Pro =
 * [slideshow w="500" h="200"] Make your slideshow size customized per instance
@@ -161,6 +157,5 @@ Your images have spaces in them! Replace those with dashes or underscores and yo
 
 == Upgrade Notice ==
 
-= 1.3 =
-Upgrade for new embed features and some major bug fixes!
-Full Edition users need not download! Old editions of full (2010) will not be compatible with this. Re-download from Members page.
+= 1.3.3 =
+Minor changes to Pro Edition, just get it from the Members Page. All else should be an easy transition
