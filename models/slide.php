@@ -37,7 +37,7 @@ class GallerySlide extends GalleryDbHelper {
 		$defaults = array(
 			'order'				=>	0,
 			'created'			=>	GalleryHtmlHelper::gen_date(),
-			'modified'			=>	GalleryHtmlHelper::gen_date(),
+			'modified'		=>	GalleryHtmlHelper::gen_date(),
 		);
 		
 		return $defaults;
@@ -49,7 +49,7 @@ class GallerySlide extends GalleryDbHelper {
 			$data = (empty($data[$this -> model])) ? $data : $data[$this -> model];
 			
 			foreach ($data as $dkey => $dval) {
-				$this -> data -> {$dkey} = stripslashes($dval);
+				$this -> data -> {$dkey} = str_replace(" ", "-", stripslashes($dval));
 			}
 			
 			extract($data, EXTR_SKIP);
@@ -61,19 +61,20 @@ class GallerySlide extends GalleryDbHelper {
 			
 			elseif ($type == "file") {
 				if (!empty($image_oldfile) && empty($_FILES['image_file']['name'])) {
-					$imagename = $image_oldfile;
-					$imagepath = ABSPATH . "wp-content" . DS . "uploads" . DS . $this -> plugin_name . DS;
+					$imagename = str_replace(" ", "-", $image_oldfile);
+					
+					$imagepath = SG2_UPLOAD_DIR . DS;
 					$imagefull = $imagepath . $imagename;
 					
 					$this -> data -> image = $imagename;
 				} else {					
 					if ($_FILES['image_file']['error'] <= 0) {
-						$imagename = $_FILES['image_file']['name'];
-						$imagepath = ABSPATH . 'wp-content' . DS . 'uploads' . DS . $this -> plugin_name . DS;
+						$imagename = str_replace(" ", "-", $_FILES['image_file']['name']);
+						$imagepath = SG2_UPLOAD_DIR . DS;
 						$imagefull = $imagepath . $imagename;
 						
 						if (!is_uploaded_file($_FILES['image_file']['tmp_name'])) { $this -> errors['image_file'] = __('The image did not upload, please try again', $this -> plugin_name); }
-						elseif (!move_uploaded_file($_FILES['image_file']['tmp_name'], $imagefull)) { $this -> errors['image_file'] = __('Image could not be moved from TMP to "wp-content/uploads/", please check permissions', $this -> plugin_name); }
+						elseif (!move_uploaded_file($_FILES['image_file']['tmp_name'], $imagefull)) { $this -> errors['image_file'] = __('Image could not be moved from TMP to '. SG2_UPLOAD_URL .', please check permissions', $this -> plugin_name); }
 						else {
 							$this -> data -> image = $imagename;
 							
@@ -82,7 +83,7 @@ class GallerySlide extends GalleryDbHelper {
 							$thumbfull = $imagepath . $name . '-thumb.' . strtolower($ext);
 							$smallfull = $imagepath . $name . '-small.' . strtolower($ext);
 						
-							image_resize($imagefull, $width = null, $height = 75, $crop = false, $append = 'thumb', $dest = null, $quality = 100);
+							image_resize($imagefull, $width = 100, $height = 100, $crop = true, $append = 'thumb', $dest = null, $quality = 100);
 							image_resize($imagefull, $width = 50, $height = 50, $crop = true, $append = 'small', $dest = null, $quality = 100);
 							
 							@chmod($imagefull, 0777);
@@ -114,8 +115,9 @@ class GallerySlide extends GalleryDbHelper {
 				if (empty($image_url)) { $this -> errors['image_url'] = __('Please specify an image', $this -> plugin_name); }
 				else {
 					if ($image = wp_remote_fopen($image_url)) {
-						$filename = basename($image_url);
-						$filepath = ABSPATH . 'wp-content' . DS . 'uploads' . DS . $this -> plugin_name . DS;
+						$filename = str_replace(" ", "-", basename($image_url));
+						$filepath = SG2_UPLOAD_DIR . DS;
+						
 						$filefull = $filepath . $filename;
 						if (!file_exists($filefull)) {
 							$fh = @fopen($filefull, "w");
@@ -125,7 +127,7 @@ class GallerySlide extends GalleryDbHelper {
 							$ext = GalleryHtmlHelper::strip_ext($filename, 'ext');
 							$thumbfull = $filepath . $name . '-thumb.' . strtolower($ext);
 							$smallfull = $filepath . $name . '-small.' . strtolower($ext);
-							image_resize($filefull, $width = null, $height = 75, $crop = false, $append = 'thumb', $dest = null, $quality = 100);
+							image_resize($filefull, $width = 100, $height = 100, $crop = true, $append = 'thumb', $dest = null, $quality = 100);
 							image_resize($filefull, $width = 50, $height = 50, $crop = true, $append = 'small', $dest = null, $quality = 100);
 							@chmod($filefull, 0777);
 							@chmod($thumbfull, 0777);

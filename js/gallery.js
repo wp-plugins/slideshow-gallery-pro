@@ -40,13 +40,14 @@ TINY.sgpro_slideshow.prototype={
 			if(this.thumbs){
 				var g = tag('img',h)[0];
 				this.p.appendChild(g);
-				w+=parseInt(g.offsetWidth);
+				var thw = g.offsetWidth;
+				if (this.thumbHeight > thw) { thw = this.thumbHeight; }
+				w+=parseInt(thw);
 				if(i!=this.l-1){
-					g.style.marginRight=this.spacing+'px';
-					w+=this.spacing
+					g.style.marginRight=this.spacing+'px'; 
+					w+=this.spacing + 6;// 6 is for 2 border pixels and 4 padding pixels
 				}
-				/** The 3 was added as a buffer. Sometimes a thumbnail dropped below the line**/
-				this.p.style.width=w+3+'px';
+				this.p.style.width=w+this.spacing+6+'px';
 				g.style.opacity=this.thumbOpacity/100;
 				g.style.filter='alpha(opacity='+this.thumbOpacity+')';
 				g.onmouseover=new Function('TINY.alpha.set(this,100,5)');
@@ -74,6 +75,22 @@ TINY.sgpro_slideshow.prototype={
 			});
 		}
 		this.auto?this.is(0,0):this.is(0,1)
+	},
+	resize:function(i,w,h){ //image & size of width or height
+		if (jQuery(this.i).is(":visible")) { 
+			this.iwidth = this.i.width; // Read width differently depending on visibility
+			this.iheight = this.i.height;
+			if (this.iheight == 0) {this.iheight = jQuery(this.i).height();}
+		} else { 
+			this.iwidth = (this.oh*this.i.width)/this.i.height;
+			this.iheight = (this.o*this.i.height)/this.i.width;
+		}
+		if (w != null) { // resize to width 
+			return this.iheight;
+		 } else if (h != null) {	//resize to height
+			return this.iwidth;
+		 }
+		 else { return null; }
 	},
 	mv:function(d,c){
 		var t=this.c+d;
@@ -109,18 +126,15 @@ TINY.sgpro_slideshow.prototype={
 	},
 	le:function(s,c){
 		this.f.appendChild(this.i);
-		var w=this.o-parseInt(this.i.offsetWidth);
-		var ht=this.oh-parseInt(this.i.offsetHeight); //this.o is width of entire image
-		if(w>0){
-			var l=Math.floor(w/2);
-			this.i.style.borderLeft='solid ' + this.letterbox + ' '+ l +'px';
-//			this.i.style.borderLeft='solid 1px';
-			this.i.style.borderRight=(w-l)+'px solid ' + this.letterbox
-//			this.i.style.borderRight='solid 1px'
-		}
-		if (ht>0) {
+		//jQuery(this.i).css( 'display','block' });
+		var iheight = this.resize(this.i,this.o,null);
+		var ht = this.oh-parseInt(iheight);
+		var iwidth = this.resize(this.i,null,this.oh);
+		var w = this.o-parseInt(iwidth); //this.o is width box
+		if (ht > 0) { // WIDE
 			var l=Math.floor(ht/2);
-			this.i.style.borderTop=(ht-l)+'px solid ' + this.letterbox
+			this.i.style.borderTop=(ht-l)+'px solid ' + this.letterbox;
+			this.i.style.borderBottom=(ht-l)+'px solid ' + this.letterbox;			
 		}
 		TINY.alpha.set(this.i,100,this.imgSpeed);
 		var n=new Function(this.n+'.nf('+s+')');
@@ -146,7 +160,7 @@ TINY.sgpro_slideshow.prototype={
 				this.q.onclick = new Function('tb_show("' + this.a[s].t + '", "' + this.a[s].l + '", "sgpro_slideshow" )' );
 			/**** SHADOWBOX ***/
 			} else if ( this.imagesbox == "shadowbox" && (urlType == '.jpg' || urlType == '.JPG' || urlType == '.jpeg' || urlType == '.png' || urlType == '.PNG' || urlType == '.gif' || urlType == '.bmp' )) {
-				this.q.onclick = new Function( 'Shadowbox.open({content: "' + this.a[s].l + '",player: "img",title: "' + this.a[s].t + '"})');
+				this.q.onclick = new Function( 'Shadowbox.open({content: "' + this.a[s].l + '",player: "img",title: "' + this.a[s].t + '",gallery:"'+this.gallery+'"})');
 			/**** PRETTYPHOTO ***/
 			} else if ( this.imagesbox == "prettyphoto" && (urlType == '.jpg' || urlType == '.JPG' || urlType == '.jpeg' || urlType == '.png' || urlType == '.PNG' || urlType == '.gif' || urlType == '.bmp' )) {
 				this.q.onclick = new Function( 'jQuery.prettyPhoto.open("' + this.a[s].l + '","' + this.a[s].t + '")');				
@@ -207,7 +221,7 @@ TINY.height=function(){
 				e.si=setInterval(function(){TINY.height.tw(e,h,ho,hd,s)},20)
 			} else {
 				var oh=e.offsetHeight-ho-1;
-				e.style.height=oh+(Math.abs(h))+'px';
+				if (oh + h > 1) {e.style.height=oh+(Math.abs(h))+'px';}
 			}
 		},
 		tw:function(e,h,ho,hd,s){
@@ -235,5 +249,5 @@ TINY.alpha=function(){
 	else{var n=o+Math.ceil(Math.abs(a-o)/s)*d; e.style.opacity=n/100; e.style.filter='alpha(opacity='+n+')'}
 	}
 	}
-}();
+}($);
 TINY.style=function(){return{val:function(e,p){e=typeof e=='object'?e:tid(e); return e.currentStyle?e.currentStyle[p]:document.defaultView.getComputedStyle(e,null).getPropertyValue(p)}}}();

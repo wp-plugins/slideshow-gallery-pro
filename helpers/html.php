@@ -41,7 +41,7 @@ class GalleryHtmlHelper extends GalleryPlugin {
 	
 	function image_url($filename = null) {
 		if (!empty($filename)) {
-			return get_option('siteurl') . '/wp-content/uploads/slideshow-gallery-pro/' . $filename;
+			return SG2_UPLOAD_URL . DS . $filename;
 		}
 		
 		return false;
@@ -122,14 +122,15 @@ class GalleryHtmlHelper extends GalleryPlugin {
 	function strip_ext($filename = '', $return = 'ext') {
 		if (!empty($filename)) { 
 			$extArray = split("[/\\.]", $filename); 
+			$fileArray = split("\.[^.]*$", $filename); 
 			
 			if ($return == 'ext') {
 				$p = count($extArray) - 1; 
 				$extension = $extArray[$p]; 
 				return $extension;
 			} else {
-				$p = count($extArray) - 2;
-				$filename = $extArray[$p];
+				$p = count($fileArray) - 2;
+				$filename = $fileArray[$p];
 				return $filename;
 			}
 		}

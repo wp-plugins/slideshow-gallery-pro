@@ -9,22 +9,22 @@ class GalleryPlugin {
 	var $sections = array(
 		'gallery'	=>	'gallery-slides',
 		'settings'	=>	'gallery',
-	);	
+	);
 	var $helpers = array('Db', 'Html', 'Form', 'Metabox');
 	var $models = array('Slide');
 	
 	function register_plugin($name, $base) {
-		$this -> plugin_name = $name;
 		$this -> plugin_base = rtrim(dirname($base), DS);
 		$this -> enqueue_scripts();
 		$this -> initialize_classes();
 		$this -> initialize_options();
+		
 		if (function_exists('load_plugin_textdomain')) {
 			$currentlocale = get_locale();
 			if(!empty($currentlocale)) {
-				$moFile = dirname(__FILE__) . DS . "languages" . DS . $this -> plugin_name . "-" . $currentlocale . ".mo";				
+				$moFile = dirname(__FILE__) . DS . "languages" . DS . SG2_PLUGIN_NAME . "-" . $currentlocale . ".mo";				
 				if(@file_exists($moFile) && is_readable($moFile)) {
-					load_textdomain($this -> plugin_name, $moFile);
+					load_textdomain(SG2_PLUGIN_NAME, $moFile);
 				}
 			}
 		}
@@ -106,6 +106,7 @@ class GalleryPlugin {
 		$this -> add_option('nolinker', "N");
 		$this -> add_option('nolinkpage', 0);
 		$this -> add_option('pagelink', "S");
+		$this -> add_option('captionlink', "N");
 		$this -> add_option('information', "Y");
 		$this -> add_option('information_temp', "Y");
 		$this -> add_option('infospeed', 10);
@@ -192,13 +193,12 @@ class GalleryPlugin {
 		return false;
 	}
 	function check_uploaddir() {
-		$uploaddir = ABSPATH . 'wp-content' . DS . 'uploads' . DS . $this -> plugin_name . DS;
-		if (!file_exists($uploaddir)) {
-			if (@mkdir($uploaddir, 0777)) {
-				@chmod($uploaddir, 0777);
+		if (!file_exists(SG2_UPLOAD_DIR)) {
+			if (@mkdir(SG2_UPLOAD_DIR, 0777)) {
+				@chmod(SG2_UPLOAD_DIR, 0777);
 				return true;
 			} else {
-				$message = __('Uploads folder named "' . $this -> plugin_name . '" cannot be created inside "wp-content/uploads"', $this -> plugin_name);
+				$message = __('Uploads folder named "' . SG2_PLUGIN_NAME . '" cannot be created inside "' . SG2_UPLOAD_DIR, SG2_PLUGIN_NAME);
 				$this -> render_msg($message);
 			}
 		}
@@ -227,7 +227,7 @@ class GalleryPlugin {
 			$galleryStyleUrl = str_replace("http:","https:",$galleryStyleUrl);
 		}		
         $galleryStyleFile = SG2_PLUGIN_DIR . '/css/gallery-css.php';
-//		$src = WP_PLUGIN_DIR.'/' . $this -> plugin_name . '/css/gallery-css.php?2=1&site='.WP_PLUGIN_DIR;
+//		$src = WP_PLUGIN_DIR.'/' . SG2_PLUGIN_NAME . '/css/gallery-css.php?2=1&site='.WP_PLUGIN_DIR;
 //		define $infogal = $this;
 		$infogal = $this;
 		if ( file_exists($galleryStyleFile) ) {
@@ -248,6 +248,20 @@ class GalleryPlugin {
 					$galleryStyleUrl .= "&amp;height_temp=" . urlencode($sval);
 				}
 			}
+			if ($align_temp = $this-> get_option('align_temp')) {
+				foreach ($align_temp as $skey => $sval) {
+					if ($skey == $GLOBALS['post']->ID)
+					$galleryStyleUrl .= "&amp;align=" . urlencode($sval);
+				}
+			}
+/*			else { $galleryStyleUrl .= "&amp;auto_temp=empty"; }
+			if ($auto_temp2 = $this-> get_option('auto_temp2')) {
+				foreach ($auto_temp2 as $skey => $sval) {
+					if ($skey == $GLOBALS['post']->ID)
+					$galleryStyleUrl .= "&amp;auto_temp2=" . urlencode($sval);
+				}
+			}*/
+			
 			wp_register_style( 'slideshow-gallery-pro', $galleryStyleUrl);
 			wp_enqueue_style( 'slideshow-gallery-pro', $galleryStyleUrl,	array(), SG2_VERSION, 'all' );
 		}
@@ -277,7 +291,7 @@ class GalleryPlugin {
 					wp_enqueue_script('wp-lists');
 					wp_enqueue_script('postbox');
 					
-					wp_enqueue_script('settings-editor', '/' . PLUGINDIR . '/' . $this -> plugin_name . '/js/settings-editor.js', array('jquery'), '1.0');
+					wp_enqueue_script('settings-editor', '/' . PLUGINDIR . '/' . SG2_PLUGIN_NAME . '/js/settings-editor.js', array('jquery'), '1.0');
 				}
 				
 				if ($_GET['page'] == "gallery-slides" && $_GET['method'] == "order") {
@@ -288,9 +302,11 @@ class GalleryPlugin {
 				add_thickbox();
 			}
 			
-			wp_enqueue_script($this -> plugin_name . 'admin', '/' . PLUGINDIR . '/' . $this -> plugin_name . '/js/admin.js', null, '1.0');
+			wp_enqueue_script(SG2_PLUGIN_NAME . 'admin', '/' . PLUGINDIR . '/' . SG2_PLUGIN_NAME . '/js/admin.js', null, '1.0');
 		} else {
-			wp_enqueue_script($this -> plugin_name, '/' . PLUGINDIR . '/' . $this -> plugin_name . '/js/gallery.js', null, '1.0');
+			wp_enqueue_script(SG2_PLUGIN_NAME, '/' . PLUGINDIR . '/' . SG2_PLUGIN_NAME . '/js/gallery-min.js', null);
+			wp_register_script('sgpro_preloader', '/' . PLUGINDIR . '/' . SG2_PLUGIN_NAME . '/pro/preloader.js');
+			wp_enqueue_script('sgpro_preloader');
 			
 			if ($this -> get_option('imagesbox') == "T") {
 				add_thickbox();
@@ -493,5 +509,20 @@ class GalleryPlugin {
 		}
 		return false;
 	}
+	/**
+	 * Add Settings link to plugins - code from GD Star Ratings
+	 */
+	 function add_sgpro_settings_link($links, $file) {
+		static $this_plugin;
+		
+		if (!$this_plugin) $this_plugin = plugin_basename(__FILE__);
+		 
+		if ($file == $this_plugin){
+			$settings_link = '<a href="admin.php?page=gallery.php">'.__("Settings", SG2_PLUGIN_NAME).'</a>';
+			array_unshift($links, $settings_link);
+		}
+		return $links;
+	 }
+ 
 }
 ?>

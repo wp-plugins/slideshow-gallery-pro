@@ -1,4 +1,4 @@
-<div class="wrap">
+﻿<div class="wrap">
 	<h2><?php _e('Manage Slides', SG2_PLUGIN_NAME); ?> <?php echo $this -> Html -> link(__('Add New'), $this -> url . '&amp;method=save', array('class' => "button add-new-h2")); ?></h2>
 	<?php if (!empty($slides)) : ?>	
 		<form id="posts-filter" action="<?php echo $this -> url; ?>" method="post">

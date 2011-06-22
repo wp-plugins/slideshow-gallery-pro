@@ -1,23 +1,23 @@
 === Slideshow Gallery Pro ===
 Contributors: Cameron Preston
 Donate link: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro
-Tags: slideshow pro, slide show, wordpress plugins, slideshow gallery, slides, slideshow, image gallery, gallery, content gallery, javascript, javascript slideshow, slideshow gallery, jquery, ajax
+Tags: slideshow pro, prettyphoto, slide show, shadowbox, wordpress plugins, slideshow gallery, slides, slideshow, image gallery, gallery, images, jquery, ajax
 Requires at least: 2.8
-Tested up to: 3.1.1
-Stable tag: 1.3.3.1
-Slideshow Gallery Pro: this a photo viewing solution that integrates with the WordPress image upload and gallery system. Thumbnails, Shadbox, PrettyPhoto, Management Tool!
+Tested up to: 3.1.3
+Stable tag: 1.4
+
+An easily embedable photo viewing solution for photographers and bloggers that integrates with the WordPress Gallery System and offers a custom Gallery solution as well. Captions, Thumbnails, Shadowbox, PrettyPhoto, Management Tool and more!
 
 == Description ==
-
-Slideshow Gallery Pro is a photo and image viewing plugin that integrates seemlessly with the WordPress image upload and gallery system.  Using the most current web technologies like AJAX and JQuery, this viewing and linking solution is the best and easiest to use slideshow available on Wordpress.
+A simple to use but highly customizable photo and image viewing plugin that integrates seemlessly with the WordPress image upload and gallery system.  Using the most current web technologies like AJAX and JQuery, this viewing and linking solution is the best and easiest to use slideshow available on Wordpress.
 
 Check out more details here: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/
 
-Flexible, configurable and easy to use. Embed-able and hardcode-able and improved. To embed into a post/page, simply insert <code>[slideshow]</code> into its content with optional <code>post_id</code>, <code>exclude</code>, <code>exclude</code>, and <code>auto</code>  parameters. To hardcode into any PHP file of your WordPress theme, simply use <code><?php if (class_exists('Gallery')) { $Gallery = new Gallery(); $Gallery -> slideshow($output = true, $post_id = null); } ?></code> and specify the required <code>$post_id</code> parameter accordingly.
+Flexible, configurable and easy to use. Embed-able and hardcode-able and improved. To embed into a post/page, simply insert <code>[slideshow]</code> into its content with optional <code>post_id</code>, <code>exclude</code>, <code>exclude</code>, and <code>auto</code>  parameters. Hardcoding options are also available and easily added. Check out the Slideshow Gallery Pro Manual on the plugin details page (linked above) for code examples.
+
 Check out the website and download the manual to get fully acquainted with the features!
 
 == Installation ==
-
 Installing the WordPress Slideshow Gallery Pro plugin manually is very easy. Simply follow the steps below.
 1. Extract the package to obtain the `slideshow-gallery-pro` folder
 1. Upload the `slideshow-gallery-pro` folder to the `/wp-content/plugins/` directory
@@ -33,7 +33,7 @@ Full Edition customers (my plugin supporters). Installing full functionality is 
 == Frequently Asked Questions ==
 
 = How can I display the slideshow in a sidebar as a widget? =
-Download Advanced Text Widget and put the embed code in there.
+Install the plugin Advanced Text Widget and put the embed code in there.
 
 = Can I display/embed multiple instances of the slideshow gallery? =
 Yes, you can, but only one slideshow per page.
@@ -53,17 +53,34 @@ Make sure you have at least 6 thumbnails for that to work properly. Otherwise th
 = Cufon is messing with my slideshow!! =
 Edit your cufon settings to not change Header5 (H5)
 
+Pro Questions
+
+= My plugin breaks when I install the pro version =
+Many times this has to do with how it was uploaded... Delete all the slideshow-gallery-pro files from your plugins directory (this can be done by clicking 'Delete' from the Plugin Page menu) Then use the Plugin Page -> Add New -> Upload -> to upload the slideshow-gallery-pro.zip file
+
+You may also want to "Reset Configuration" from the Configuration page
+
 = I get some weird `function.getimagesize` error on image clicks =
 Your images have spaces in them! Replace those with dashes or underscores and you're good to go!
 
 == Screenshots ==
-
 1. Slideshow gallery pro with thumbnails at the bottom.
 2. Slideshow gallery pro with thumbnails turned OFF.
 3. Slideshow gallery pro with thumbnails at the top.
 4. Different styles/colors.
 
 == Changelog ==
+= 1.4 =
+* Thumbnails now are all square and can be up to size 100
+* Positioning issues fixed centering images vertically & horizontally (less reliance on DOM)
+* align=left and align=right added for slideshow embed
+* Thickbox galleries now allowed
+* Added Caption Link Feature Switch
+* Upload directory now variable
+* Dropping thumbnails bug fixed
+* Fixed delete bug
+* Fixed image upload bug (spaces and periods)
+
 = 1.3.3 =
 * Thumbnail resizing
 * Information Bar Options (Always Show & Show on Hover)
@@ -133,29 +150,38 @@ Your images have spaces in them! Replace those with dashes or underscores and yo
 * Vertical/Portfolio images show in their entirety
 * IE Issue Fixed
 * Last thumbnail dropping issue fixed (added 3px buffer in gallery.js)
+
 =Slideshow Gallery 2=
+
 = 1.2 Beta = 
 * Link images to pages from the post gallery. Caption field is for the page link.
 * CSS is fixed to have better backgrounding for switching to white themes
 * Auto Slideshow is now a feature you can turn on or off depending on the slide. [ slideshow auto="on" ]
 * NextGen Gallery Config Menu overlapping issue is fixed.
+
 = 1.1.4 =
 * Fixed the thumbnails to display at startup for Chrome and Safari
 * Fixed bug in the js file for lightbox
+
 = 1.1.3 =
 * Created it so captions was an option that you can turn on or off from [ slideshow ]
+
 = 1.1.2 =
 * Upgrade Manage Slides to work with the plugin nomenclature.
+
 = 1.1.1 =
 * Made it so if you pull a slideshow from a different post it still allows comments.
 * Updated FAQs
+
 = 1.1 = 
 * Made it so the slideshow worked :)
+
 = 1.0 =
 * Initial release of the WordPress Slideshow Gallery 2 plugin
 * Based on the popular and amazing slideshow: http://wordpress.org/extend/plugins/slideshow-gallery/
 
 == Upgrade Notice ==
 
-= 1.3.3 =
-Minor changes to Pro Edition, just get it from the Members Page. All else should be an easy transition
+= 1.3 =
+Upgrade for new embed features and some major bug fixes!
+Full Edition users need not download! Old editions of full (2010) will not be compatible with this. Re-download from Members page.

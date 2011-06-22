@@ -1,7 +1,7 @@
-<div class="wrap"> 
-	<h2><?php _e('Order Slides', $this -> plugin_name); ?></h2>
+﻿<div class="wrap"> 
+	<h2><?php _e('Order Slides', SG2_PLUGIN_NAME); ?></h2>
 	<div style="float:none;" class="subsubsub">
-		<a href="<?php echo $this -> url; ?>"><?php _e('&larr; Manage All Slides', $this -> plugin_name); ?></a>
+		<a href="<?php echo $this -> url; ?>"><?php _e('&larr; Manage All Slides', SG2_PLUGIN_NAME); ?></a>
 	</div>
 	<?php if (!empty($slides)) : ?>
 	<?php $slidenum = 10; ?>
@@ -45,7 +45,7 @@
 		<style type="text/css">
 		li.lineitem {
 			list-style: none;
-			margin: 3px 0px !important;
+			margin: 3px 135px !important;
 			padding: 2px 5px 2px 5px;
 			background-color: #F1F1F1 !important;
 			border:1px solid #B2B2B2;
@@ -55,9 +55,10 @@
 			clear: both;
 			-moz-border-radius: 4px;
 			-webkit-border-radius: 4px;
+			width:300px;
 		}
 		</style>
 	<?php else : ?>
-		<p style="color:red;"><?php _e('No slides found', $this -> plugin_name); ?></p>
+		<p style="color:red;"><?php _e('No slides found', SG2_PLUGIN_NAME); ?></p>
 	<?php endif; ?>
 </div>

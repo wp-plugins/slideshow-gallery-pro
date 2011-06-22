@@ -1,8 +1,8 @@
-<div class="submitbox" id="submitpost">
+﻿<div class="submitbox" id="submitpost">
 	<div id="minor-publishing">
 		<div id="misc-publishing-actions">
 			<div class="misc-pub-section misc-pub-section-last">
-				<a href="<?php echo $this -> url; ?>&amp;method=reset" title="<?php _e('Reset all configuration settings to their default values', $this -> plugin_name); ?>" onclick="if (!confirm('<?php _e('Are you sure you wish to reset all configuration settings?', $this -> plugin_name); ?>')) { return false; }"><?php _e('Reset to Defaults', $this -> plugin_name); ?></a>
+				<a href="<?php echo $this -> url; ?>&amp;method=reset" title="<?php _e('Reset all configuration settings to their default values', SG2_PLUGIN_NAME); ?>" onclick="if (!confirm('<?php _e('Are you sure you wish to reset all configuration settings?', SG2_PLUGIN_NAME); ?>')) { return false; }"><?php _e('Reset to Defaults', SG2_PLUGIN_NAME); ?></a>
 			</div>
 		</div>
 	</div>

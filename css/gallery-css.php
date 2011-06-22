@@ -17,15 +17,13 @@ IF ($styles['navbuttons'] == 0) { $navright = '../images/right.gif';$navleft = '
 ELSEIF ($styles['navbuttons'] == 1) { $navright = '../pro/images/right-sq.png';$navleft = '../pro/images/left-sq.png'; }
 ELSEIF ($styles['navbuttons'] == 2) { $navright = '../pro/images/right-rd.png';$navleft = '../pro/images/left-rd.png'; }
 ELSEIF ($styles['navbuttons'] == 3) { $navright = '../pro/images/right-pl.png';$navleft = '../pro/images/left-pl.png'; }
-
 IF ($styles['infomin'] == "Y") { ?>
 #information h5 { margin:0 !important; }
 #information p {margin:0 !important; }
 <?php } ?>
-
 #sgpro_slideshow { list-style:none; color:#fff; }
 #sgpro_slideshow span { display:none; }
-#slideshow-wrapper { width:<?php echo ((int) $styles['width'] - 6);?>px; background:<?php echo $styles['background']; ?>; padding:2px; border:<?php echo $styles['border']; ?>; margin:10px auto; display:none; }
+#slideshow-wrapper { width:<?php echo ((int) $styles['width'] - 6);?>px; background:<?php echo $styles['background']; ?>; padding:2px; border:<?php echo $styles['border']; ?>; margin:10px auto; display:none; float: <?php echo $styles['align']; ?> }
 #fullsize { 
 	position:relative; z-index:1; overflow:hidden; width:<?php echo ((int) $styles['width'] - 6); ?>px; 
 	height:<?php echo ((int) $styles['height'] - 6);?>px; 
@@ -33,23 +31,26 @@ IF ($styles['infomin'] == "Y") { ?>
 #information { position:absolute; bottom:0; width:<?php echo ((int) $styles['width'] - 6);?>px; height:0; background:<?php echo $styles['infobackground']; ?>; color:<?php echo $styles['infocolor']; ?>; overflow:hidden; z-index:200; opacity:.7; filter:alpha(opacity=70); }
 #information h5 { color:<?php echo $styles['infocolor']; ?>; padding:4px 8px 3px; font-size:1.2em; }
 #information p { color:<?php echo $styles['infocolor']; ?>; padding:0 8px 3px; font-size:.9 em;}
-#image { width:<?php echo ((int) $styles['width'] - 6);?>px; height: <?php echo ((int) $styles['height'] - 6);?>px}
-#image img { height:<?php echo ((int) $styles['height'] - 6);?>px; }
+#sgpro_image { width:<?php echo ((int) $styles['width'] - 6);?>px; height: <?php echo ((int) $styles['height'] - 6);?>px}
+#sgpro_image img { height:<?php echo ((int) $styles['height'] - 6);?>px; }
 <?php if (empty($styles['resizeimages']) || $styles['resizeimages'] == "Y") : ?>
-#image img { 
-	position:absolute; 
+#sgpro_image img { 
+	position:relative; 
+	margin-left:auto;
+	margin-right:auto;
+	display:block;
 	border:none; 
 	width:<?php echo ((int) $styles['width'] - 6);?>px;
 	height:auto;
+    padding:0 !important
 }
 <?php else : ?>
-	#image img { position:absolute; border:none; width:auto; }<?php endif; ?> 
+	#sgpro_image img { position:absolute; border:none; width:auto; }<?php endif; ?> 
 <?php if (empty($styles['resizeimages2']) || $styles['resizeimages2'] == "Y") : ?>
-#image img#tall { 
-position:absolute; 
-border:none; 
-width:auto;
-height:<?php echo ((int) $styles['height'] - 6);?>px;
+#sgpro_image img#tall { 
+	border:none; 
+	width:auto;
+	height:<?php echo ((int) $styles['height'] - 6);?>px;
 }
 <?php endif; ?>
 .imgnav { position:absolute; width:25%; height:<?php echo ((int) $styles['height'] + 6);?>px; cursor:pointer; z-index:150; top:0; }

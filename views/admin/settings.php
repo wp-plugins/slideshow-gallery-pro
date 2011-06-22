@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 global $post, $post_ID;
 $post_ID = 1;
 wp_nonce_field('closedpostboxes', 'closedpostboxesnonce', false);
@@ -18,17 +18,18 @@ wp_nonce_field('meta-box-order', 'meta-box-order-nonce', false);
                 	<h3>Thank you plugin supporter!</h3>
 								<?php $sgprobtn = "Get Support";?>
 								<?php } else { ?>
-                	<h3>Slideshow Gallery Pro- Full!</h3>
+                	<h3>Slideshow Gallery Pro Premium!</h3>
 								<?php $sgprobtn = "Learn More & Get it";?>
 								<?php } ?>
                     <div class="inside">
                         <div id="minor-publishing">
                             <div id="#misc-publishing-actions">
-                                <h4>What's different on the Full Edition?</h4>
+                                <h4>What's different on the Premium Edition?</h4>
                                 <p>Vertical images will show completely entire height</p>
                                 <p>Customize your slideshow height and width per use</p>
                                 <p>Have multiple custom slideshows</p>
                                 <p>Have multiple arrow options</p>
+								<p>And more!</p>
                             </div>
                         </div>
                         <div id="major-publishing-actions">

@@ -58,24 +58,20 @@
                         	<input type="file" name="image_file" value="" id="Slide.image_file" />
                             <span class="howto"><?php _e('choose your image file from your computer. JPG, PNG, GIF are supported.', SG2_PLUGIN_NAME); ?></span>
                             <?php echo (!empty($this -> Slide -> errors['image_file'])) ? '<div style="color:red;">' . $this -> Slide -> errors['image_file'] . '</div>' : ''; ?>
-                            
                             <?php
-							
 							if (!empty($this -> Slide -> data -> type) && $this -> Slide -> data -> type == "file") {
 								if (!empty($this -> Slide -> data -> image)) {
 									$name = $this -> Html -> strip_ext($this -> Slide -> data -> image, 'filename');
 									$ext = $this -> Html -> strip_ext($this -> Slide -> data -> image, 'ext');
-									
+									echo ("filename" . $this -> Slide -> data -> image);
 									?>
                                     
                                     <input type="hidden" name="Slide[image_oldfile]" value="<?php echo esc_attr(stripslashes($this -> Slide -> data -> image)); ?>" />
-                                    <p><small><?php _e('Current image. Leave the field above blank to keep this image.', SG2_PLUGIN_NAME); ?></small></p>
-                                    <img src="<?php echo rtrim(get_bloginfo('wpurl'), '/'); ?>/wp-content/uploads/<?php echo SG2_PLUGIN_NAME; ?>/<?php echo $name; ?>-thumb.<?php echo $ext; ?>" alt="" />
-                                    
+                                    <p><small><?php _e('Current thumbnail. Leave the field above blank to keep this image.', SG2_PLUGIN_NAME); ?></small></p>
+                                   	<a href="<?php echo SG2_UPLOAD_URL; ?>/<?php echo $name; ?>.<?php echo $ext; ?>" class="thickbox"><img src="<?php echo SG2_UPLOAD_URL; ?>/<?php echo $name; ?>-thumb.<?php echo $ext; ?>" alt="" /></a>
                                     <?php	
 								}
 							}
-							
 							?>
                         </td>
                     </tr>

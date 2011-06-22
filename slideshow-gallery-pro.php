@@ -4,21 +4,24 @@ Plugin Name: Slideshow Gallery Pro
 Plugin URI: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/
 Author: Cameron Preston
 Author URI: http://cameronpreston.com
-Description: Slideshow Gallery Pro is a slideshow that integrates with the WordPress image attachment feature, as well as a custom slide manager. Thumbnails and captions galore! Use this <code>[slideshow]</code> into its content with optional <code>post_id</code>, <code>exclude</code>, <code>auto</code>, <code>nolink</code>, and <code>caption</code> parameters. More being updated all the time!
-Version: 1.3.3.1
+Description: An easily embedable photo viewing solution for photographers and bloggers that integrates with the WordPress Gallery System and offers a custom Gallery solution as well. Captions, Thumbnails, Shadowbox, PrettyPhoto, Management Tool and more!
+Version: 1.4
 */
 define('DS', DIRECTORY_SEPARATOR);
-define( 'SG2_VERSION', '1.3.3' );
+define( 'SG2_VERSION', '1.4' );
+$uploads = wp_upload_dir();
 if ( ! defined( 'SG2_PLUGIN_BASENAME' ) )
 	define( 'SG2_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 if ( ! defined( 'SG2_PLUGIN_NAME' ) )
 	define( 'SG2_PLUGIN_NAME', trim( dirname( SG2_PLUGIN_BASENAME ), '/' ) );
 if ( ! defined( 'SG2_PLUGIN_DIR' ) )
-	define( 'SG2_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . SG2_PLUGIN_NAME );
+	define( 'SG2_PLUGIN_DIR', WP_PLUGIN_DIR . DS . SG2_PLUGIN_NAME );
 if ( ! defined( 'SG2_PLUGIN_URL' ) )
-	define( 'SG2_PLUGIN_URL', WP_PLUGIN_URL . '/' . SG2_PLUGIN_NAME );
+	define( 'SG2_PLUGIN_URL', WP_PLUGIN_URL . DS . SG2_PLUGIN_NAME );
 if ( ! defined( 'SG2_UPLOAD_URL' ) )
-	define( 'SG2_UPLOAD_URL', get_bloginfo('wpurl')."/wp-content/uploads/". SG2_PLUGIN_NAME );
+	define( 'SG2_UPLOAD_URL', $uploads['baseurl']. DS . SG2_PLUGIN_NAME );
+if ( ! defined( 'SG2_UPLOAD_DIR' ) )
+	define( 'SG2_UPLOAD_DIR', $uploads['basedir']. DS . SG2_PLUGIN_NAME );
 if ( ! file_exists( SG2_PLUGIN_DIR . '/pro/' ) )
 	define( 'SG2_PRO', false );
 else
@@ -42,14 +45,14 @@ class Gallery extends GalleryPlugin {
 		//WordPress filter hooks
 		$this -> add_filter('mce_buttons');
 		$this -> add_filter('mce_external_plugins');
+		$this -> add_filter('plugin_action_links', 'add_sgpro_settings_link', 10, 2 );			
 		
 		add_shortcode('slideshow', array($this, 'embed'));
 	}
-	
 	function admin_menu() {
-		add_menu_page(__('Slideshow', $this -> plugin_name), __('Slideshow', $this -> plugin_name), 'manage_options', "gallery", array($this, 'admin_settings'), SG2_PLUGIN_URL . '/images/icon.png');
-		$this -> menus['gallery'] = add_submenu_page("gallery", __('Configuration', $this -> plugin_name), __('Configuration', $this -> plugin_name), 'manage_options', "gallery", array($this, 'admin_settings'));
-		$this -> menus['gallery-slides'] = add_submenu_page("gallery", __('Manage Slides', $this -> plugin_name), __('Manage Slides', $this -> plugin_name), 'manage_options', "gallery-slides", array($this, 'admin_slides'));		
+		add_menu_page(__('Slideshow', SG2_PLUGIN_NAME), __('Slideshow', SG2_PLUGIN_NAME), 'manage_options', "gallery", array($this, 'admin_settings'), SG2_PLUGIN_URL . '/images/icon.png');
+		$this -> menus['gallery'] = add_submenu_page("gallery", __('Configuration', SG2_PLUGIN_NAME), __('Configuration', SG2_PLUGIN_NAME), 'manage_options', "gallery", array($this, 'admin_settings'));
+		$this -> menus['gallery-slides'] = add_submenu_page("gallery", __('Manage Slides', SG2_PLUGIN_NAME), __('Manage Slides', SG2_PLUGIN_NAME), 'manage_options', "gallery-slides", array($this, 'admin_slides'));		
 		
 		add_action('admin_head-' . $this -> menus['gallery'], array($this, 'admin_head_gallery_settings'));
 	}
@@ -59,10 +62,10 @@ class Gallery extends GalleryPlugin {
 	}
 	
 	function admin_head_gallery_settings() {		
-		add_meta_box('submitdiv', __('Save Settings', $this -> plugin_name), array($this -> Metabox, "settings_submit"), $this -> menus['gallery'], 'side', 'core');
-		add_meta_box('generaldiv', __('General Settings', $this -> plugin_name), array($this -> Metabox, "settings_general"), $this -> menus['gallery'], 'normal', 'core');
-		add_meta_box('linksimagesdiv', __('Links &amp; Images Overlay', $this -> plugin_name), array($this -> Metabox, "settings_linksimages"), $this -> menus['gallery'], 'normal', 'core');
-		add_meta_box('stylesdiv', __('Appearance &amp; Styles', $this -> plugin_name), array($this -> Metabox, "settings_styles"), $this -> menus['gallery'], 'normal', 'core');
+		add_meta_box('submitdiv', __('Save Settings', SG2_PLUGIN_NAME), array($this -> Metabox, "settings_submit"), $this -> menus['gallery'], 'side', 'core');
+		add_meta_box('generaldiv', __('General Settings', SG2_PLUGIN_NAME), array($this -> Metabox, "settings_general"), $this -> menus['gallery'], 'normal', 'core');
+		add_meta_box('linksimagesdiv', __('Links &amp; Images Overlay', SG2_PLUGIN_NAME), array($this -> Metabox, "settings_linksimages"), $this -> menus['gallery'], 'normal', 'core');
+		add_meta_box('stylesdiv', __('Appearance &amp; Styles', SG2_PLUGIN_NAME), array($this -> Metabox, "settings_styles"), $this -> menus['gallery'], 'normal', 'core');
 		
 		do_action('do_meta_boxes', $this -> menus['gallery'], 'normal');
 		do_action('do_meta_boxes', $this -> menus['gallery'], 'side');
@@ -89,8 +92,8 @@ class Gallery extends GalleryPlugin {
 	}
 	
 	function slideshow($output = true, $post_id = null, $exclude = null, $include = null, $custom = null, $width = null, $height = null) {
-//	function slideshow() {		
-	
+
+		$this->resetTemp();
 		$args = func_get_args();
 		global $wpdb;
 		$post_id_orig = $post -> ID;
@@ -119,44 +122,43 @@ class Gallery extends GalleryPlugin {
 	function embed($atts = array(), $content = null) {
 		//global variables
 		global $wpdb;
-		$defaults = array('post_id' => null, 'exclude' => null, 'include' => null, 'custom' => null, 'caption' => null, 'auto' => null, 'w' => null, 'h' => null, 'nolink' => null, 'slug' => null, 'thumbs' => null);
-		extract(shortcode_atts($defaults, $atts));
+		$defaults = array('post_id' => null, 'exclude' => null, 'include' => null, 'custom' => null, 'caption' => null, 'auto' => null, 'w' => null, 'h' => null, 'nolink' => null, 'slug' => null, 'thumbs' => null, 'align' => null);
+		extract( shortcode_atts( $defaults, $atts ) );
 		
-		// This section allows for using _temp variable only (esp in gallery.php)
-		if ($this -> get_option('information')=='Y') { $this -> update_option('information_temp', 'Y'); }
-		elseif ($this -> get_option('information')=='N') { $this -> update_option('information_temp', 'N'); }
-		if ($this -> get_option('thumbnails')=='Y') { $this -> update_option('thumbnails_temp', 'Y'); }
-		elseif ($this -> get_option('thumbnails')=='N') { $this -> update_option('thumbnails_temp', 'N'); }
-		if ($this -> get_option('autoslide')=='Y') { $this -> update_option('autoslide_temp', 'Y'); }
-		elseif ($this -> get_option('autoslide')=='N') { $this -> update_option('autoslide_temp', 'N'); }
-		if ($this -> get_option('align')=='left') { $this -> update_option('align', 'left'); }
-		elseif ($this -> get_option('align')=='right') { $this -> update_option('align', 'right'); }
-		else { $this -> update_option('align', 'none'); }
-		
-		if (!empty($caption)) { 
-			if (($this -> get_option('information')=='Y') && ($caption == 'off')) {
+		$this->resetTemp();
+		$align = stripslashes($align);
+		if ( !empty( $align ) ) {
+			$style = array();
+			$style = $this -> get_option('styles');
+			if ( $align == "left" || $align == "right" ) {
+				$style['align'] = $align;				
+				$this -> update_option('styles', $style);
+			}
+		}
+		if ( !empty( $caption ) ) { 
+			if ( ($this -> get_option('information')=='Y') && ( $caption == 'off' ) ) {
 				$this -> update_option('information_temp', 'N');	
-			} elseif (($this -> get_option('information')=='N') && ($caption == 'on')) {
+			} elseif ( ($this -> get_option('information')=='N') && ( $caption == 'on' ) ) {
 				$this -> update_option('information_temp', 'Y');
 			}
 		}
-		if (!empty($thumbs)) { 
-			if (($this -> get_option('thumbnails')=='Y') && ($thumbs == 'off')) {
+		if ( !empty( $thumbs ) ) { 
+			if (($this -> get_option( 'thumbnails')=='Y' ) && ( $thumbs == 'off')) {
 				$this -> update_option('thumbnails_temp', 'N');	
-			} elseif (($this -> get_option('thumbnails')=='N') && ($thumbs == 'on')) {
-				$this -> update_option('thumbnails_temp', 'Y');
+			} elseif (($this -> get_option( 'thumbnails')=='N' ) && ( $thumbs == 'on')) {
+				$this -> update_option( 'thumbnails_temp', 'Y' );
 			}
 		}
-		if (!empty($auto)) { 
-			if (($this -> get_option('autoslide')=='Y') && ($auto == 'off')) {
-				$this -> update_option('autoslide_temp', 'N');	
-			} elseif (($this -> get_option('autoslide')=='N') && ($auto == 'on')) {
-				$this -> update_option('autoslide_temp', 'Y');
+		if ( !empty( $auto ) ) { 
+			if (($this -> get_option('autoslide')=='Y' ) && ( $auto == 'off' ) ) {
+				$this -> update_option('autoslide_temp', 'N' );	
+			} elseif ( ( $this -> get_option('autoslide')=='N' ) && ($auto == 'on' ) ) {
+				$this -> update_option( 'autoslide_temp', 'Y' );
 			}
-		} elseif ($this -> get_option('autoslide') == 'Y') { 
-			$this -> update_option('autoslide_temp', 'Y'); 
+		} elseif ( $this -> get_option( 'autoslide') == 'Y' ) {
+			$this -> update_option( 'autoslide_temp', 'Y' ); 
 		} else {
-			$this -> update_option('autoslide_temp', 'N'); 
+			$this -> update_option( 'autoslide_temp', 'N' ); 
 		}
 		/******** PRO ONLY **************/
 		if ( SG2_PRO ) {
@@ -164,10 +166,10 @@ class Gallery extends GalleryPlugin {
 		}
 		//$this -> add_action(array($this, 'pro_custom_wh'));
 		/******** END PRO ONLY **************/
-		if (!empty($nocaption)) { $this -> update_option('information', 'N'); }
-		if (!empty($nolink)) { $this -> update_option('nolinker', 'Y'); }
-			else { $this -> update_option('nolinker', 'N'); }
-		if (!empty($custom)) {
+		if ( !empty($nocaption) ) { $this -> update_option('information', 'N' ); }
+		if ( !empty($nolink) ) { $this -> update_option( 'nolinker', 'Y' ); }
+			else { $this -> update_option( 'nolinker', 'N' ); }
+		if ( !empty($custom) ) {
 			$slides = $this -> Slide -> find_all(array('section'=>(int) stripslashes($custom)), null, array('order', "ASC"));
 			$content = $this -> render('gallery', array('slides' => $slides, 'frompost' => false), false, 'default');
 		} else {
@@ -197,7 +199,19 @@ class Gallery extends GalleryPlugin {
 		}
 		return $content;
 	}
-	
+	function resetTemp() {
+		// This section allows for using _temp variable only (esp in gallery.php)
+		if ($this -> get_option('information')=='Y') { $this -> update_option('information_temp', 'Y'); }
+		elseif ($this -> get_option('information')=='N') { $this -> update_option('information_temp', 'N'); }
+		if ($this -> get_option('thumbnails')=='Y') { $this -> update_option('thumbnails_temp', 'Y'); }
+		elseif ($this -> get_option('thumbnails')=='N') { $this -> update_option('thumbnails_temp', 'N'); }
+		if ($this -> get_option('autoslide')=='Y') { $this -> update_option('autoslide_temp', 'Y'); }
+		elseif ($this -> get_option('autoslide')=='N') { $this -> update_option('autoslide_temp', 'N'); }
+		$style = array();
+		$style = $this -> get_option('styles');
+		$style['align'] = "none";
+		$this -> update_option('styles', $style);
+	}
 	function exclude_ids( $attachments, $exclude, $include ) {
 		if ( ! empty( $exclude )) {
 			$exclude = array_map('trim', explode(',', $exclude));
@@ -226,22 +240,22 @@ class Gallery extends GalleryPlugin {
 				if (!empty($_GET['id'])) {
 					if ($this -> Slide -> delete($_GET['id'])) {
 						$msg_type = 'message';
-						$message = __('Slide has been removed', $this -> plugin_name);
+						$message = __('Slide has been removed', SG2_PLUGIN_NAME);
 					} else {
 						$msg_type = 'error';
-						$message = __('Slide cannot be removed', $this -> plugin_name);	
+						$message = __('Slide cannot be removed', SG2_PLUGIN_NAME);	
 					}
 				} else {
 					$msg_type = 'error';
-					$message = __('No slide was specified', $this -> plugin_name);
+					$message = __('No slide was specified', SG2_PLUGIN_NAME);
 				}
 				
-				$this -> redirect($this -> referer, $msg_type, $message);
+				$this -> redirect($this -> url, $msg_type, $message);
 				break;
 			case 'save'				:
 				if (!empty($_POST)) {
 					if ($this -> Slide -> save($_POST, true)) {
-						$message = __('Slide has been saved', $this -> plugin_name);
+						$message = __('Slide has been saved', SG2_PLUGIN_NAME);
 						$this -> redirect($this -> url, "message", $message);
 					} else {
 						$this -> render('slides' . DS . 'save', false, true, 'admin');
@@ -261,16 +275,16 @@ class Gallery extends GalleryPlugin {
 									$this -> Slide -> delete($slide_id);
 								}
 								
-								$message = __('Selected slides have been removed', $this -> plugin_name);
+								$message = __('Selected slides have been removed', SG2_PLUGIN_NAME);
 								$this -> redirect($this -> url, 'message', $message);
 								break;
 						}
 					} else {
-						$message = __('No slides were selected', $this -> plugin_name);
+						$message = __('No slides were selected', SG2_PLUGIN_NAME);
 						$this -> redirect($this -> url, "error", $message);
 					}
 				} else {
-					$message = __('No action was specified', $this -> plugin_name);
+					$message = __('No action was specified', SG2_PLUGIN_NAME);
 					$this -> redirect($this -> url, "error", $message);
 				}
 				break;
@@ -292,11 +306,11 @@ class Gallery extends GalleryPlugin {
 				$query = "DELETE FROM `" . $wpdb -> prefix . "options` WHERE `option_name` LIKE '" . $this -> pre . "%';";
 				
 				if ($wpdb -> query($query)) {
-					$message = __('All configuration settings have been reset to their defaults', $this -> plugin_name);
+					$message = __('All configuration settings have been reset to their defaults', SG2_PLUGIN_NAME);
 					$msg_type = 'message';
 					$this -> render_msg($message);	
 				} else {
-					$message = __('Configuration settings could not be reset', $this -> plugin_name);
+					$message = __('Configuration settings could not be reset', SG2_PLUGIN_NAME);
 					$msg_type = 'error';
 					$this -> render_err($message);
 				}
@@ -309,7 +323,7 @@ class Gallery extends GalleryPlugin {
 						$this -> update_option($pkey, $pval);
 					}
 					
-					$message = __('Configuration has been saved', $this -> plugin_name);
+					$message = __('Configuration has been saved', SG2_PLUGIN_NAME);
 					$this -> render_msg($message);
 				}	
 				break;
