@@ -31,7 +31,7 @@ IF ($styles['infomin'] == "Y") { ?>
 #information { position:absolute; bottom:0; width:<?php echo ((int) $styles['width'] - 6);?>px; height:0; background:<?php echo $styles['infobackground']; ?>; color:<?php echo $styles['infocolor']; ?>; overflow:hidden; z-index:200; opacity:.7; filter:alpha(opacity=70); }
 #information h5 { color:<?php echo $styles['infocolor']; ?>; padding:4px 8px 3px; font-size:1.2em; }
 #information p { color:<?php echo $styles['infocolor']; ?>; padding:0 8px 3px; font-size:.9 em;}
-#sgpro_image { width:<?php echo ((int) $styles['width'] - 6);?>px; height: <?php echo ((int) $styles['height'] - 6);?>px}
+#sgpro_image { position:absolute; width:<?php echo ((int) $styles['width'] - 6);?>px; height: <?php echo ((int) $styles['height'] - 6);?>px}
 #sgpro_image img { height:<?php echo ((int) $styles['height'] - 6);?>px; }
 <?php if (empty($styles['resizeimages']) || $styles['resizeimages'] == "Y") : ?>
 #sgpro_image img { 
@@ -42,10 +42,10 @@ IF ($styles['infomin'] == "Y") { ?>
 	border:none; 
 	width:<?php echo ((int) $styles['width'] - 6);?>px;
 	height:auto;
-    padding:0 !important
+    padding: 0 !important;
 }
 <?php else : ?>
-	#sgpro_image img { position:absolute; border:none; width:auto; }<?php endif; ?> 
+	#sgpro_image img { position:absolute; border:none; width:auto; padding:0 !important;}<?php endif; ?> 
 <?php if (empty($styles['resizeimages2']) || $styles['resizeimages2'] == "Y") : ?>
 #sgpro_image img#tall { 
 	border:none; 

@@ -1,669 +1,669 @@
-msgid ""
-msgstr ""
-"Project-Id-Version: WordPress Slideshow Gallery v1.3.3\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-12 11:50-0800\n"
-"PO-Revision-Date: 2011-06-12 11:50-0800\n"
-"Last-Translator: Cameron Preston <cameron@cameronpreston.com>\n"
-"Language-Team: Kazaky.biz <info@kazaky.biz>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Russian\n"
-"X-Poedit-Country: RUSSIAN FEDERATION\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-KeywordsList: __;_e\n"
-"X-Poedit-Basepath: ../\n"
-"X-Poedit-SearchPath-0: ..\n"
-
-#: ../slideshow-gallery-pro/slideshow-gallery-plugin.php:1
-msgid "Uploads folder named \""
-msgstr "Папка для загрузок \""
-
-#: ../slideshow-gallery-pro/slideshow-gallery-pro-ajax.php:25
-msgid "Slides have been ordered"
-msgstr "Слайды упорядочены"
-
-#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:53
-msgid "Slideshow"
-msgstr "Слайдшоу"
-
-#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:54
-msgid "Configuration"
-msgstr "Настройки"
-
-#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:55
-msgid "Manage Slides"
-msgstr "Управление слайдами"
-
-#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:65
-msgid "Save Settings"
-msgstr "Сохранить настройки"
-
-#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:66
-msgid "General Settings"
-msgstr "Общие настройки"
-
-#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:67
-msgid "Links &amp; Images Overlay"
-msgstr ""
-
-#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:68
-msgid "Appearance &amp; Styles"
-msgstr "Вид и стили"
-
-#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:243
-msgid "Slide has been removed"
-msgstr "Слайд сохранен"
-
-#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:246
-msgid "Slide cannot be removed"
-msgstr "Слайд сохранен"
-
-#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:250
-msgid "No slide was specified"
-msgstr "Действие не выбрано"
-
-#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:258
-msgid "Slide has been saved"
-msgstr "Слайд сохранен"
-
-#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:278
-msgid "Selected slides have been removed"
-msgstr "Отмеченные слайды удалены"
-
-#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:283
-msgid "No slides were selected"
-msgstr "Слайды не выбраны"
-
-#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:287
-msgid "No action was specified"
-msgstr "Действие не выбрано"
-
-#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:309
-msgid "All configuration settings have been reset to their defaults"
-msgstr "Все настройки были установлены в значения по умолчанию"
-
-#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:313
-msgid "Configuration settings could not be reset"
-msgstr "Настройки не могут быть сброшены"
-
-#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:326
-msgid "Configuration has been saved"
-msgstr "Настройки сохранены"
-
-#: ../slideshow-gallery-pro/js/tinymce/dialog.php:13
-msgid "Insert a slideshow"
-msgstr "Вставить слайдшоу"
-
-#: ../slideshow-gallery-pro/js/tinymce/dialog.php:60
-msgid "Images From a Post"
-msgstr "Изображения из записи"
-
-#: ../slideshow-gallery-pro/js/tinymce/dialog.php:61
-msgid "Custom Added Slides"
-msgstr "Добавленные слайды"
-
-#: ../slideshow-gallery-pro/js/tinymce/dialog.php:67
-msgid "Post"
-msgstr "Запись"
-
-#: ../slideshow-gallery-pro/js/tinymce/dialog.php:70
-msgid "Select a Post"
-msgstr "Выберите запись"
-
-#: ../slideshow-gallery-pro/js/tinymce/dialog.php:71
-msgid "THIS POST"
-msgstr ""
-
-#: ../slideshow-gallery-pro/js/tinymce/dialog.php:79
-msgid "Exclude"
-msgstr "Исключить"
-
-#: ../slideshow-gallery-pro/js/tinymce/dialog.php:81
-msgid "comma separated IDs of attachments to exclude"
-msgstr "разделенные запятыми идентификаторы для исключения"
-
-#: ../slideshow-gallery-pro/js/tinymce/dialog.php:95
-msgid "Auto On"
-msgstr ""
-
-#: ../slideshow-gallery-pro/js/tinymce/dialog.php:98
-msgid "Auto Off"
-msgstr ""
-
-#: ../slideshow-gallery-pro/js/tinymce/dialog.php:103
-msgid "Thumbs On"
-msgstr ""
-
-#: ../slideshow-gallery-pro/js/tinymce/dialog.php:106
-msgid "Thumbs Off"
-msgstr ""
-
-#: ../slideshow-gallery-pro/models/slide.php:1
-msgid "Please fill in a title"
-msgstr "Пожалуйста, заполните название"
-
-#: ../slideshow-gallery-pro/pro/settings-navbuttons.php:2
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:12
-msgid "Classic"
-msgstr ""
-
-#: ../slideshow-gallery-pro/pro/settings-navbuttons.php:3
-msgid "Box"
-msgstr ""
-
-#: ../slideshow-gallery-pro/pro/settings-navbuttons.php:4
-msgid "Circle"
-msgstr ""
-
-#: ../slideshow-gallery-pro/pro/settings-navbuttons.php:5
-msgid "Simple"
-msgstr ""
-
-#: ../slideshow-gallery-pro/vendors/class.paginate.php:175
-msgid "Displaying"
-msgstr "Показ"
-
-#: ../slideshow-gallery-pro/vendors/class.paginate.php:175
-msgid "of"
-msgstr "из"
-
-#: ../slideshow-gallery-pro/vendors/class.paginate.php:178
-msgid "Previous Page"
-msgstr "Предыдущая страница"
-
-#: ../slideshow-gallery-pro/vendors/class.paginate.php:186
-msgid "Page"
-msgstr "Страница"
-
-#: ../slideshow-gallery-pro/vendors/class.paginate.php:197
-msgid "Next Page"
-msgstr "Следующая страница"
-
-#: ../slideshow-gallery-pro/views/admin/settings.php:1
-msgid "Configuration Settings"
-msgstr "Настройки"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "Auto Slide"
-msgstr "Авто-слайд"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:22
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:34
-#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
-#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
-msgid "Yes"
-msgstr "Да"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:23
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:35
-#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
-#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
-msgid "No"
-msgstr "Нет"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "Auto Speed"
-msgstr "Авто-скорость"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "speed"
-msgstr "скорость"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "default:10"
-msgstr "по умолчанию:10"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "lower number for shorter interval between images"
-msgstr "меньше число - короче интервал между слайдами"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "Image Fading Speed"
-msgstr "Скорость затухания изображения"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "default:10 recommended:1-20"
-msgstr "по умолчанию: 10 рекомендуется: 1-20"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "lower number for quicker fading of images"
-msgstr "меньше число - быстрее переход изображений"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "Navigation Default Opacity"
-msgstr "Прозрачность элементов управления по умолчанию"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "&#37; <!-- percentage -->"
-msgstr "&#37; <!-- проценты -->"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "opacity of the prev/next buttons by default"
-msgstr "прозрачность кнопок пред/след по умолчанию"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "Navigation Hover Opacity"
-msgstr "Прозрачность элементов управления при наведении"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "opacity of the prev/next buttons when they are hovered"
-msgstr "прозрачность кнопок пред/след при наведении мыши"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "Show Information"
-msgstr "Показать информацию"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "Information Speed"
-msgstr "Скорость информации"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "speed at which the information will slide in"
-msgstr "скорость, с которой появляется информация"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "Information Display Settings"
-msgstr "Настройки"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "Scroll Up"
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "Permanently Show"
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "Mouse Hover Only"
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "How do you want to display the information (caption) bar?"
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "Show Thumbnails"
-msgstr "Показать ярлыки"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "Thumbnails Position"
-msgstr "Положение ярлыков"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "Top"
-msgstr "Вверху"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "Bottom"
-msgstr "Внизу"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "Thumbnail Opacity"
-msgstr "Прозрачность ярлыков"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "default opacity of thumbnails when they are not hovered"
-msgstr "прозрачность ярлыков в неактивном состоянии"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "Thumbnail Active Border"
-msgstr "Активная рамка ярлыка"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "border color (hexidecimal) for the active image thumbnail. default:#FFFFFF"
-msgstr "цвет рамки (шестнадцатеричный) для ярлыка активного изображения. По умолчанию:#FFFFFF"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "Thumbnails Scroll Speed"
-msgstr "Скорость прокрутки ярлыков"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "default:5 recommended:1-20"
-msgstr "по умолчанию:5 рекомендуется: 1-20"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "Thumbnail Spacing"
-msgstr "Расстояние между ярлыками"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:42
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:49
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:56
-msgid "px"
-msgstr "пикс"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
-msgid "horizontal margin/spacing between thumbnails"
-msgstr "горизонтальный отступ между ярлыками"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
-msgid "Open Images in..."
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
-msgid "No Link"
-msgstr "Использовать ссылку"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
-msgid "Window"
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
-msgid "Thickbox"
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
-msgid "Shadowbox"
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
-msgid "PrettyPhoto"
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
-msgid "Thickbox comes standard with your Wordpress install. Shadowbox and Prettyphoto come only with a specific theme or plugin"
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
-msgid "Recommendations"
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
-msgid "Page Link Target"
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
-msgid "Current Tab"
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
-msgid "New Tab"
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
-msgid "Same as setting that <em>target</em> pages are &quot;_self&quot; or &quot;_blank&quot;"
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
-msgid "Use Caption Field as a Link?"
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
-msgid "If using the <strong>Wordpress Image Gallery</strong> you can still link out to a new page by using the Caption Field"
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:5
-msgid "Navigational Buttons"
-msgstr "Прозрачность элементов управления по умолчанию"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:16
-msgid "FULL EDITION ONLY: Choose your nav buttons for left and right transitioning"
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:20
-msgid "Resize Images (width)"
-msgstr "Изменять размер изображений"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:24
-msgid "should images be resized proportionally to fit the width of the slideshow area"
-msgstr "должен ли размер изображений меняться пропорционально, чтобы помещаться по ширине в область показа"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:32
-msgid "Resize Images (height)"
-msgstr "Изменять размер изображений"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:36
-msgid "Full Edition only. Should images be resized proportionally to fit the height of the slideshow area. "
-msgstr "должен ли размер изображений меняться пропорционально, чтобы помещаться по ширине в область показа"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:40
-msgid "Gallery Width"
-msgstr "Ширина галереи"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:43
-msgid "width of the slideshow gallery"
-msgstr "ширина галереи в слайд-шоу"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:47
-msgid "Gallery Height"
-msgstr "Высота галереи"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:50
-msgid "height of the slideshow gallery"
-msgstr "высота галереи в слайд-шоу"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:54
-msgid "Thumbnail Height"
-msgstr "Прозрачность ярлыков"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:57
-msgid "height of your thumbnails"
-msgstr "Показать ярлыки"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:61
-msgid "Slideshow Border"
-msgstr "Рамка слайдшоу"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:67
-msgid "Slideshow Background"
-msgstr "Фон слайдшоу"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:73
-msgid "Information Background"
-msgstr "Фон информационной панели"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:79
-msgid "Information Text Color"
-msgstr "Цвет текста информационного окна"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:85
-msgid "Minimize Information Bar Height?"
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:87
-msgid "Yes, minimize"
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:88
-msgid "No, keep styling"
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:89
-msgid "Keep your theme styling for &quot;H5&quot; and &quot;p&quot;? Or minimize them."
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-submit.php:5
-msgid "Reset all configuration settings to their default values"
-msgstr "Вернуть все настройки в значения по умолчанию"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-submit.php:5
-msgid "Are you sure you wish to reset all configuration settings?"
-msgstr "Вы действительно хотите вернуть настройки по умолчанию?"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-submit.php:5
-msgid "Reset to Defaults"
-msgstr "Вернуть к стандартным"
-
-#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-submit.php:11
-msgid "Save Configuration"
-msgstr "Сохранить настройки"
-
-#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
-msgid "Add New"
-msgstr "Добавить"
-
-#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
-msgid "slides"
-msgstr "слайды"
-
-#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
-msgid "Are you sure you wish to execute this action on the selected slides?"
-msgstr "Вы хотите выполнить это действие над выбранными слайдами?"
-
-#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
-msgid "Order all your slides"
-msgstr "Упорядочить все слайды"
-
-#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
-#: ../slideshow-gallery-pro/views/admin/slides/order.php:1
-msgid "Order Slides"
-msgstr "Упорядочить слайды"
-
-#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
-msgid "Bulk Actions"
-msgstr "Групповые действия"
-
-#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
-msgid "Delete"
-msgstr "Удалить"
-
-#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
-msgid "Apply"
-msgstr "Применить"
-
-#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
-msgid "Image"
-msgstr "Изображение"
-
-#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
-#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
-msgid "Title"
-msgstr "Название"
-
-#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
-msgid "Link"
-msgstr "Link"
-
-#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
-msgid "Date"
-msgstr "Дата"
-
-#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
-#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
-msgid "Section"
-msgstr "Описание"
-
-#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
-msgid "Order"
-msgstr "Порядок"
-
-#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
-msgid "Edit"
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
-msgid "Are you sure you want to permanently remove this slide?"
-msgstr "Вы хотите выполнить это действие над выбранными слайдами?"
-
-#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
-#: ../slideshow-gallery-pro/views/admin/slides/order.php:1
-msgid "No slides found"
-msgstr "Слайды не найдены"
-
-#: ../slideshow-gallery-pro/views/admin/slides/order.php:1
-msgid "&larr; Manage All Slides"
-msgstr "&larr; Управление всеми слайдами"
-
-#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
-msgid "Save a Slide"
-msgstr "Сохранить слайд"
-
-#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
-msgid "title/name of your slide as it will be displayed to your users."
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
-msgid "Description"
-msgstr "Описание"
-
-#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
-msgid "description of your slide as it will be displayed to your users below the title."
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
-msgid "FULL EDITION ONLY: which custom slideshow would you like this image to apply to?"
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
-msgid "Image Type"
-msgstr "Изображение"
-
-#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
-msgid "Upload File (recommended)"
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
-msgid "Specify URL"
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
-msgid "do you want to upload an image or specify a local/remote image URL?"
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
-msgid "Choose Image"
-msgstr "Изменять размер изображений"
-
-#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
-msgid "choose your image file from your computer. JPG, PNG, GIF are supported."
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
-msgid "Current thumbnail. Leave the field above blank to keep this image."
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
-msgid "Image URL"
-msgstr "Адрес изображения"
-
-#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
-msgid "Local or remote image location eg. http://domain.com/path/to/image.jpg"
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
-msgid "Use Link"
-msgstr "Использовать ссылку"
-
-#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
-msgid "set this to Yes to link this slide to a link/URL of your choice."
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
-msgid "Link To"
-msgstr "Ссылка на"
-
-#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
-msgid "link/URL to go to when a user clicks the slide eg. http://www.domain.com/mypage/"
-msgstr ""
-
-#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
-msgid "Save Slide"
-msgstr "Сохранить слайд"
-
-#: ../slideshow-gallery-pro/views/default/gallery.php:91
-#: ../slideshow-gallery-pro/views/default/gallery.php:113
-msgid "Slide Left"
-msgstr "Слайд влево"
-
-#: ../slideshow-gallery-pro/views/default/gallery.php:95
-#: ../slideshow-gallery-pro/views/default/gallery.php:117
-msgid "Slide Right"
-msgstr "Слайд вправо"
-
-#~ msgid "Please specify an image"
-#~ msgstr "Пожалуйста, укажите изображение"
-
-#~ msgid "No data was posted"
-#~ msgstr "Данные не добавлены"
-
-#~ msgid "Styles"
-#~ msgstr "Стили"
-
-#~ msgid "add new"
-#~ msgstr "добавить"
+msgid ""
+msgstr ""
+"Project-Id-Version: WordPress Slideshow Gallery v1.3.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-06-12 11:50-0800\n"
+"PO-Revision-Date: 2011-06-12 11:50-0800\n"
+"Last-Translator: Cameron Preston <cameron@cameronpreston.com>\n"
+"Language-Team: Kazaky.biz <info@kazaky.biz>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-Country: RUSSIAN FEDERATION\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../slideshow-gallery-pro/slideshow-gallery-plugin.php:1
+msgid "Uploads folder named \""
+msgstr "Папка для загрузок \""
+
+#: ../slideshow-gallery-pro/slideshow-gallery-pro-ajax.php:25
+msgid "Slides have been ordered"
+msgstr "Слайды упорядочены"
+
+#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:53
+msgid "Slideshow"
+msgstr "Слайдшоу"
+
+#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:54
+msgid "Configuration"
+msgstr "Настройки"
+
+#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:55
+msgid "Manage Slides"
+msgstr "Управление слайдами"
+
+#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:65
+msgid "Save Settings"
+msgstr "Сохранить настройки"
+
+#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:66
+msgid "General Settings"
+msgstr "Общие настройки"
+
+#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:67
+msgid "Links &amp; Images Overlay"
+msgstr ""
+
+#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:68
+msgid "Appearance &amp; Styles"
+msgstr "Вид и стили"
+
+#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:243
+msgid "Slide has been removed"
+msgstr "Слайд сохранен"
+
+#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:246
+msgid "Slide cannot be removed"
+msgstr "Слайд сохранен"
+
+#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:250
+msgid "No slide was specified"
+msgstr "Действие не выбрано"
+
+#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:258
+msgid "Slide has been saved"
+msgstr "Слайд сохранен"
+
+#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:278
+msgid "Selected slides have been removed"
+msgstr "Отмеченные слайды удалены"
+
+#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:283
+msgid "No slides were selected"
+msgstr "Слайды не выбраны"
+
+#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:287
+msgid "No action was specified"
+msgstr "Действие не выбрано"
+
+#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:309
+msgid "All configuration settings have been reset to their defaults"
+msgstr "Все настройки были установлены в значения по умолчанию"
+
+#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:313
+msgid "Configuration settings could not be reset"
+msgstr "Настройки не могут быть сброшены"
+
+#: ../slideshow-gallery-pro/slideshow-gallery-pro.php:326
+msgid "Configuration has been saved"
+msgstr "Настройки сохранены"
+
+#: ../slideshow-gallery-pro/js/tinymce/dialog.php:13
+msgid "Insert a slideshow"
+msgstr "Вставить слайдшоу"
+
+#: ../slideshow-gallery-pro/js/tinymce/dialog.php:60
+msgid "Images From a Post"
+msgstr "Изображения из записи"
+
+#: ../slideshow-gallery-pro/js/tinymce/dialog.php:61
+msgid "Custom Added Slides"
+msgstr "Добавленные слайды"
+
+#: ../slideshow-gallery-pro/js/tinymce/dialog.php:67
+msgid "Post"
+msgstr "Запись"
+
+#: ../slideshow-gallery-pro/js/tinymce/dialog.php:70
+msgid "Select a Post"
+msgstr "Выберите запись"
+
+#: ../slideshow-gallery-pro/js/tinymce/dialog.php:71
+msgid "THIS POST"
+msgstr ""
+
+#: ../slideshow-gallery-pro/js/tinymce/dialog.php:79
+msgid "Exclude"
+msgstr "Исключить"
+
+#: ../slideshow-gallery-pro/js/tinymce/dialog.php:81
+msgid "comma separated IDs of attachments to exclude"
+msgstr "разделенные запятыми идентификаторы для исключения"
+
+#: ../slideshow-gallery-pro/js/tinymce/dialog.php:95
+msgid "Auto On"
+msgstr ""
+
+#: ../slideshow-gallery-pro/js/tinymce/dialog.php:98
+msgid "Auto Off"
+msgstr ""
+
+#: ../slideshow-gallery-pro/js/tinymce/dialog.php:103
+msgid "Thumbs On"
+msgstr ""
+
+#: ../slideshow-gallery-pro/js/tinymce/dialog.php:106
+msgid "Thumbs Off"
+msgstr ""
+
+#: ../slideshow-gallery-pro/models/slide.php:1
+msgid "Please fill in a title"
+msgstr "Пожалуйста, заполните название"
+
+#: ../slideshow-gallery-pro/pro/settings-navbuttons.php:2
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:12
+msgid "Classic"
+msgstr ""
+
+#: ../slideshow-gallery-pro/pro/settings-navbuttons.php:3
+msgid "Box"
+msgstr ""
+
+#: ../slideshow-gallery-pro/pro/settings-navbuttons.php:4
+msgid "Circle"
+msgstr ""
+
+#: ../slideshow-gallery-pro/pro/settings-navbuttons.php:5
+msgid "Simple"
+msgstr ""
+
+#: ../slideshow-gallery-pro/vendors/class.paginate.php:175
+msgid "Displaying"
+msgstr "Показ"
+
+#: ../slideshow-gallery-pro/vendors/class.paginate.php:175
+msgid "of"
+msgstr "из"
+
+#: ../slideshow-gallery-pro/vendors/class.paginate.php:178
+msgid "Previous Page"
+msgstr "Предыдущая страница"
+
+#: ../slideshow-gallery-pro/vendors/class.paginate.php:186
+msgid "Page"
+msgstr "Страница"
+
+#: ../slideshow-gallery-pro/vendors/class.paginate.php:197
+msgid "Next Page"
+msgstr "Следующая страница"
+
+#: ../slideshow-gallery-pro/views/admin/settings.php:1
+msgid "Configuration Settings"
+msgstr "Настройки"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "Auto Slide"
+msgstr "Авто-слайд"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:22
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:34
+#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
+#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
+msgid "Yes"
+msgstr "Да"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:23
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:35
+#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
+#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
+msgid "No"
+msgstr "Нет"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "Auto Speed"
+msgstr "Авто-скорость"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "speed"
+msgstr "скорость"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "default:10"
+msgstr "по умолчанию:10"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "lower number for shorter interval between images"
+msgstr "меньше число - короче интервал между слайдами"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "Image Fading Speed"
+msgstr "Скорость затухания изображения"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "default:10 recommended:1-20"
+msgstr "по умолчанию: 10 рекомендуется: 1-20"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "lower number for quicker fading of images"
+msgstr "меньше число - быстрее переход изображений"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "Navigation Default Opacity"
+msgstr "Прозрачность элементов управления по умолчанию"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "&#37; <!-- percentage -->"
+msgstr "&#37; <!-- проценты -->"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "opacity of the prev/next buttons by default"
+msgstr "прозрачность кнопок пред/след по умолчанию"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "Navigation Hover Opacity"
+msgstr "Прозрачность элементов управления при наведении"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "opacity of the prev/next buttons when they are hovered"
+msgstr "прозрачность кнопок пред/след при наведении мыши"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "Show Information"
+msgstr "Показать информацию"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "Information Speed"
+msgstr "Скорость информации"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "speed at which the information will slide in"
+msgstr "скорость, с которой появляется информация"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "Information Display Settings"
+msgstr "Настройки"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "Scroll Up"
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "Permanently Show"
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "Mouse Hover Only"
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "How do you want to display the information (caption) bar?"
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "Show Thumbnails"
+msgstr "Показать ярлыки"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "Thumbnails Position"
+msgstr "Положение ярлыков"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "Top"
+msgstr "Вверху"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "Bottom"
+msgstr "Внизу"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "Thumbnail Opacity"
+msgstr "Прозрачность ярлыков"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "default opacity of thumbnails when they are not hovered"
+msgstr "прозрачность ярлыков в неактивном состоянии"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "Thumbnail Active Border"
+msgstr "Активная рамка ярлыка"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "border color (hexidecimal) for the active image thumbnail. default:#FFFFFF"
+msgstr "цвет рамки (шестнадцатеричный) для ярлыка активного изображения. По умолчанию:#FFFFFF"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "Thumbnails Scroll Speed"
+msgstr "Скорость прокрутки ярлыков"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "default:5 recommended:1-20"
+msgstr "по умолчанию:5 рекомендуется: 1-20"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "Thumbnail Spacing"
+msgstr "Расстояние между ярлыками"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:42
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:49
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:56
+msgid "px"
+msgstr "пикс"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-general.php:1
+msgid "horizontal margin/spacing between thumbnails"
+msgstr "горизонтальный отступ между ярлыками"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
+msgid "Open Images in..."
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
+msgid "No Link"
+msgstr "Использовать ссылку"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
+msgid "Window"
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
+msgid "Thickbox"
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
+msgid "Shadowbox"
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
+msgid "PrettyPhoto"
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
+msgid "Thickbox comes standard with your Wordpress install. Shadowbox and Prettyphoto come only with a specific theme or plugin"
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
+msgid "Recommendations"
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
+msgid "Page Link Target"
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
+msgid "Current Tab"
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
+msgid "New Tab"
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
+msgid "Same as setting that <em>target</em> pages are &quot;_self&quot; or &quot;_blank&quot;"
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
+msgid "Use Caption Field as a Link?"
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-linksimages.php:1
+msgid "If using the <strong>Wordpress Image Gallery</strong> you can still link out to a new page by using the Caption Field"
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:5
+msgid "Navigational Buttons"
+msgstr "Прозрачность элементов управления по умолчанию"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:16
+msgid "FULL EDITION ONLY: Choose your nav buttons for left and right transitioning"
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:20
+msgid "Resize Images (width)"
+msgstr "Изменять размер изображений"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:24
+msgid "should images be resized proportionally to fit the width of the slideshow area"
+msgstr "должен ли размер изображений меняться пропорционально, чтобы помещаться по ширине в область показа"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:32
+msgid "Resize Images (height)"
+msgstr "Изменять размер изображений"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:36
+msgid "Full Edition only. Should images be resized proportionally to fit the height of the slideshow area. "
+msgstr "должен ли размер изображений меняться пропорционально, чтобы помещаться по ширине в область показа"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:40
+msgid "Gallery Width"
+msgstr "Ширина галереи"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:43
+msgid "width of the slideshow gallery"
+msgstr "ширина галереи в слайд-шоу"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:47
+msgid "Gallery Height"
+msgstr "Высота галереи"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:50
+msgid "height of the slideshow gallery"
+msgstr "высота галереи в слайд-шоу"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:54
+msgid "Thumbnail Height"
+msgstr "Прозрачность ярлыков"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:57
+msgid "height of your thumbnails"
+msgstr "Показать ярлыки"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:61
+msgid "Slideshow Border"
+msgstr "Рамка слайдшоу"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:67
+msgid "Slideshow Background"
+msgstr "Фон слайдшоу"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:73
+msgid "Information Background"
+msgstr "Фон информационной панели"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:79
+msgid "Information Text Color"
+msgstr "Цвет текста информационного окна"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:85
+msgid "Minimize Information Bar Height?"
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:87
+msgid "Yes, minimize"
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:88
+msgid "No, keep styling"
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-styles.php:89
+msgid "Keep your theme styling for &quot;H5&quot; and &quot;p&quot;? Or minimize them."
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-submit.php:5
+msgid "Reset all configuration settings to their default values"
+msgstr "Вернуть все настройки в значения по умолчанию"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-submit.php:5
+msgid "Are you sure you wish to reset all configuration settings?"
+msgstr "Вы действительно хотите вернуть настройки по умолчанию?"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-submit.php:5
+msgid "Reset to Defaults"
+msgstr "Вернуть к стандартным"
+
+#: ../slideshow-gallery-pro/views/admin/metaboxes/settings-submit.php:11
+msgid "Save Configuration"
+msgstr "Сохранить настройки"
+
+#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
+msgid "Add New"
+msgstr "Добавить"
+
+#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
+msgid "slides"
+msgstr "слайды"
+
+#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
+msgid "Are you sure you wish to execute this action on the selected slides?"
+msgstr "Вы хотите выполнить это действие над выбранными слайдами?"
+
+#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
+msgid "Order all your slides"
+msgstr "Упорядочить все слайды"
+
+#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
+#: ../slideshow-gallery-pro/views/admin/slides/order.php:1
+msgid "Order Slides"
+msgstr "Упорядочить слайды"
+
+#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
+msgid "Bulk Actions"
+msgstr "Групповые действия"
+
+#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
+msgid "Delete"
+msgstr "Удалить"
+
+#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
+msgid "Apply"
+msgstr "Применить"
+
+#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
+msgid "Image"
+msgstr "Изображение"
+
+#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
+#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
+msgid "Title"
+msgstr "Название"
+
+#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
+msgid "Link"
+msgstr "Link"
+
+#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
+msgid "Date"
+msgstr "Дата"
+
+#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
+#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
+msgid "Section"
+msgstr "Описание"
+
+#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
+msgid "Order"
+msgstr "Порядок"
+
+#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
+msgid "Edit"
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
+msgid "Are you sure you want to permanently remove this slide?"
+msgstr "Вы хотите выполнить это действие над выбранными слайдами?"
+
+#: ../slideshow-gallery-pro/views/admin/slides/index.php:1
+#: ../slideshow-gallery-pro/views/admin/slides/order.php:1
+msgid "No slides found"
+msgstr "Слайды не найдены"
+
+#: ../slideshow-gallery-pro/views/admin/slides/order.php:1
+msgid "&larr; Manage All Slides"
+msgstr "&larr; Управление всеми слайдами"
+
+#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
+msgid "Save a Slide"
+msgstr "Сохранить слайд"
+
+#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
+msgid "title/name of your slide as it will be displayed to your users."
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
+msgid "Description"
+msgstr "Описание"
+
+#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
+msgid "description of your slide as it will be displayed to your users below the title."
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
+msgid "FULL EDITION ONLY: which custom slideshow would you like this image to apply to?"
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
+msgid "Image Type"
+msgstr "Изображение"
+
+#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
+msgid "Upload File (recommended)"
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
+msgid "Specify URL"
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
+msgid "do you want to upload an image or specify a local/remote image URL?"
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
+msgid "Choose Image"
+msgstr "Изменять размер изображений"
+
+#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
+msgid "choose your image file from your computer. JPG, PNG, GIF are supported."
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
+msgid "Current thumbnail. Leave the field above blank to keep this image."
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
+msgid "Image URL"
+msgstr "Адрес изображения"
+
+#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
+msgid "Local or remote image location eg. http://domain.com/path/to/image.jpg"
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
+msgid "Use Link"
+msgstr "Использовать ссылку"
+
+#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
+msgid "set this to Yes to link this slide to a link/URL of your choice."
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
+msgid "Link To"
+msgstr "Ссылка на"
+
+#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
+msgid "link/URL to go to when a user clicks the slide eg. http://www.domain.com/mypage/"
+msgstr ""
+
+#: ../slideshow-gallery-pro/views/admin/slides/save.php:1
+msgid "Save Slide"
+msgstr "Сохранить слайд"
+
+#: ../slideshow-gallery-pro/views/default/gallery.php:91
+#: ../slideshow-gallery-pro/views/default/gallery.php:113
+msgid "Slide Left"
+msgstr "Слайд влево"
+
+#: ../slideshow-gallery-pro/views/default/gallery.php:95
+#: ../slideshow-gallery-pro/views/default/gallery.php:117
+msgid "Slide Right"
+msgstr "Слайд вправо"
+
+#~ msgid "Please specify an image"
+#~ msgstr "Пожалуйста, укажите изображение"
+
+#~ msgid "No data was posted"
+#~ msgstr "Данные не добавлены"
+
+#~ msgid "Styles"
+#~ msgstr "Стили"
+
+#~ msgid "add new"
+#~ msgstr "добавить"

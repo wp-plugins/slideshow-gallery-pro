@@ -76,6 +76,9 @@ TINY.sgpro_slideshow.prototype={
 		}
 		this.auto?this.is(0,0):this.is(0,1)
 	},
+	striptlt:function(x){
+		x.value = x.value.replace(/['"]/g,'');
+	},
 	resize:function(i,w,h){ //image & size of width or height
 		if (jQuery(this.i).is(":visible")) { 
 			this.iwidth = this.i.width; // Read width differently depending on visibility
@@ -116,6 +119,7 @@ TINY.sgpro_slideshow.prototype={
 		i.onload=new Function(this.n+'.le('+s+','+c+')');
 		i.src=this.a[s].p;
 		i.id=this.a[s].u;
+		jQuery('#sgpro_image img').wrap('<div class="sgpro_holder" />');
 		if(this.thumbs){
 			var a= tag('img',this.p), l=a.length, x=0;
 /*			var a= tag('rel','lightbox');*/
@@ -134,7 +138,7 @@ TINY.sgpro_slideshow.prototype={
 		if (ht > 0) { // WIDE
 			var l=Math.floor(ht/2);
 			this.i.style.borderTop=(ht-l)+'px solid ' + this.letterbox;
-			this.i.style.borderBottom=(ht-l)+'px solid ' + this.letterbox;			
+			this.i.style.borderBottom=(ht-l)+'px solid ' + this.letterbox;
 		}
 		TINY.alpha.set(this.i,100,this.imgSpeed);
 		var n=new Function(this.n+'.nf('+s+')');
@@ -144,26 +148,26 @@ TINY.sgpro_slideshow.prototype={
 		}
 		if(this.a[s].l != ""){		
 			var baseURL = this.a[s].l;
-			var urlString = /\.jpg$|\.jpeg$|\.png$|\.gif$|\.bmp$/;
+			var urlString = /\.jpg$|\.jpeg$|\.png$|\.gif$|\.swf$|\.bmp$/;
 			var urlType = baseURL.toLowerCase().match(urlString);
 			/***** NOLINK ****/
 			//alert("file ending: "+baseURL);
-			if (( this.nolink || this.imagesbox == "nolink" ) && ( urlType == '.jpg' || urlType == '.JPG' || urlType == '.jpeg' || urlType == '.png' || urlType == '.PNG' || urlType == '.gif' || urlType == '.bmp' )) {
+			if (( this.nolink || this.imagesbox == "nolink" ) && ( urlType == '.jpg' || urlType == '.JPG' || urlType == '.jpeg' || urlType == '.png' || urlType == '.PNG' || urlType == '.gif' || urlType == '.bmp' || urlType == '.swf' )) {
 				this.q.onclick=this.q.onmouseover=null;
 				this.q.style.cursor='default';
 				this.q.style.backgroundImage='none';
 			/**** THICKBOX ***/
-			} else if ( this.imagesbox == "thickbox" && ( urlType == '.jpg' || urlType == '.JPG' || urlType == '.jpeg' || urlType == '.png' || urlType == '.PNG' || urlType == '.gif' || urlType == '.bmp' )) {
+			} else if ( this.imagesbox == "thickbox" && ( urlType == '.jpg' || urlType == '.JPG' || urlType == '.jpeg' || urlType == '.png' || urlType == '.PNG' || urlType == '.gif' || urlType == '.bmp' || urlType == '.swf' )) {
 				var thickpath = (( this.a[s].p ).replace(/\/wp-content.*/g,"/wp-includes/js/thickbox/" ));
 				tb_pathToImage = thickpath + "loadingAnimation.gif";
 				tb_closeImage = thickpath + "tb-close.png";
-				this.q.onclick = new Function('tb_show("' + this.a[s].t + '", "' + this.a[s].l + '", "sgpro_slideshow" )' );
+				this.q.onclick = new Function('tb_show("' + this.a[s].t.replace(/['"]/g,'') + '", "' + this.a[s].l + '", "sgpro_slideshow" )' );
 			/**** SHADOWBOX ***/
-			} else if ( this.imagesbox == "shadowbox" && (urlType == '.jpg' || urlType == '.JPG' || urlType == '.jpeg' || urlType == '.png' || urlType == '.PNG' || urlType == '.gif' || urlType == '.bmp' )) {
-				this.q.onclick = new Function( 'Shadowbox.open({content: "' + this.a[s].l + '",player: "img",title: "' + this.a[s].t + '",gallery:"'+this.gallery+'"})');
+			} else if ( this.imagesbox == "shadowbox" && (urlType == '.jpg' || urlType == '.JPG' || urlType == '.jpeg' || urlType == '.png' || urlType == '.PNG' || urlType == '.gif' || urlType == '.bmp' || urlType == '.swf' )) {
+				this.q.onclick = new Function( 'Shadowbox.open({content: "' + this.a[s].l + '",player: "img",title: "' + this.a[s].t.replace(/['"]/g,'') + '",gallery:"'+this.gallery+'"})');
 			/**** PRETTYPHOTO ***/
-			} else if ( this.imagesbox == "prettyphoto" && (urlType == '.jpg' || urlType == '.JPG' || urlType == '.jpeg' || urlType == '.png' || urlType == '.PNG' || urlType == '.gif' || urlType == '.bmp' )) {
-				this.q.onclick = new Function( 'jQuery.prettyPhoto.open("' + this.a[s].l + '","' + this.a[s].t + '")');				
+			} else if ( this.imagesbox == "prettyphoto" && (urlType == '.jpg' || urlType == '.JPG' || urlType == '.jpeg' || urlType == '.png' || urlType == '.PNG' || urlType == '.gif' || urlType == '.bmp' || urlType == '.swf' )) {
+				this.q.onclick = new Function( 'jQuery.prettyPhoto.open("' + this.a[s].l + '","' + this.a[s].t.replace(/['"]/g,'') + '")');				
 			/**** WINDOW & PAGE LINKING ***/
 			} else {
 				if (this.pagelink == "self") { this.q.onclick = new Function( 'window.location="' + this.a[s].l + '"' ); }

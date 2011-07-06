@@ -28,7 +28,7 @@
 			<th><label for="fadespeed"><?php _e('Image Fading Speed', SG2_PLUGIN_NAME); ?></label></th>
 			<td>
 				<input style="width:45px;" type="text" name="fadespeed" value="<?php echo $this -> get_option('fadespeed'); ?>" id="fadespeed" />
-				<span class="howto"><?php _e('default:10 recommended:1-20', SG2_PLUGIN_NAME); ?><br/><?php _e('lower number for quicker fading of images', SG2_PLUGIN_NAME); ?></span>
+				<span class="howto"><?php _e('default:50 recommended:1-100', SG2_PLUGIN_NAME); ?><br/><?php _e('lower number for quicker fading of images', SG2_PLUGIN_NAME); ?></span>
 			</td>
 		</tr>
 		<tr>

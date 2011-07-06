@@ -49,7 +49,7 @@ class GallerySlide extends GalleryDbHelper {
 			$data = (empty($data[$this -> model])) ? $data : $data[$this -> model];
 			
 			foreach ($data as $dkey => $dval) {
-				$this -> data -> {$dkey} = str_replace(" ", "-", stripslashes($dval));
+				$this -> data -> {$dkey} = stripslashes($dval);
 			}
 			
 			extract($data, EXTR_SKIP);

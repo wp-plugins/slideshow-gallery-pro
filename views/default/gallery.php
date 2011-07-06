@@ -70,15 +70,15 @@ $slidenums = 0;
 					<p><?php echo $slide -> description; ?></p>
 					<?php if ($this -> get_option('thumbnails_temp') == "Y") : ?>
 						<?php if ($slide -> uselink == "Y" && !empty($slide -> link)) : ?>
-							<a href="<?php echo $slide -> link; ?>" title="<?php echo $slide -> title; ?>"><img style="height:<?php echo $style['thumbheight'] ?>px;" src="<?php echo $this -> Html -> image_url($this -> Html -> thumbname($slide -> image)); ?>" alt="<?php echo $this -> Html -> sanitize($slide -> title); ?>" /></a>
+							<a href="<?php echo $slide -> link; ?>" title="<?php echo str_replace('"', '', $slide -> title); ?>"><img style="height:<?php echo $style['thumbheight'] ?>px;" src="<?php echo $this -> Html -> image_url($this -> Html -> thumbname($slide -> image)); ?>" alt="<?php echo $this -> Html -> sanitize($slide -> title); ?>" /></a>
 						<?php else : ?>
-							<a href="<?php echo $this -> Html -> image_url($slide -> image); ?>" title="<?php echo $slide -> title; ?>" rel="shadowbox[post-<?php echo the_ID(); ?>]"><img style="height:<?php echo $style['thumbheight'] ?>px;" src="<?php echo $this -> Html -> image_url($this -> Html -> thumbname($slide -> image)); ?>" alt="<?php echo $this -> Html -> sanitize($slide -> title); ?>" /></a>
+							<a href="<?php echo $this -> Html -> image_url($slide -> image); ?>" title="<?php echo $this -> Html -> sanitize($slide -> title); ?>" rel="shadowbox[post-<?php echo the_ID(); ?>]"><img style="height:<?php echo $style['thumbheight'] ?>px;" src="<?php echo $this -> Html -> image_url($this -> Html -> thumbname($slide -> image)); ?>" alt="<?php echo $this -> Html -> sanitize($slide -> title); ?>" /></a>
 						<?php endif; ?>
 					<?php else : // NO THUMBNAILS ?>
 						<?php if ($slide -> uselink == "N" || empty($slide -> link)) : ?>
-							<a href="<?php echo $this -> Html -> image_url($slide -> image); ?>" title="<?php echo $slide -> title; ?>" rel="shadowbox[post-<?php echo the_ID(); ?>]"></a>
+							<a href="<?php echo $this -> Html -> image_url($slide -> image); ?>" title="<?php echo str_replace('"', '', $slide -> title); ?>" rel="shadowbox[post-<?php echo the_ID(); ?>]"></a>
                         <?php else : ?>
-							<a href="<?php echo $slide -> link; ?>" title="<?php echo $slide -> title; ?>"></a>
+							<a href="<?php echo $slide -> link; ?>" title="<?php echo str_replace('"', '', $slide -> title); ?>"></a>
 						<?php endif; ?>
 					<?php endif; ?>
 				</li>

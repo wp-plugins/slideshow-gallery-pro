@@ -3,8 +3,8 @@ Contributors: Cameron Preston
 Donate link: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro
 Tags: slideshow pro, prettyphoto, slide show, shadowbox, wordpress plugins, slideshow gallery, slides, slideshow, image gallery, gallery, images, jquery, ajax
 Requires at least: 2.8
-Tested up to: 3.1.3
-Stable tag: 1.4
+Tested up to: 3.2
+Stable tag: 1.4.1
 
 An easily embedable photo viewing solution for photographers and bloggers that integrates with the WordPress Gallery System and offers a custom Gallery solution as well. Captions, Thumbnails, Shadowbox, PrettyPhoto, Management Tool and more!
 
@@ -13,7 +13,7 @@ A simple to use but highly customizable photo and image viewing plugin that inte
 
 Check out more details here: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/
 
-Flexible, configurable and easy to use. Embed-able and hardcode-able and improved. To embed into a post/page, simply insert <code>[slideshow]</code> into its content with optional <code>post_id</code>, <code>exclude</code>, <code>exclude</code>, and <code>auto</code>  parameters. Hardcoding options are also available and easily added. Check out the Slideshow Gallery Pro Manual on the plugin details page (linked above) for code examples.
+Flexible, configurable and easy to use. Embed-able and hardcode-able and improved. To embed into a post/page, simply insert <code>[gpslideshow]</code> into its content with optional <code>post_id</code>, <code>exclude</code>, <code>exclude</code>, and <code>auto</code>  parameters. Hardcoding options are also available and easily added. Check out the Slideshow Gallery Pro Manual on the plugin details page (linked above) for code examples.
 
 Check out the website and download the manual to get fully acquainted with the features!
 
@@ -24,7 +24,7 @@ Installing the WordPress Slideshow Gallery Pro plugin manually is very easy. Sim
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Configure the settings according to your needs through the 'Slideshow' > 'Configuration' menu
 1. Add and manage your slides in the 'Slideshow' section (Or just use the built in wordpress gallery)
-1. Put `[slideshow post_id="X" exclude="" caption="on/off"]` to embed a slideshow with the images of a post into your posts/pages or use `[slideshow custom=1]` to embed a slideshow with your custom added slides or `<?php if (class_exists('Gallery')) { $Gallery = new Gallery(); $Gallery -> slideshow($output = true, $post_id = null); }; ?>` into your WordPress theme
+1. Put `[gpslideshow post_id="X" exclude="" caption="on/off"]` to embed a slideshow with the images of a post into your posts/pages or use `[gpslideshow custom=1]` to embed a slideshow with your custom added slides or `<?php if (class_exists('Gallery')) { $Gallery = new Gallery(); $Gallery -> slideshow($output = true, $post_id = null); }; ?>` into your WordPress theme
 1. For the most up to date list of options available please goto: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/
 Full Edition customers (my plugin supporters). Installing full functionality is easy! 
 1.You will either download from the members page the full edition or have it emailed to you.
@@ -39,13 +39,13 @@ Install the plugin Advanced Text Widget and put the embed code in there.
 Yes, you can, but only one slideshow per page.
 
 = What if I only want captions on some of my pages
-Set your default captions to off; for any slideshow you put on your page use `[slideshow caption="on"]`
+Set your default captions to off; for any slideshow you put on your page use `[gpslideshow caption="on"]`
 
 = What if my configuration isn't showing up? =
 You're most likely not running PHP5. Talk to your host to upgrade or switch your hosting provider. PHP5 is eleventy years old.
 
 = How do I find the numbers to exclude (or include)? =
-Not as easy as it used to be! Go into the Media Library. Choose an image you want to exclude and click on it and notice your address bar: "/wp-admin/media.php?action=edit&attachment_id=353". Therefore, `[slideshow exclude=353]`
+Not as easy as it used to be! Go into the Media Library. Choose an image you want to exclude and click on it and notice your address bar: "/wp-admin/media.php?action=edit&attachment_id=353". Therefore, `[gpslideshow exclude=353]`
 
 = My thumbnails aren't scrolling, what's up? =
 Make sure you have at least 6 thumbnails for that to work properly. Otherwise thumbnails are probably not necessary.
@@ -70,6 +70,11 @@ Your images have spaces in them! Replace those with dashes or underscores and yo
 4. Different styles/colors.
 
 == Changelog ==
+= 1.4.1 =
+* Fixed Quotes in title bug
+* Fixed dashes bug
+* added [gpslideshow] as an embed
+
 = 1.4 =
 * Thumbnails now are all square and can be up to size 100
 * Positioning issues fixed centering images vertically & horizontally (less reliance on DOM)
