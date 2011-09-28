@@ -1,14 +1,14 @@
 <?php
-class GalleryPlugin {
-	var $version = '1.4';
+class SGProPlugin {
 	var $plugin_name;
 	var $plugin_base;
-	var $pre = 'Gallery';
+	var $pre = 'SGPro';
 	var $debugging = false;
 	var $menus = array();
+	var $latestorbit = 'jquery.orbit-1.3.0.js';
 	var $sections = array(
-		'gallery'	=>	'gallery-slides',
-		'settings'	=>	'gallery',
+		'sgpro'     =>	'sgpro-slides',
+		'settings'  =>	'sgpro',
 	);
 	var $helpers = array('Db', 'Html', 'Form', 'Metabox');
 	var $models = array('Slide');
@@ -85,15 +85,15 @@ class GalleryPlugin {
 	
 	function initialize_options() {
 		$styles = array(
-			'width'					=>	"450",
-			'height'				=>	"300",
+			'width'				=>	"450",
+			'height'			=>	"300",
 			'thumbheight'			=>	"75",
-			'align'					=>	"none",
-			'border'				=>	"1px solid #CCCCCC",
+			'align'				=>	"none",
+			'border'			=>	"1px solid #CCCCCC",
 			'background'			=>	"#000000",
 			'infobackground'		=>	"#000000",
-			'infocolor'				=>	"#FFFFFF",
-			'infomin'				=>	"Y",
+			'infocolor'			=>	"#FFFFFF",
+			'infomin'			=>	"Y",
 			'resizeimages'			=>	"Y",
 			'resizeimages2'			=>	"N"
 		);
@@ -107,6 +107,7 @@ class GalleryPlugin {
 		$this -> add_option('nolinkpage', 0);
 		$this -> add_option('pagelink', "S");
 		$this -> add_option('captionlink', "N");
+		$this -> add_option('transition', "F");
 		$this -> add_option('information', "Y");
 		$this -> add_option('information_temp', "Y");
 		$this -> add_option('infospeed', 10);
@@ -120,9 +121,23 @@ class GalleryPlugin {
 		$this -> add_option('thumbactive', "#FFFFFF");
 		$this -> add_option('autoslide', "Y");
 		$this -> add_option('autoslide_temp', "Y");
-		$this -> add_option('autospeed', 10);
 		$this -> add_option('imagesbox', "T");
-	}
+		$this -> add_option('autospeed', 10);
+                $this -> add_option('widecenter', "Y");
+		// Orbit Only
+		$this -> add_option('autospeed2', 5000);
+		$this -> add_option('duration', 700);
+		$this -> add_option('othumbs', "B");
+                $this -> add_option('bullcenter', "true");
+		//Multi-ImageSlide
+		$this -> add_option('multicols', 3);
+		$this -> add_option('dropshadow', 'N');
+                //Premium
+                $this -> add_option('custslide', 10);
+                $this -> add_option('preload', 'N');
+                $this -> add_option('manager', 'manage_options');
+                $this -> add_option('orbitinfo', 'Y');
+		}
 	
 	function render_msg($message = '') {
 		$this -> render('msg-top', array('message' => $message), true, 'admin');
@@ -184,7 +199,7 @@ class GalleryPlugin {
 			$filefull = $filepath . $filename;
 			if (file_exists($filefull)) {
 				require_once($filefull);
-				$class = 'Gallery' . $name;
+				$class = 'SGPro' . $name;
 				if (${$name} = new $class) {
 					return ${$name};
 				}
@@ -220,15 +235,13 @@ class GalleryPlugin {
 	
 //	IF ( SG2_LOAD_CSS )
 	function sg2_enqueue_styles() {
-		global $version;
-		$galleryStyleUrl = SG2_PLUGIN_URL . '/css/gallery-css.php?v='. $version .'&amp;pID=' . $GLOBALS['post']->ID;
 		
+		$cssfile = ($this -> get_option('transition_temp') == 'F') ? 'gallery-css.php' : 'orbit-css.php';
+		$galleryStyleFile = SG2_PLUGIN_DIR . '/css/'. $cssfile;
+		$galleryStyleUrl = SG2_PLUGIN_URL . '/css/'. $cssfile .'?v='. SG2_VERSION .'&amp;pID=' . $GLOBALS['post']->ID;
 		if($_SERVER['HTTPS']) {
 			$galleryStyleUrl = str_replace("http:","https:",$galleryStyleUrl);
-		}		
-        $galleryStyleFile = SG2_PLUGIN_DIR . '/css/gallery-css.php';
-//		$src = WP_PLUGIN_DIR.'/' . SG2_PLUGIN_NAME . '/css/gallery-css.php?2=1&site='.WP_PLUGIN_DIR;
-//		define $infogal = $this;
+		}
 		$infogal = $this;
 		if ( file_exists($galleryStyleFile) ) {
 			if ($styles = $this -> get_option('styles')) {
@@ -254,30 +267,9 @@ class GalleryPlugin {
 					$galleryStyleUrl .= "&amp;align=" . urlencode($sval);
 				}
 			}
-/*			else { $galleryStyleUrl .= "&amp;auto_temp=empty"; }
-			if ($auto_temp2 = $this-> get_option('auto_temp2')) {
-				foreach ($auto_temp2 as $skey => $sval) {
-					if ($skey == $GLOBALS['post']->ID)
-					$galleryStyleUrl .= "&amp;auto_temp2=" . urlencode($sval);
-				}
-			}*/
-			
-			wp_register_style( 'slideshow-gallery-pro', $galleryStyleUrl);
-			wp_enqueue_style( 'slideshow-gallery-pro', $galleryStyleUrl,	array(), SG2_VERSION, 'all' );
+			wp_register_style( SG2_PLUGIN_NAME, $galleryStyleUrl);
+			wp_enqueue_style( SG2_PLUGIN_NAME, $galleryStyleUrl,	array(), SG2_VERSION, 'all' );
 		}
-/*		function sg2_style_head($url) {
-			print "<link rel='stylesheet' type='text/css' href='" . get_bloginfo('wpurl') . "/wp-content/plugins/slideshow-gallery-2/?my-custom-content=css'/>";
-		}
-		function sg2_style_cheat( $wp ) {
-			print"<link id='slideshow-gallery' rel='stylesheet' type='text/css' href='" . $wp . "'/>";
-		}
-		/* Known Issue - passing a function into the second string makes the link info go above <html> */
-		/* FIX for QTranslate - Uncomment for this plugin */
-	/*	if (!is_admin) {
-			add_filter('wp_print_styles', sg2_style_cheat($galleryStyleUrl) );
-		}*/
-		
-		
 	}
 	function enqueue_scripts() {	
 		wp_enqueue_script('jquery');
@@ -286,7 +278,7 @@ class GalleryPlugin {
 			if (!empty($_GET['page']) && in_array($_GET['page'], (array) $this -> sections)) {
 				wp_enqueue_script('autosave');
 			
-				if ($_GET['page'] == 'gallery') {
+				if ($_GET['page'] == 'sgpro') {
 					wp_enqueue_script('common');
 					wp_enqueue_script('wp-lists');
 					wp_enqueue_script('postbox');
@@ -294,7 +286,7 @@ class GalleryPlugin {
 					wp_enqueue_script('settings-editor', '/' . PLUGINDIR . '/' . SG2_PLUGIN_NAME . '/js/settings-editor.js', array('jquery'), '1.0');
 				}
 				
-				if ($_GET['page'] == "gallery-slides" && $_GET['method'] == "order") {
+				if ($_GET['page'] == "sgpro-slides" && $_GET['method'] == "order") {
 					wp_enqueue_script('jquery-ui-sortable');
 				}
 				wp_enqueue_script('jquery-ui-sortable');
@@ -302,15 +294,22 @@ class GalleryPlugin {
 				add_thickbox();
 			}
 			
-			wp_enqueue_script(SG2_PLUGIN_NAME . 'admin', '/' . PLUGINDIR . '/' . SG2_PLUGIN_NAME . '/js/admin.js', null, '1.0');
+//			wp_enqueue_script(SG2_PLUGIN_NAME . 'admin', '/' . PLUGINDIR . '/' . SG2_PLUGIN_NAME . '/js/admin.js', null, '1.0');
 		} else {
-			wp_enqueue_script(SG2_PLUGIN_NAME, '/' . PLUGINDIR . '/' . SG2_PLUGIN_NAME . '/js/gallery-min.js', null);
-			wp_register_script('sgpro_preloader', '/' . PLUGINDIR . '/' . SG2_PLUGIN_NAME . '/pro/preloader.js');
-			wp_enqueue_script('sgpro_preloader');
-			
-			if ($this -> get_option('imagesbox') == "T") {
-				add_thickbox();
+			if ($this -> get_option('transition_temp') == "F") {
+				wp_enqueue_script(SG2_PLUGIN_NAME, '/' . PLUGINDIR . '/' . SG2_PLUGIN_NAME . '/js/gallery-min.js', null);
+			} else if ($this -> get_option('transition_temp') != "F") {
+				wp_register_script('sgpro_ulslide', '/' . PLUGINDIR . '/' . SG2_PLUGIN_NAME . '/js/'.$this -> latestorbit);
+				wp_enqueue_script('sgpro_ulslide');
 			}
+			if (SG2_PRO && ($this->get_option('preload') == 'Y')) {
+				wp_register_script('sgpro_preloader', '/' . PLUGINDIR . '/' . SG2_PLUGIN_NAME . '/pro/preloader.js');
+				wp_enqueue_script('sgpro_preloader');
+			}
+
+			if ($this -> get_option('imagesbox') == "T")
+				add_thickbox();
+			
 		}
 		
 		return true;
@@ -518,7 +517,7 @@ class GalleryPlugin {
 		if (!$this_plugin) $this_plugin = plugin_basename(__FILE__);
 		 
 		if ($file == $this_plugin){
-			$settings_link = '<a href="admin.php?page=gallery.php">'.__("Settings", SG2_PLUGIN_NAME).'</a>';
+			$settings_link = '<a href="admin.php?page=sgpro">'.__("Settings", SG2_PLUGIN_NAME).'</a>';
 			array_unshift($links, $settings_link);
 		}
 		return $links;

@@ -57,8 +57,8 @@
 							<td>
                             	<a class="row-title" href="<?php echo $this -> url; ?>&amp;method=save&amp;id=<?php echo $slide -> id; ?>" title=""><?php echo $slide -> title; ?></a>
                                 <div class="row-actions">
-                                	<span class="edit"><?php echo $this -> Html -> link(__('Edit', SG2_PLUGIN_NAME), "?page=gallery-slides&amp;method=save&amp;id=" . $slide -> id); ?> |</span>
-                                    <span class="delete"><?php echo $this -> Html -> link(__('Delete', SG2_PLUGIN_NAME), "?page=gallery-slides&amp;method=delete&amp;id=" . $slide -> id, array('class' => "submitdelete", 'onclick' => "if (!confirm('" . __('Are you sure you want to permanently remove this slide?', SG2_PLUGIN_NAME) . "')) { return false; }")); ?></span>
+                                	<span class="edit"><?php echo $this -> Html -> link(__('Edit', SG2_PLUGIN_NAME), "?page=sgpro-slides&amp;method=save&amp;id=" . $slide -> id); ?> |</span>
+                                    <span class="delete"><?php echo $this -> Html -> link(__('Delete', SG2_PLUGIN_NAME), "?page=sgpro-slides&amp;method=delete&amp;id=" . $slide -> id, array('class' => "submitdelete", 'onclick' => "if (!confirm('" . __('Are you sure you want to permanently remove this slide?', SG2_PLUGIN_NAME) . "')) { return false; }")); ?></span>
                                 </div>
                             </td>
                             <td>

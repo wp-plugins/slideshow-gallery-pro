@@ -36,6 +36,14 @@
 				<span class="howto"><?php _e('Full Edition only. Should images be resized proportionally to fit the height of the slideshow area. ', SG2_PLUGIN_NAME); ?></span>
 			</td>
 		</tr>
+                <tr>
+                    <th><label for="widecenter"><?php _e('Center Vertically?', SG2_PLUGIN_NAME); ?></label></th>
+                    <td>
+                        <label><input <?php echo ($this->get_option('widecenter') == "Y") ? 'checked="checked"' : ''; ?> type="radio" name="widecenter" value="Y" /> <?php _e('Yes', SG2_PLUGIN_NAME); ?></label>
+                        <label><input <?php echo ($this->get_option('widecenter') == "N") ? 'checked="checked"' : ''; ?> type="radio" name="widecenter" value="N" /> <?php _e('No', SG2_PLUGIN_NAME); ?></label>
+                    </td>
+                </tr>
+                
 		<tr>
 			<th><label for="styles.width"><?php _e('Gallery Width', SG2_PLUGIN_NAME); ?></label></th>
 			<td>

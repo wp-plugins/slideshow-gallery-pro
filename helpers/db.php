@@ -1,5 +1,5 @@
 <?php
-class GalleryDbHelper extends GalleryPlugin {
+class SGProDbHelper extends SGProPlugin {
 	var $name = 'Db';
 	
 	function find($conditions = array(), $fields = false, $order = array('id', "DESC"), $assign = true, $atts = array()) {
@@ -119,7 +119,7 @@ class GalleryDbHelper extends GalleryPlugin {
 		$data = (empty($data[$this -> model])) ? $data : $data[$this -> model];
 		
 		$r = wp_parse_args($data, $defaults);
-		$this -> data = GalleryHtmlHelper::array_to_object($r);
+		$this -> data = SGProHtmlHelper::array_to_object($r);
 		
 		if ($validate == true) {
 			if (method_exists($this, 'validate')) {

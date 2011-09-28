@@ -4,7 +4,7 @@
 		<a href="<?php echo $this -> url; ?>"><?php _e('&larr; Manage All Slides', SG2_PLUGIN_NAME); ?></a>
 	</div>
 	<?php if (!empty($slides)) : ?>
-	<?php $slidenum = 10; ?>
+	<?php $slidenum = $this->get_option('custslide'); ?>
 	<?php foreach ($slides as $slide) : 
 		for ($i=1;$i <= $slidenum; $i++) {
 			if ($slide -> section == $i)

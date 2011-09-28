@@ -11,7 +11,7 @@ wp_nonce_field('meta-box-order', 'meta-box-order-nonce', false);
 		<div id="poststuff" class="metabox-holder has-right-sidebar">			
 			<div id="side-info-column" class="inner-sidebar">		
 				<?php do_action('submitpage_box'); ?>	
-				<?php do_meta_boxes($this -> menus['gallery'], 'side', $post); ?>
+				<?php do_meta_boxes($this -> menus['sgpro'], 'side', $post); ?>
                 <?php do_action('submitpage_box'); ?>
 				<div id="submitdiv" class="postbox">
 							<?php if(SG2_PRO) {?>
@@ -44,11 +44,11 @@ wp_nonce_field('meta-box-order', 'meta-box-order-nonce', false);
 			</div>
 			<div id="post-body">
 				<div id="post-body-content">
-					<?php do_meta_boxes($this -> menus['gallery'], 'normal', $post); ?>
+					<?php do_meta_boxes($this -> menus['sgpro'], 'normal', $post); ?>
 				</div>
 			</div>
 			<div id="side-info-column" class="inner-sidebar" style="margin-top:450px">		
-				<?php do_meta_boxes($this -> menus['gallery'], 'side', $post); ?>
+				<?php do_meta_boxes($this -> menus['sgpro'], 'side', $post); ?>
                 <?php do_action('submitpage_box'); ?>
 			</div>
 			<br class="clear" />

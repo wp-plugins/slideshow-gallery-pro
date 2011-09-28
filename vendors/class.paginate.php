@@ -1,5 +1,5 @@
 ﻿<?php
-class GalleryPaginate extends GalleryPlugin {
+class SGProPaginate extends SGProPlugin {
 	
 	/**
 	 * DB table name to paginate on
@@ -49,7 +49,7 @@ class GalleryPaginate extends GalleryPlugin {
 	
 	var $pagination = '';
 	
-	function GalleryPaginate($table = '', $fields = '', $sub = '', $parent = '') {
+	function SGProPaginate($table = '', $fields = '', $sub = '', $parent = '') {
 		$this -> sub = $sub;
 		$this -> parentd = $parent;
 	
@@ -175,7 +175,7 @@ class GalleryPaginate extends GalleryPlugin {
 			$this -> pagination .= '<span class="displaying-num">' . __('Displaying', SG2_PLUGIN_NAME) . ' ' . ($this -> begRecord + 1) . ' - ' . ($this -> begRecord + count($records)) . ' ' . __('of', SG2_PLUGIN_NAME) . ' ' . $allRecordsCount . '</span>';
 		
 			if ($this -> page > 1) {
-				$this -> pagination .= '<a class="prev page-numbers" href="' . GalleryHtmlHelper::retainquery($add_prev) . '" title="' . __('Previous Page', SG2_PLUGIN_NAME) . '">&laquo;</a>';
+				$this -> pagination .= '<a class="prev page-numbers" href="' . SGProHtmlHelper::retainquery($add_prev) . '" title="' . __('Previous Page', SG2_PLUGIN_NAME) . '">&laquo;</a>';
 			}
 			
 			while ($p <= $allRecordsCount) {
@@ -183,7 +183,7 @@ class GalleryPaginate extends GalleryPlugin {
 					
 				if ($k >= ($this -> page - 5) && $k <= ($this -> page + 5)) {
 					if ($k != $this -> page) {
-						$this -> pagination .= '<a class="page-numbers" href="' . GalleryHtmlHelper::retainquery($add_numbers) . '" title="' . __('Page', SG2_PLUGIN_NAME) . ' ' . $k . '">' . $k . '</a>';
+						$this -> pagination .= '<a class="page-numbers" href="' . SGProHtmlHelper::retainquery($add_numbers) . '" title="' . __('Page', SG2_PLUGIN_NAME) . ' ' . $k . '">' . $k . '</a>';
 					} else {
 						$this -> pagination .= '<span class="page-numbers current">' . $k . '</span>';
 					}
@@ -194,7 +194,7 @@ class GalleryPaginate extends GalleryPlugin {
 			}
 			
 			if ((count($records) + $this -> begRecord) < $allRecordsCount) {
-				$this -> pagination .= '<a class="next page-numbers" href="' . GalleryHtmlHelper::retainquery($add_next) . '" title="' . __('Next Page', SG2_PLUGIN_NAME) . '">&raquo;</a>';
+				$this -> pagination .= '<a class="next page-numbers" href="' . SGProHtmlHelper::retainquery($add_next) . '" title="' . __('Next Page', SG2_PLUGIN_NAME) . '">&raquo;</a>';
 			}
 		}
 		

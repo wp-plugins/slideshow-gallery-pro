@@ -4,11 +4,11 @@ Plugin Name: Slideshow Gallery Pro
 Plugin URI: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/
 Author: Cameron Preston
 Author URI: http://cameronpreston.com
-Description: An easily embedable photo viewing solution for photographers and bloggers that integrates with the WordPress Gallery System and offers a custom Gallery solution as well. Captions, Thumbnails, Shadowbox, PrettyPhoto, Management Tool and more!
-Version: 1.4.1
+Description: An easily embedable photo viewing solution for photographers and bloggers that integrates with the WordPress Gallery System and offers a custom Gallery solution as well. Slideshow Orbit, Captions, Thumbnails, Shadowbox, PrettyPhoto, Management Tool and more!
+Version: 2.0
 */
 define('DS', DIRECTORY_SEPARATOR);
-define( 'SG2_VERSION', '1.4' );
+define( 'SG2_VERSION', '2' );
 $uploads = wp_upload_dir();
 if ( ! defined( 'SG2_PLUGIN_BASENAME' ) )
 	define( 'SG2_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
@@ -29,7 +29,7 @@ else
 	
 require_once SG2_PLUGIN_DIR . '/slideshow-gallery-plugin.php';
 	
-class Gallery extends GalleryPlugin {
+class SGPro extends SGProPlugin {
 	function __construct() {
 		$url = explode("&", $_SERVER['REQUEST_URI']);
 		$this -> url = $url[0];
@@ -52,11 +52,11 @@ class Gallery extends GalleryPlugin {
 		
 	}
 	function admin_menu() {
-		add_menu_page(__('Slideshow', SG2_PLUGIN_NAME), __('Slideshow', SG2_PLUGIN_NAME), 'manage_options', "gallery", array($this, 'admin_settings'), SG2_PLUGIN_URL . '/images/icon.png');
-		$this -> menus['gallery'] = add_submenu_page("gallery", __('Configuration', SG2_PLUGIN_NAME), __('Configuration', SG2_PLUGIN_NAME), 'manage_options', "gallery", array($this, 'admin_settings'));
-		$this -> menus['gallery-slides'] = add_submenu_page("gallery", __('Manage Slides', SG2_PLUGIN_NAME), __('Manage Slides', SG2_PLUGIN_NAME), 'manage_options', "gallery-slides", array($this, 'admin_slides'));		
+		add_menu_page(__('Slideshow', SG2_PLUGIN_NAME), __('Slideshow', SG2_PLUGIN_NAME), $this -> get_option('manager'), "sgpro", array($this, 'admin_settings'), SG2_PLUGIN_URL . '/images/icon.png');
+		$this -> menus['sgpro'] = add_submenu_page("sgpro", __('Configuration', SG2_PLUGIN_NAME), __('Configuration', SG2_PLUGIN_NAME), $this -> get_option('manager'), "sgpro", array($this, 'admin_settings'));
+		$this -> menus['sgpro-slides'] = add_submenu_page("sgpro", __('Manage Slides', SG2_PLUGIN_NAME), __('Manage Slides', SG2_PLUGIN_NAME), $this -> get_option('manager'), "sgpro-slides", array($this, 'admin_slides'));		
 		
-		add_action('admin_head-' . $this -> menus['gallery'], array($this, 'admin_head_gallery_settings'));
+		add_action('admin_head-' . $this -> menus['sgpro'], array($this, 'admin_head_gallery_settings'));
 	}
 	
 	function admin_head() {
@@ -64,13 +64,16 @@ class Gallery extends GalleryPlugin {
 	}
 	
 	function admin_head_gallery_settings() {		
-		add_meta_box('submitdiv', __('Save Settings', SG2_PLUGIN_NAME), array($this -> Metabox, "settings_submit"), $this -> menus['gallery'], 'side', 'core');
-		add_meta_box('generaldiv', __('General Settings', SG2_PLUGIN_NAME), array($this -> Metabox, "settings_general"), $this -> menus['gallery'], 'normal', 'core');
-		add_meta_box('linksimagesdiv', __('Links &amp; Images Overlay', SG2_PLUGIN_NAME), array($this -> Metabox, "settings_linksimages"), $this -> menus['gallery'], 'normal', 'core');
-		add_meta_box('stylesdiv', __('Appearance &amp; Styles', SG2_PLUGIN_NAME), array($this -> Metabox, "settings_styles"), $this -> menus['gallery'], 'normal', 'core');
+		add_meta_box('submitdiv', __('Save Settings', SG2_PLUGIN_NAME), array($this -> Metabox, "settings_submit"), $this -> menus['sgpro'], 'side', 'core');
+		add_meta_box('generaldiv', __('General Settings', SG2_PLUGIN_NAME), array($this -> Metabox, "settings_general"), $this -> menus['sgpro'], 'normal', 'core');
+		add_meta_box('linksimagesdiv', __('Links &amp; Images Overlay', SG2_PLUGIN_NAME), array($this -> Metabox, "settings_linksimages"), $this -> menus['sgpro'], 'normal', 'core');
+		add_meta_box('stylesdiv', __('Appearance &amp; Styles', SG2_PLUGIN_NAME), array($this -> Metabox, "settings_styles"), $this -> menus['sgpro'], 'normal', 'core');
+                if ( SG2_PRO ) {
+                    add_meta_box('prodiv', __('Premium Edition Only', SG2_PLUGIN_NAME), array($this -> Metabox, "settings_pro"), $this -> menus['sgpro'], 'normal', 'core');
+                }
 		
-		do_action('do_meta_boxes', $this -> menus['gallery'], 'normal');
-		do_action('do_meta_boxes', $this -> menus['gallery'], 'side');
+		do_action('do_meta_boxes', $this -> menus['sgpro'], 'normal');
+		do_action('do_meta_boxes', $this -> menus['sgpro'], 'side');
 		
 	}
 	
@@ -111,12 +114,23 @@ class Gallery extends GalleryPlugin {
 		}
 		elseif ( ! empty( $custom ) ) {
 			$slides = $this -> Slide -> find_all(array('section'=>(int) stripslashes($custom)), null, array('order', "ASC"));
-			$content = $this -> render('gallery', array('slides' => $slides, 'frompost' => false), false, 'default');
+			if ( $this -> get_option('transition_temp') == "F") {
+				$content = $this -> render('gallery', array('slides' => $slides, 'frompost' => false), false, 'default');
+			} elseif ( $this -> get_option('transition_temp') == "OM") {
+				$content = $this -> render('multislider', array('slides' => $slides, 'frompost' => false), false, 'pro');
+			} else {
+				$content = $this -> render('default', array('slides' => $slides, 'frompost' => false), false, 'orbit');
+			}			
 		}
 		else {
 			$slides = $this -> Slide -> find_all(null, null, array('order', "ASC"));
-/*			print "<script>($slides)</script>";*/
-			$content = $this -> render('gallery', array('slides' => $slides, 'frompost' => false), false, 'default');
+			if ( $this -> get_option('transition_temp') == "F") {
+				$content = $this -> render('gallery', array('slides' => $slides, 'frompost' => false), false, 'default');
+			} elseif ( $this -> get_option('transition_temp') == "OM") {
+				$content = $this -> render('multislider', array('slides' => $slides, 'frompost' => false), false, 'pro');
+			} else {
+				$content = $this -> render('default', array('slides' => $slides, 'frompost' => false), false, 'orbit');
+			}
 		}
 		$post -> ID = $post_id_orig;
 		if ($output) { echo $content; } else { return $content; }
@@ -124,7 +138,7 @@ class Gallery extends GalleryPlugin {
 	function embed($atts = array(), $content = null) {
 		//global variables
 		global $wpdb;
-		$defaults = array('post_id' => null, 'exclude' => null, 'include' => null, 'custom' => null, 'caption' => null, 'auto' => null, 'w' => null, 'h' => null, 'nolink' => null, 'slug' => null, 'thumbs' => null, 'align' => null);
+		$defaults = array('post_id' => null, 'exclude' => null, 'include' => null, 'custom' => null, 'caption' => null, 'auto' => null, 'w' => null, 'h' => null, 'nolink' => null, 'slug' => null, 'thumbs' => null, 'align' => null, 'transition' => null);
 		extract( shortcode_atts( $defaults, $atts ) );
 		
 		$this->resetTemp();
@@ -145,10 +159,25 @@ class Gallery extends GalleryPlugin {
 			}
 		}
 		if ( !empty( $thumbs ) ) { 
-			if (($this -> get_option( 'thumbnails')=='Y' ) && ( $thumbs == 'off')) {
+			if (($this -> get_option( 'thumbnails')=='Y' ) && ( $thumbs == 'off' )) {
 				$this -> update_option('thumbnails_temp', 'N');	
-			} elseif (($this -> get_option( 'thumbnails')=='N' ) && ( $thumbs == 'on')) {
+			} elseif (($this -> get_option( 'thumbnails')=='N' ) && ( $thumbs == 'on' )) {
 				$this -> update_option( 'thumbnails_temp', 'Y' );
+			}
+		}
+		if ( !empty( $transition ) ) {
+			if (($this -> get_option( 'transition' )!='F' ) && ( $transition == 'fade' )) {
+				$this -> update_option('transition_temp', 'F');	
+			} elseif (($this -> get_option( 'transition' )!='OF' ) && ( $transition == 'orbit-fade' )) {
+				$this -> update_option( 'transition_temp', 'OF' );
+			} elseif ( $transition == 'vertical-slide' ) {
+				$this -> update_option( 'transition_temp', 'OVS' );
+			} elseif (($this -> get_option( 'transition' )!='OHS' ) && ( $transition == 'horizontal-slide' )) {
+				$this -> update_option( 'transition_temp', 'OHS' );
+			} elseif (($this -> get_option( 'transition' )!='OHP' ) && ( $transition == 'horizontal-push' )) {
+				$this -> update_option( 'transition_temp', 'OHP' );
+			} elseif (($this -> get_option( 'transition' )!='OM' ) && ( $transition == 'orbit-multi' )) {
+				$this -> update_option( 'transition_temp', 'OM' );
 			}
 		}
 		if ( !empty( $auto ) ) { 
@@ -173,7 +202,11 @@ class Gallery extends GalleryPlugin {
 			else { $this -> update_option( 'nolinker', 'N' ); }
 		if ( !empty($custom) ) {
 			$slides = $this -> Slide -> find_all(array('section'=>(int) stripslashes($custom)), null, array('order', "ASC"));
-			$content = $this -> render('gallery', array('slides' => $slides, 'frompost' => false), false, 'default');
+			if ( $this -> get_option('transition_temp') == "F") {
+				$content = $this -> render('gallery', array('slides' => $slides, 'frompost' => false), false, 'default');
+			} else {
+				$content = $this -> render('default', array('slides' => $slides, 'frompost' => false), false, 'orbit');
+			}					
 		} else {
 			global $post;
 			$post_id_orig = $post -> ID;
@@ -209,6 +242,12 @@ class Gallery extends GalleryPlugin {
 		elseif ($this -> get_option('thumbnails')=='N') { $this -> update_option('thumbnails_temp', 'N'); }
 		if ($this -> get_option('autoslide')=='Y') { $this -> update_option('autoslide_temp', 'Y'); }
 		elseif ($this -> get_option('autoslide')=='N') { $this -> update_option('autoslide_temp', 'N'); }
+		if ($this -> get_option('transition')=='F') { $this -> update_option('transition_temp', 'F'); }
+		elseif ($this -> get_option('transition')=='OF') { $this -> update_option('transition_temp', 'OF'); }
+		elseif ($this -> get_option('transition')=='OVS') { $this -> update_option('transition_temp', 'OVS'); }
+		elseif ($this -> get_option('transition')=='OHS') { $this -> update_option('transition_temp', 'OHS'); }
+		elseif ($this -> get_option('transition')=='OHP') { $this -> update_option('transition_temp', 'OHP'); }
+		elseif ($this -> get_option('transition')=='OM') { $this -> update_option('transition_temp', 'OM'); }
 		$style = array();
 		$style = $this -> get_option('styles');
 		$style['align'] = "none";
@@ -232,7 +271,13 @@ class Gallery extends GalleryPlugin {
 				else { unset($attachments[$id]); }
 			}
 		}
-		$content = $this -> render('gallery', array('slides' => $attachments, 'frompost' => true), false, 'default');
+		if ( $this -> get_option('transition_temp') == "F") {
+			$content = $this -> render('gallery', array('slides' => $attachments, 'frompost' => true), false, 'default');
+		} elseif ( $this -> get_option('transition_temp') == "OM") {
+			$content = $this -> render('multislider', array('slides' => $attachments, 'frompost' => true), false, 'pro');
+		} else {
+			$content = $this -> render('default', array('slides' => $attachments, 'frompost' => true), false, 'orbit');
+		}	
 		return $content;
 	}	
 	
@@ -321,7 +366,7 @@ class Gallery extends GalleryPlugin {
 				break;
 			default					:
 				if (!empty($_POST)) {
-					foreach ($_POST as $pkey => $pval) {					
+					foreach ($_POST as $pkey => $pval) {		
 						$this -> update_option($pkey, $pval);
 					}
 					
@@ -335,6 +380,6 @@ class Gallery extends GalleryPlugin {
 	}
 	
 }
-//initialize a Gallery object
-$Gallery = new Gallery();
+//initialize a SGPro object
+$SGPro = new SGPro();
 ?>

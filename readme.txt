@@ -1,36 +1,51 @@
 === Slideshow Gallery Pro ===
 Contributors: Cameron Preston
 Donate link: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro
-Tags: slideshow pro, prettyphoto, slide show, shadowbox, wordpress plugins, slideshow gallery, slides, slideshow, image gallery, gallery, images, jquery, ajax
+Tags: slideshow pro, prettyphoto, slide show, shadowbox, orbit, zurb, zurb orbit, slideshow gallery, slides, slideshow, image gallery, gallery, images, jquery, slideshow orbit
 Requires at least: 2.8
-Tested up to: 3.2
-Stable tag: 1.4.1
+Tested up to: 3.2.1
+Stable tag: 2.0
 
-An easily embedable photo viewing solution for photographers and bloggers that integrates with the WordPress Gallery System and offers a custom Gallery solution as well. Captions, Thumbnails, Shadowbox, PrettyPhoto, Management Tool and more!
+A multi-transition easily embeddable slideshow now utilizing Slideshow Orbit. Download the Manual
 
 == Description ==
-A simple to use but highly customizable photo and image viewing plugin that integrates seemlessly with the WordPress image upload and gallery system.  Using the most current web technologies like AJAX and JQuery, this viewing and linking solution is the best and easiest to use slideshow available on Wordpress.
+A simple to use but highly customizable photo and image viewing plugin that integrates seamlessly with the WordPress image upload and gallery system.  Using the most current web technologies like AJAX and JQuery, this viewing and linking solution is the best and easiest to use slideshow available on Wordpress.
 
 Check out more details here: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/
 
-Flexible, configurable and easy to use. Embed-able and hardcode-able and improved. To embed into a post/page, simply insert <code>[gpslideshow]</code> into its content with optional <code>post_id</code>, <code>exclude</code>, <code>exclude</code>, and <code>auto</code>  parameters. Hardcoding options are also available and easily added. Check out the Slideshow Gallery Pro Manual on the plugin details page (linked above) for code examples.
+Flexible, configurable and easy to use. Embeddable and hardcodeable and improved. To embed into a post/page, simply insert <code>[gpslideshow]</code> into its content with optional <code>post_id</code>, <code>exclude</code>, <code>exclude</code>, and <code>auto</code>  parameters. Hardcoding options are also available and easily added. Check out the Slideshow Gallery Pro Manual on the plugin details page (linked above) for code examples.
 
 Check out the website and download the manual to get fully acquainted with the features!
 
+As of 2.0 integrated with Zurb Slideshow Orbit!
+
 == Installation ==
 Installing the WordPress Slideshow Gallery Pro plugin manually is very easy. Simply follow the steps below.
+
 1. Extract the package to obtain the `slideshow-gallery-pro` folder
+
 1. Upload the `slideshow-gallery-pro` folder to the `/wp-content/plugins/` directory
+
 1. Activate the plugin through the 'Plugins' menu in WordPress
+
 1. Configure the settings according to your needs through the 'Slideshow' > 'Configuration' menu
+
 1. Add and manage your slides in the 'Slideshow' section (Or just use the built in wordpress gallery)
+
 1. Put `[gpslideshow post_id="X" exclude="" caption="on/off"]` to embed a slideshow with the images of a post into your posts/pages or use `[gpslideshow custom=1]` to embed a slideshow with your custom added slides or `<?php if (class_exists('Gallery')) { $Gallery = new Gallery(); $Gallery -> slideshow($output = true, $post_id = null); }; ?>` into your WordPress theme
+
 1. For the most up to date list of options available please goto: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/
-Full Edition customers (my plugin supporters). Installing full functionality is easy! 
-1.You will either download from the members page the full edition or have it emailed to you.
-1. Just make sure the `/pro/` folder is in your /wp-content/plugins/slideshow-gallery-pro/ directory and you're set!
+
+1. Premium Edition: You will either download from the members page the full edition or have it emailed to you.
+
+1. Premium Edition: Just make sure the `/pro/` folder is in your /wp-content/plugins/slideshow-gallery-pro/ directory and you're set!
 
 == Frequently Asked Questions ==
+= Im having some issues with my plugin, whats a good first look? =
+I would start with Reset to Defaults on the top of your plugin configuration page.
+
+= My images sometimes display halfway down =
+This could be a strange hosting issue crossed with browser issue. Turn of Vertical Centering in the styling configuration
 
 = How can I display the slideshow in a sidebar as a widget? =
 Install the plugin Advanced Text Widget and put the embed code in there.
@@ -68,8 +83,21 @@ Your images have spaces in them! Replace those with dashes or underscores and yo
 2. Slideshow gallery pro with thumbnails turned OFF.
 3. Slideshow gallery pro with thumbnails at the top.
 4. Different styles/colors.
+5. Test editor (use [gpslideshow] though)
+6. Slideshow Orbit paused
+7. Slideshow Orbit playing
+8. General Orbit Options
+9. General Default Options
 
 == Changelog ==
+= 2.0 =
+* Added Slideshow Orbit Javascript Library
+* Fixed preloader bug
+* Added Premium Edition Configuration Section
+* Choose admin author or editor for plugin cabilities
+* Added ability to turn off vertical centering if buggy
+* French and Russian translations!!!
+
 = 1.4.1 =
 * Fixed Quotes in title bug
 * Fixed dashes bug
@@ -187,6 +215,6 @@ Your images have spaces in them! Replace those with dashes or underscores and yo
 
 == Upgrade Notice ==
 
-= 1.3 =
+= 2.0 =
 Upgrade for new embed features and some major bug fixes!
-Full Edition users need not download! Old editions of full (2010) will not be compatible with this. Re-download from Members page.
+Premium Edition users need not download! Download off the Members Page

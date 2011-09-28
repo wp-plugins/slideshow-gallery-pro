@@ -119,7 +119,7 @@ TINY.sgpro_slideshow.prototype={
 		i.onload=new Function(this.n+'.le('+s+','+c+')');
 		i.src=this.a[s].p;
 		i.id=this.a[s].u;
-		jQuery('#sgpro_image img').wrap('<div class="sgpro_holder" />');
+		//jQuery('#sgpro_image img').wrap('<div class="sgpro_holder" />');
 		if(this.thumbs){
 			var a= tag('img',this.p), l=a.length, x=0;
 /*			var a= tag('rel','lightbox');*/
@@ -135,7 +135,7 @@ TINY.sgpro_slideshow.prototype={
 		var ht = this.oh-parseInt(iheight);
 		var iwidth = this.resize(this.i,null,this.oh);
 		var w = this.o-parseInt(iwidth); //this.o is width box
-		if (ht > 0) { // WIDE
+		if (ht > 0 && this.widecenter) { // WIDE
 			var l=Math.floor(ht/2);
 			this.i.style.borderTop=(ht-l)+'px solid ' + this.letterbox;
 			this.i.style.borderBottom=(ht-l)+'px solid ' + this.letterbox;

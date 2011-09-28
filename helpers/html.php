@@ -1,5 +1,5 @@
 <?php
-class GalleryHtmlHelper extends GalleryPlugin {
+class SGProHtmlHelper extends SGProPlugin {
 	function link($name = '', $href = '/', $args = array()) {
 		$defaults = array(
 			'title'			=>	(empty($args['title'])) ? $title : $args['title'],
@@ -64,7 +64,7 @@ class GalleryHtmlHelper extends GalleryPlugin {
 				
 				switch ($mn[1]) {
 					case 'Slide'		:
-						$errors = GallerySlide::validate($_POST);
+						$errors = SGProSlide::validate($_POST);
 						break;
 				}			
 						
