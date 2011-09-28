@@ -5,7 +5,7 @@ Plugin URI: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/
 Author: Cameron Preston
 Author URI: http://cameronpreston.com
 Description: An easily embedable photo viewing solution for photographers and bloggers that integrates with the WordPress Gallery System and offers a custom Gallery solution as well. Slideshow Orbit, Captions, Thumbnails, Shadowbox, PrettyPhoto, Management Tool and more!
-Version: 2.0
+Version: 2.0.1
 */
 define('DS', DIRECTORY_SEPARATOR);
 define( 'SG2_VERSION', '2' );

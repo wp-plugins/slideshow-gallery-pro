@@ -4,7 +4,7 @@ Donate link: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro
 Tags: slideshow pro, prettyphoto, slide show, shadowbox, orbit, zurb, zurb orbit, slideshow gallery, slides, slideshow, image gallery, gallery, images, jquery, slideshow orbit
 Requires at least: 2.8
 Tested up to: 3.2.1
-Stable tag: 2.0
+Stable tag: 2.0.1
 
 A multi-transition easily embeddable slideshow now utilizing Slideshow Orbit. Download the Manual
 
