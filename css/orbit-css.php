@@ -133,7 +133,7 @@ div.timer {
     right: 10px;
     opacity: .6;
     cursor: pointer;
-    z-index: 1001; }
+    z-index: 100; }
 span.rotator {
     display: block;
 	/*display:none\9;  ie8 and below hack */
@@ -185,7 +185,7 @@ span.pause.active {
 .orbit-wrapper .orbit-caption {
     background: #000;
     background: rgba(0,0,0,.6);
-    z-index: 1000;
+    z-index: 100;
     color: #fff;
 	text-align: center;
 	padding: 7px 0;

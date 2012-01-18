@@ -243,33 +243,45 @@ class SGProPlugin {
 			$galleryStyleUrl = str_replace("http:","https:",$galleryStyleUrl);
 		}
 		$infogal = $this;
-		if ( file_exists($galleryStyleFile) ) {
-			if ($styles = $this -> get_option('styles')) {
-				foreach ($styles as $skey => $sval) {
-					$galleryStyleUrl .= "&amp;" . $skey . "=" . urlencode($sval);
-				}
-			}
-			if ($width_temp = $this-> get_option('width_temp')) {
-				foreach ($width_temp as $skey => $sval) {
-					if ($skey == $GLOBALS['post']->ID)
-					$galleryStyleUrl .= "&amp;width_temp=" . urlencode($sval);
-				}
-			}
-			if ($height_temp = $this-> get_option('height_temp')) {
-				foreach ($height_temp as $skey => $sval) {
-					if ($skey == $GLOBALS['post']->ID)
-					$galleryStyleUrl .= "&amp;height_temp=" . urlencode($sval);
-				}
-			}
-			if ($align_temp = $this-> get_option('align_temp')) {
-				foreach ($align_temp as $skey => $sval) {
-					if ($skey == $GLOBALS['post']->ID)
-					$galleryStyleUrl .= "&amp;align=" . urlencode($sval);
-				}
-			}
-			wp_register_style( SG2_PLUGIN_NAME, $galleryStyleUrl);
-			wp_enqueue_style( SG2_PLUGIN_NAME, $galleryStyleUrl,	array(), SG2_VERSION, 'all' );
-		}
+        if (file_exists($galleryStyleFile)) {
+            if ($styles = $this->get_option('styles')) {
+                foreach ($styles as $skey => $sval) {
+                    $galleryStyleUrl .= "&amp;" . $skey . "=" . urlencode($sval);
+                }
+            }
+            $width_temp = $this->get_option('width_temp');
+            $height_temp = $this->get_option('height_temp');
+            $align_temp = $this->get_option('align_temp');
+            $nav_temp = $this->get_option('nav_temp');
+            //print_r($wp_query->current_post);
+                    
+            if (is_array($width_temp)) {
+                foreach ($width_temp as $skey => $sval) {
+                    if ($skey == $pID) 
+                        $galleryStyleUrl .= "&amp;width_temp=" . urlencode($sval);
+                }
+            }
+            if (is_array($height_temp)) {
+                foreach ($height_temp as $skey => $sval) {
+                    if ($skey == $pID)
+                        $galleryStyleUrl .= "&amp;height_temp=" . urlencode($sval);
+                }
+            }
+            if (is_array($align_temp)) {
+                foreach ($align_temp as $skey => $sval) {
+                    if ($skey == $pID)
+                        $galleryStyleUrl .= "&amp;align=" . urlencode($sval);
+                }
+            }
+            if (is_array($nav_temp)) {
+                foreach ($nav_temp as $skey => $sval) {
+                    if ($skey == $pID)
+                        $galleryStyleUrl .= "&amp;nav=" . urlencode($sval);
+                }
+            }
+            wp_register_style(SG2_PLUGIN_NAME . "_style", $galleryStyleUrl);
+			wp_enqueue_style(SG2_PLUGIN_NAME . "_style");
+	}
 	}
 	function enqueue_scripts() {	
 		wp_enqueue_script('jquery');

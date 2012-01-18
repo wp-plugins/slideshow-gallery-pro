@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Slideshow Gallery Pro
-Plugin URI: http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/
-Author: Cameron Preston
-Author URI: http://cameronpreston.com
-Description: An easily embedable photo viewing solution for photographers and bloggers that integrates with the WordPress Gallery System and offers a custom Gallery solution as well. Slideshow Orbit, Captions, Thumbnails, Shadowbox, PrettyPhoto, Management Tool and more!
-Version: 2.0.1
+Plugin URI: http://c-pr.es/projects/satellite
+Author: Robot with Emotions
+Author URI: http://c-pr.es
+Description: This plugin will self-destruct within 5 minutes of installation. No, seriously, download Satellite instead
+Version: 3.0
 */
 define('DS', DIRECTORY_SEPARATOR);
 define( 'SG2_VERSION', '2' );

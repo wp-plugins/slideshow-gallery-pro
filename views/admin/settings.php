@@ -34,7 +34,7 @@ wp_nonce_field('meta-box-order', 'meta-box-order-nonce', false);
                         </div>
                         <div id="major-publishing-actions">
                             <div id="publishing-action">
-                                <a href="http://cameronpreston.com/projects/plugins/slideshow-gallery-pro/" class="button-primary" target="_blank"><?php echo($sgprobtn); ?></a>
+                                <a href="http://c-pr.es/projects/satellite/" class="button-primary" target="_blank"><?php echo($sgprobtn); ?></a>
                             </div>
                             <br class="clear" />
                         </div>
